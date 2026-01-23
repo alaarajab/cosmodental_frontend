@@ -1,43 +1,102 @@
 /* ContactForm.css */
 
-/* Container to center the form on the page */
+/* Container to center the form on the page, reuse modal layout */
 .contact__form-container {
   max-width: 500px;
   margin: 40px auto;
   padding: 20px;
-  background: #ffffff; /* optional: white background */
+  background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 
-/* Optional: add spacing for checkbox & details section */
-.contact__details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-/* Page title styling override */
-.contact__form-container .modal__title {
+/* Page title */
+.contact__form-container .modal-title {
   font-size: 24px;
   text-align: center;
   margin-bottom: 24px;
   color: #1f2937;
 }
 
-/* Confirmation text under form */
-.contact__form-container .modal__footer {
-  margin-top: 16px;
+/* Form styling */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Labels */
+.contact__label {
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
-  color: #4b5563;
-  text-align: center;
+  color: #374151;
+  font-weight: 500;
 }
-.modal__label-checkbox {
-  align-self: start;
+
+/* Inputs & Select */
+.contact__input {
+  margin-top: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.contact__input:focus {
+  border-color: #3b82f6;
+}
+
+/* Checkbox */
+.contact__checkbox {
+  margin-top: 10px;
   margin-bottom: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: #3b82f6; /* modern color for checkbox */
 }
+
+/* Appointment details */
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Error messages */
+.contact__error {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 4px;
+}
+
+/* Submit button */
+.contact__submit {
+  margin-top: 12px;
+  padding: 12px 20px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contact__submit:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.contact__submit:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .contact__form-container {
@@ -45,17 +104,17 @@
     margin: 20px auto;
   }
 
-  .contact__form-container .modal__title {
+  .contact__form-container .modal-title {
     font-size: 20px;
     margin-bottom: 20px;
   }
 
-  .contact__form-container .modal__submit {
+  .contact__submit {
     padding: 10px;
     font-size: 14px;
   }
 
-  .contact__form-container .contact__details {
+  .contact__details {
     gap: 10px;
   }
 }

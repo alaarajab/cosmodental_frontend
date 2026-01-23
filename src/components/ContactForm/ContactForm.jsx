@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
+
+// Reuse modal layout/styles
 import "../ModalWithForm/ModalWithForm.css";
+
+// Contact-form-specific styles
 import "./ContactForm.css";
 
 function ContactForm() {
-  const [submittedType, setSubmittedType] = useState(""); // book or send
+  const [submittedType, setSubmittedType] = useState(""); // "book" or "send"
   const [isSending, setIsSending] = useState(false);
 
   const timeSlots = [
@@ -83,62 +87,83 @@ function ContactForm() {
   };
 
   return (
-    <div className="contact__form-container">
-      {/* Toast container */}
-      <Toaster position="top-right" reverseOrder={false} />
+    <div className="contact__form-container modal-container">
+      {/* Toast notifications */}
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 4000,
+          style: {
+            borderRadius: "12px",
+            padding: "16px 24px",
+            color: "#fff",
+            maxWidth: "90vw",
+            wordWrap: "break-word",
+          },
+          success: { style: { background: "#4BB543" } },
+          error: { style: { background: "#FF4D4F" } },
+        }}
+      />
 
-      <h2 className="modal__title">Contact Us</h2>
-      <form className="modal__form" onSubmit={handleSubmit} noValidate>
+      {/* Modal Title */}
+      <h2 className="modal-title">Contact Us</h2>
+
+      <form className="contact__form" onSubmit={handleSubmit} noValidate>
         {/* Full Name */}
-        <label className="modal__label">
+        <label className="contact__label">
           Full Name
           <input
             type="text"
             name="fullName"
-            className="modal__input"
+            className="contact__input"
             value={values.fullName}
             onChange={handleChange}
             placeholder="Full Name"
           />
           {errors.fullName && (
-            <span className="modal__error">{errors.fullName}</span>
+            <span className="contact__error">{errors.fullName}</span>
           )}
         </label>
 
         {/* Email */}
-        <label className="modal__label">
+        <label className="contact__label">
           Email
           <input
             type="email"
             name="email"
-            className="modal__input"
+            className="contact__input"
             value={values.email}
             onChange={handleChange}
             placeholder="you@example.com"
           />
-          {errors.email && <span className="modal__error">{errors.email}</span>}
+          {errors.email && (
+            <span className="contact__error">{errors.email}</span>
+          )}
         </label>
 
         {/* Phone */}
-        <label className="modal__label">
+        <label className="contact__label">
           Phone
           <input
             type="tel"
             name="phone"
-            className="modal__input"
+            className="contact__input"
             value={values.phone}
             onChange={handleChange}
             placeholder="Phone Number"
           />
-          {errors.phone && <span className="modal__error">{errors.phone}</span>}
+          {errors.phone && (
+            <span className="contact__error">{errors.phone}</span>
+          )}
         </label>
 
         {/* Book Appointment Checkbox */}
-        <label className="modal__label">
+        <label className="contact__label">
           <input
             type="checkbox"
             name="bookAppointment"
-            className="modal__label-checkbox"
+            className="contact__checkbox"
             checked={values.bookAppointment}
             onChange={handleChange}
           />{" "}
@@ -148,25 +173,25 @@ function ContactForm() {
         {/* Appointment Details */}
         {values.bookAppointment && (
           <div className="contact__details">
-            <label className="modal__label">
+            <label className="contact__label">
               Preferred Date
               <input
                 type="date"
                 name="preferredDate"
-                className="modal__input"
+                className="contact__input"
                 value={values.preferredDate}
                 onChange={handleChange}
               />
               {errors.preferredDate && (
-                <span className="modal__error">{errors.preferredDate}</span>
+                <span className="contact__error">{errors.preferredDate}</span>
               )}
             </label>
 
-            <label className="modal__label">
+            <label className="contact__label">
               Preferred Time
               <select
                 name="preferredTime"
-                className="modal__input"
+                className="contact__input"
                 value={values.preferredTime}
                 onChange={handleChange}
               >
@@ -178,15 +203,16 @@ function ContactForm() {
                 ))}
               </select>
               {errors.preferredTime && (
-                <span className="modal__error">{errors.preferredTime}</span>
+                <span className="contact__error">{errors.preferredTime}</span>
               )}
             </label>
           </div>
         )}
 
+        {/* Submit Button */}
         <button
           type="submit"
-          className="modal__submit"
+          className="contact__submit"
           disabled={!isValid || isSending}
         >
           {isSending ? "Sending..." : values.bookAppointment ? "Book" : "Send"}
