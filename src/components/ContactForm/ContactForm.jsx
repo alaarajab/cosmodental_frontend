@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import "../ModalWithForm/ModalWithForm.css"; // reuse modal styles
-import "./ContactForm.css"; // optional: additional contact-specific tweaks
+import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
+import "../ModalWithForm/ModalWithForm.css";
+import "./ContactForm.css";
 
 function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submittedType, setSubmittedType] = useState(""); // track send vs book
+  const [submittedType, setSubmittedType] = useState(""); // book or send
+  const [isSending, setIsSending] = useState(false);
 
   const timeSlots = [
     "09:00 AM",
@@ -39,18 +41,55 @@ function ContactForm() {
     },
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmittedType(values.bookAppointment ? "book" : "send");
-    resetForm();
-    setSubmitted(true);
+    if (!isValid) return;
+
+    setIsSending(true);
+
+    const templateParams = {
+      fullName: values.fullName,
+      email: values.email,
+      phone: values.phone,
+      requestType: values.bookAppointment
+        ? "Appointment Request"
+        : "Contact Message",
+      preferredDate: values.bookAppointment ? values.preferredDate : "N/A",
+      preferredTime: values.bookAppointment ? values.preferredTime : "N/A",
+    };
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
+
+      setSubmittedType(values.bookAppointment ? "book" : "send");
+      toast.success(
+        values.bookAppointment
+          ? "Appointment request sent! We will contact you to confirm."
+          : "Message sent! We will contact you soon.",
+      );
+
+      resetForm();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="contact__form-container">
-      <h2 className="modal__title">Contact Us</h2>
+      {/* Toast container */}
+      <Toaster position="top-right" reverseOrder={false} />
 
+      <h2 className="modal__title">Contact Us</h2>
       <form className="modal__form" onSubmit={handleSubmit} noValidate>
+        {/* Full Name */}
         <label className="modal__label">
           Full Name
           <input
@@ -66,6 +105,7 @@ function ContactForm() {
           )}
         </label>
 
+        {/* Email */}
         <label className="modal__label">
           Email
           <input
@@ -79,6 +119,7 @@ function ContactForm() {
           {errors.email && <span className="modal__error">{errors.email}</span>}
         </label>
 
+        {/* Phone */}
         <label className="modal__label">
           Phone
           <input
@@ -92,17 +133,19 @@ function ContactForm() {
           {errors.phone && <span className="modal__error">{errors.phone}</span>}
         </label>
 
+        {/* Book Appointment Checkbox */}
         <label className="modal__label">
           <input
-            className="modal__label-checkbox"
             type="checkbox"
             name="bookAppointment"
+            className="modal__label-checkbox"
             checked={values.bookAppointment}
             onChange={handleChange}
           />{" "}
           Book Appointment
         </label>
 
+        {/* Appointment Details */}
         {values.bookAppointment && (
           <div className="contact__details">
             <label className="modal__label">
@@ -141,18 +184,14 @@ function ContactForm() {
           </div>
         )}
 
-        <button type="submit" className="modal__submit" disabled={!isValid}>
-          {values.bookAppointment ? "Book" : "Send"}
+        <button
+          type="submit"
+          className="modal__submit"
+          disabled={!isValid || isSending}
+        >
+          {isSending ? "Sending..." : values.bookAppointment ? "Book" : "Send"}
         </button>
       </form>
-
-      {submitted && (
-        <div className="modal__footer">
-          {submittedType === "book"
-            ? "We will contact you to confirm your appointment. All information is private."
-            : "We will contact you soon."}
-        </div>
-      )}
     </div>
   );
 }
