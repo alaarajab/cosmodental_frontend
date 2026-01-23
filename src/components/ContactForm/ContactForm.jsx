@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import "./ContactForm.css";
+import "../ModalWithForm/ModalWithForm.css"; // reuse modal styles
+import "./ContactForm.css"; // optional: additional contact-specific tweaks
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [submittedType, setSubmittedType] = useState(""); // ✅ Track if user submitted 'send' or 'book'
+  const [submittedType, setSubmittedType] = useState(""); // track send vs book
 
   const timeSlots = [
     "09:00 AM",
@@ -18,7 +19,6 @@ function ContactForm() {
     "05:00 PM",
   ];
 
-  // useForm to manage all fields & validation
   const { values, errors, handleChange, resetForm, isValid } = useForm(
     {
       fullName: "",
@@ -41,21 +41,14 @@ function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("Form submitted:", values);
-
-    // Store the type of submission before resetting the form
     setSubmittedType(values.bookAppointment ? "book" : "send");
-
     resetForm();
-    setSubmitted(true); // Show confirmation message
+    setSubmitted(true);
   };
 
   return (
-    <div className="contact">
-      <h2 className="contact__title">
-        Fill out the form below to get in touch or reserve your appointment
-      </h2>
+    <div className="contact__form-container">
+      <h2 className="modal__title">Contact Us</h2>
 
       <form className="modal__form" onSubmit={handleSubmit} noValidate>
         <label className="modal__label">
@@ -64,10 +57,9 @@ function ContactForm() {
             type="text"
             name="fullName"
             className="modal__input"
-            placeholder="Full Name"
             value={values.fullName}
             onChange={handleChange}
-            required
+            placeholder="Full Name"
           />
           {errors.fullName && (
             <span className="modal__error">{errors.fullName}</span>
@@ -75,40 +67,38 @@ function ContactForm() {
         </label>
 
         <label className="modal__label">
-          Email Address
+          Email
           <input
             type="email"
             name="email"
             className="modal__input"
-            placeholder="you@example.com"
             value={values.email}
             onChange={handleChange}
-            required
+            placeholder="you@example.com"
           />
           {errors.email && <span className="modal__error">{errors.email}</span>}
         </label>
 
         <label className="modal__label">
-          Phone Number
+          Phone
           <input
             type="tel"
             name="phone"
             className="modal__input"
-            placeholder="Phone Number"
             value={values.phone}
             onChange={handleChange}
-            required
+            placeholder="Phone Number"
           />
           {errors.phone && <span className="modal__error">{errors.phone}</span>}
         </label>
 
-        <label className="contact__checkbox">
+        <label className="modal__label">
           <input
             type="checkbox"
             name="bookAppointment"
             checked={values.bookAppointment}
             onChange={handleChange}
-          />
+          />{" "}
           Book Appointment
         </label>
 
@@ -122,7 +112,6 @@ function ContactForm() {
                 className="modal__input"
                 value={values.preferredDate}
                 onChange={handleChange}
-                required={values.bookAppointment}
               />
               {errors.preferredDate && (
                 <span className="modal__error">{errors.preferredDate}</span>
@@ -136,7 +125,6 @@ function ContactForm() {
                 className="modal__input"
                 value={values.preferredTime}
                 onChange={handleChange}
-                required={values.bookAppointment}
               >
                 <option value="">Select Time</option>
                 {timeSlots.map((slot) => (
@@ -152,19 +140,17 @@ function ContactForm() {
           </div>
         )}
 
-        {/* Button is active only if form is valid */}
         <button type="submit" className="modal__submit" disabled={!isValid}>
           {values.bookAppointment ? "Book" : "Send"}
         </button>
       </form>
 
-      {/* Confirmation message based on type of submission */}
       {submitted && (
-        <p className="contact__confirmation-text">
+        <div className="modal__footer">
           {submittedType === "book"
             ? "We will contact you to confirm your appointment. All information is private."
             : "We will contact you soon."}
-        </p>
+        </div>
       )}
     </div>
   );

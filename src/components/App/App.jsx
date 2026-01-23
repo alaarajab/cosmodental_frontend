@@ -4,14 +4,10 @@ import "./App.css";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import LoginModal from "../LoginModal/LoginModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import DentalEducation from "../DentalEducation/DentalEducation";
 import Contact from "../Contact/Contact";
 import Home from "../Home/Home";
 import Services from "../Services/Services";
 import Staff from "../Staff/Staff";
-import Profile from "../Profile/Profile";
 
 function App() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -24,29 +20,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dental-education" element={<DentalEducation />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
           <Route path="/staff" element={<Staff />} />
-          <Route path="/profile" element={<Profile />} />
         </Routes>
-        <LoginModal
-          isOpen={loginOpen}
-          onClose={() => setLoginOpen(false)}
-          onRegisterClick={() => {
-            setLoginOpen(false);
-            setRegisterOpen(true);
-          }}
-        />
-
-        <RegisterModal
-          isOpen={registerOpen}
-          onClose={() => setRegisterOpen(false)}
-          onLoginClick={() => {
-            setRegisterOpen(false);
-            setLoginOpen(true);
-          }}
-        />
 
         <Footer />
       </div>

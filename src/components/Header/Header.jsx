@@ -1,17 +1,16 @@
 import "./Header.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/header-logo-cosmo-logo.png";
 import menuIcon from "../../assets/menuIcon_mobile.svg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { useUser } from "../../context/UserContext";
+import { FaPhoneAlt } from "react-icons/fa"; // phone icon
 
-function Header({ onLoginClick }) {
+function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
-  const { user, logout } = useUser();
   const [navigatorStyle, setNavigatorStyle] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -21,7 +20,6 @@ function Header({ onLoginClick }) {
     "/": "Welcome to our Clinic",
     "/staff": "Our Staff",
     "/services": "Our Dental Services",
-    "/dental-education": "Dental Education",
     "/contact": "Contact",
     "/profile": "Your Profile",
   };
@@ -36,7 +34,7 @@ function Header({ onLoginClick }) {
   // Desktop menu underline animation
   useEffect(() => {
     const activeLink = menuRef.current?.querySelector(
-      ".header__menu-item.active"
+      ".header__menu-item.active",
     );
     if (activeLink) {
       const { offsetLeft, offsetWidth } = activeLink;
@@ -68,7 +66,6 @@ function Header({ onLoginClick }) {
     { path: "/", label: "Home" },
     { path: "/staff", label: "Our Staff" },
     { path: "/services", label: "Services" },
-    { path: "/dental-education", label: "Dental Education" },
     { path: "/contact", label: "Contact" },
   ];
 
@@ -78,17 +75,8 @@ function Header({ onLoginClick }) {
         <img
           className="header__logo"
           src={logo}
-          alt="SmileCare Dental Clinic logo"
+          alt="Cosmo Dental Clinic logo"
         />
-
-        {user && (
-          <span
-            className="header__greeting header__greeting--mobile"
-            onClick={() => navigate("/profile")}
-          >
-            Hello, {user.name}
-          </span>
-        )}
 
         <nav className="header__menu" ref={menuRef}>
           {/* Desktop Menu */}
@@ -106,26 +94,11 @@ function Header({ onLoginClick }) {
               </NavLink>
             ))}
 
-            {user && (
-              <span
-                className="header__greeting header__greeting--desktop"
-                onClick={() => navigate("/profile")}
-              >
-                Hello, {user.name}
-              </span>
-            )}
-
-            <div className="header__desktop-auth">
-              {user ? (
-                <button className="header__logout" onClick={logout}>
-                  Logout
-                </button>
-              ) : (
-                <button className="header__signIn" onClick={onLoginClick}>
-                  Sign In
-                </button>
-              )}
-            </div>
+            {/* Call Us Button Desktop */}
+            <a href="tel:+17083456313" className="header__call-us">
+              <FaPhoneAlt className="header__call-icon" />
+              Call Us
+            </a>
 
             <span className="header__navigator" style={navigatorStyle} />
           </div>
@@ -154,29 +127,15 @@ function Header({ onLoginClick }) {
               </NavLink>
             ))}
 
-            <div className="header__mobile-auth">
-              {user ? (
-                <button
-                  className="header__logout"
-                  onClick={() => {
-                    logout();
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Logout
-                </button>
-              ) : (
-                <button
-                  className="header__signIn"
-                  onClick={() => {
-                    onLoginClick();
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Sign In
-                </button>
-              )}
-            </div>
+            {/* Call Us Button Mobile */}
+            <a
+              href="tel:+17083456313"
+              className="header__call-us header__call-us--mobile"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <FaPhoneAlt className="header__call-icon" />
+              Call Us
+            </a>
           </div>
         </>
       )}
@@ -185,7 +144,7 @@ function Header({ onLoginClick }) {
         <>
           <div className="header__divider" />
           <div className="header__title">
-            <h1 className="header__clinic-name">SmileCare Dental Clinic</h1>
+            <h1 className="header__clinic-name">Cosmo Dental Clinic</h1>
             <button
               className="header__book-app"
               onClick={onBookAppointmentClick}

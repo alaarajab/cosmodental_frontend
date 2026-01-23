@@ -1,8 +1,8 @@
-# SmileCare Dental Clinic – Custom React Application
+# Cosmo Dental Clinic – Custom React Application
 
 ## Project Overview
 
-**SmileCare Dental Clinic** is a responsive, single-page React application designed to promote a dental clinic’s services while providing educational oral health content. The project combines business and marketing goals (advertising services, building trust, encouraging appointments) with technical goals, including third-party API integration, reusable components, client-side routing, backend API security, user authentication, and optional AI-enhanced features.
+**Cosmo Dental Clinic** is a responsive, single-page React application designed to promote a dental clinic’s services while providing educational oral health content. The project combines business and marketing goals (advertising services, building trust, encouraging appointments) with technical goals, including third-party API integration, reusable components, client-side routing, backend API security, user authentication, and optional AI-enhanced features.
 
 ---
 

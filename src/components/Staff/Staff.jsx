@@ -1,29 +1,37 @@
 import "./Staff.css";
-import staffImg from "../../assets/character.jpg"; // single image for all staff
+import staffImg from "../../assets/character.jpg";
+import baselImg from "../../assets/basel-abozor.png";
+import hussainImg from "../../assets/hussain-akam.png";
+import haqiImg from "../../assets/mohammed-haqi.png";
 
 function Staff() {
   const staffMembers = [
     {
-      name: "Dr. B A",
+      name: "Dr. Basel Abozor",
       title: "Lead Dentist / Endodontist",
       experience:
         "Specializes in endodontics with 15+ years of patient-focused care.",
+      image: baselImg,
     },
     {
-      name: "Dr. Michael",
+      name: "Dr. Hussain Akam",
       title: "General Dentist",
       experience:
         "Provides routine check-ups, preventive care, and cosmetic treatments.",
+      image: hussainImg,
     },
     {
-      name: "Ms. Anne",
-      title: "Hygienist",
-      experience: "Provides cleanings and preventive care.",
+      name: "Dr. Mohammed Haqi",
+      title: "General Dentist",
+      experience:
+        "Provides routine check-ups, preventive care, and cosmetic treatments.",
+      image: haqiImg,
     },
     {
       name: "Ms. Hana",
       title: "Office Manager",
       experience: "Keeps the clinic organized and supports patients and staff.",
+      // no image → will use default
     },
     {
       name: "Mr. Tom",
@@ -37,7 +45,6 @@ function Staff() {
       experience: "Assists procedures and ensures patient comfort.",
     },
   ];
-
   return (
     <section className="staff">
       <h1 className="staff__title">Meet Our Team</h1>
@@ -46,7 +53,7 @@ function Staff() {
         {staffMembers.map((member, index) => (
           <div className="staff__grid-card" key={index}>
             <img
-              src={staffImg}
+              src={member.image || staffImg}
               alt={member.name}
               className="staff__grid-image"
             />
@@ -62,5 +69,4 @@ function Staff() {
     </section>
   );
 }
-
 export default Staff;

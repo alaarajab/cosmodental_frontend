@@ -1,7 +1,6 @@
 .footer {
   background-color: #0b1c2d40;
   color: #ffffff;
-  height: 208px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -15,10 +14,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
-  flex: 1;
-  margin-left: 40px;
-  margin-right: 40px;
+  gap: 40px;
+  margin: 0 40px;
+  flex-wrap: wrap;
 }
 
 .footer__logo img {
@@ -32,45 +30,41 @@
   max-width: 160px;
 }
 
+/* Links, Contact, Social */
 .footer__links,
-.footer__social,
-.footer__contact {
+.footer__contact,
+.footer__social {
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-size: 12px;
 }
 
-.footer__links a,
-.footer__social a,
-.footer__contact a {
+.footer__links a {
   color: #ffffff;
   text-decoration: none;
 }
 
-.footer__links a:hover,
-.footer__social a:hover {
+.footer__links a:hover {
   text-decoration: underline;
 }
 
+/* Footer Bottom */
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
   font-size: 12px;
   padding-top: 8px;
 }
-
 @media (max-width: 1024px) {
   .footer {
-    height: auto;
     padding: 16px;
     font-size: 14px;
   }
 
   .footer__content {
-    margin-left: 20px;
-    margin-right: 20px;
-    gap: 16px;
+    margin: 0 20px;
+    gap: 24px;
   }
 
   .footer__logo img {
@@ -82,8 +76,10 @@
   }
 
   .footer__links,
+  .footer__contact,
   .footer__social,
-  .footer__contact {
+  .social-contact-icons__item,
+  .social-contact-icons__social-link {
     font-size: 11px;
   }
 
@@ -91,10 +87,9 @@
     font-size: 11px;
   }
 }
-
 @media (max-width: 768px) {
   .footer {
-    padding: 8px 6px;
+    padding: 12px 10px;
     font-size: 13px;
   }
 
@@ -103,7 +98,7 @@
     align-items: center;
     text-align: center;
     margin: 0;
-    gap: 5px;
+    gap: 16px;
   }
 
   .footer__logo img {
@@ -115,15 +110,10 @@
     max-width: none;
   }
 
-  .footer__links,
-  .footer__social,
-  .footer__contact {
+  .footer_links,
+  .footer__contact,
+  .footer__social {
     align-items: center;
     font-size: 11px;
-  }
-
-  .footer__bottom {
-    font-size: 11px;
-    padding-top: 5px;
   }
 }

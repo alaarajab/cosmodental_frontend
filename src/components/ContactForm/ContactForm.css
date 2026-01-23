@@ -1,27 +1,58 @@
-.contact {
+/* ContactForm.css */
+
+/* Container to center the form on the page */
+.contact__form-container {
   max-width: 500px;
   margin: 40px auto;
   padding: 20px;
+  background: #ffffff; /* optional: white background */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
-.contact__form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.contact__title {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 24px;
-  color: #1f2937;
-}
+
+/* Optional: add spacing for checkbox & details section */
 .contact__details {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 8px;
 }
+
+/* Page title styling override */
+.contact__form-container .modal__title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #1f2937;
+}
+
+/* Confirmation text under form */
+.contact__form-container .modal__footer {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #4b5563;
+  text-align: center;
+}
+
+/* Responsive adjustments */
 @media (max-width: 480px) {
-  .contact {
+  .contact__form-container {
     padding: 16px;
     margin: 20px auto;
+  }
+
+  .contact__form-container .modal__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact__form-container .modal__submit {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .contact__form-container .contact__details {
+    gap: 10px;
   }
 }

@@ -44,11 +44,11 @@ function Home() {
   return (
     <div className="home__page">
       <p className="home__intro">
-        SmileCare Dental Clinic serves Chicago, IL, and the surrounding
-        communities with compassionate, high-quality dental care. Our team
-        offers General Dentistry, Cosmetic Dentistry, Orthodontics, and
-        Endodontics, combining the latest technology with a patient-centered
-        approach to keep your smile healthy and confident.
+        Cosmo Dental Clinic serves Chicago, IL, and the surrounding communities
+        with compassionate, high-quality dental care. Our team offers General
+        Dentistry, Cosmetic Dentistry, Orthodontics, and Endodontics, combining
+        the latest technology with a patient-centered approach to keep your
+        smile healthy and confident.
       </p>
 
       <span className="home__divider" />

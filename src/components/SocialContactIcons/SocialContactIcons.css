@@ -1,0 +1,86 @@
+/* Contact section */
+.social-contact-icons__contact,
+.social-contact-icons__social {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.social-contact-icons__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.social-contact-icons__item svg {
+  font-size: 14px;
+}
+
+.social-contact-icons__social {
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.social-contact-icons__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 16px;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.social-contact-icons__social-link:hover {
+  transform: translateY(-3px);
+}
+
+.social-contact-icons__social-link[aria-label="Facebook"]:hover {
+  background-color: #1877f2;
+  color: #ffffff;
+}
+
+.social-contact-icons__social-link[aria-label="Instagram"]:hover {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+  color: #ffffff;
+}
+
+.social-contact-icons__social-link[aria-label="TikTok"]:hover {
+  background-color: #000;
+  color: #69c9d0;
+}
+@media (max-width: 1024px) {
+  .social-contact-icons__item,
+  .social-contact-icons__social-link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-contact-icons__item,
+  .social-contact-icons__social-link {
+    align-items: center;
+    font-size: 11px;
+  }
+
+  .social-contact-icons__social {
+    justify-content: center;
+  }
+}
