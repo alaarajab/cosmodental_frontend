@@ -220,6 +220,14 @@
     height: 260px;
     background-position: center;
   }
+  .header__spacer {
+    display: flex;
+    flex-direction: column; /* stack logo and menu vertically */
+    align-items: center; /* center horizontally */
+  }
+  .header__logo {
+    padding-top: 5px;
+  }
 
   .header__title {
     margin-top: 20px;
@@ -227,7 +235,7 @@
   }
 
   .header__book-app {
-    padding: 10px 20px;
+    padding: 5px 20px;
     font-size: 14px;
   }
 
@@ -241,8 +249,12 @@
   .header {
     height: 240px;
   }
+  .header__spacer {
+    display: flex;
+    flex-direction: column; /* stack logo and menu vertically */
+    align-items: center; /* center horizontally */
+  }
   .header__logo {
-    padding-left: 110px;
     padding-top: 5px;
   }
 
