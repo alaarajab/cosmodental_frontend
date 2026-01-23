@@ -16,15 +16,6 @@ function Header() {
 
   const isProfilePage = location.pathname === "/profile";
 
-  const pageTitles = {
-    "/": "Welcome to our Clinic",
-    "/staff": "Our Staff",
-    "/services": "Our Dental Services",
-    "/contact": "Contact",
-    "/profile": "Your Profile",
-  };
-  const pageTitle = pageTitles[location.pathname] || "Home";
-
   // Toggle mobile menu
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
@@ -151,7 +142,6 @@ function Header() {
             >
               Book Appointment
             </button>
-            <h2 className="header__page-title">{pageTitle}</h2>
           </div>
         </>
       )}

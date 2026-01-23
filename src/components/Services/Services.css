@@ -22,19 +22,6 @@
   border-radius: 12px;
 }
 
-.service__content-wrapper {
-  display: flex;
-  gap: 50px;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap; /* allow wrapping on smaller screens */
-  width: 100%;
-}
-
-.service__content {
-  max-width: 300px;
-}
-
 .service__content h2 {
   font-size: 24px;
   margin-bottom: 12px;

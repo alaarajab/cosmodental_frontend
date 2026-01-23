@@ -17,7 +17,6 @@ function Services() {
         "Cavity detection and fillings",
         "Gum disease treatment",
       ],
-      video: "https://www.youtube.com/embed/GENERAL_VIDEO_ID",
     },
     {
       title: "Cosmetic Dentistry",
@@ -29,7 +28,6 @@ function Services() {
         "Porcelain veneers",
         "Smile makeover planning",
       ],
-      video: "https://www.youtube.com/embed/COSMETIC_VIDEO_ID",
     },
     {
       title: "Dental Implants",
@@ -41,7 +39,6 @@ function Services() {
         "Implant-supported bridges",
         "Full-mouth restoration",
       ],
-      video: "https://www.youtube.com/embed/IMPLANT_VIDEO_ID",
     },
     {
       title: "Endodontics",
@@ -53,7 +50,6 @@ function Services() {
         "Retreatment cases",
         "Emergency pain relief",
       ],
-      video: "https://www.youtube.com/embed/ENDO_VIDEO_ID",
     },
   ];
 
@@ -65,21 +61,12 @@ function Services() {
           <div className="service__content-wrapper">
             <div className="service__content">
               <h2>{service.title}</h2>
-
               <p>{service.description}</p>
               <ul>
                 {service.cases.map((c) => (
                   <li key={c}>{c}</li>
                 ))}
               </ul>
-            </div>
-
-            <div className="service__video">
-              <iframe
-                src={service.video}
-                title={`${service.title} Video`}
-                allowFullScreen
-              />
             </div>
           </div>
           <span className="service__divider" />

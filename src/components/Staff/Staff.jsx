@@ -8,7 +8,7 @@ function Staff() {
   const staffMembers = [
     {
       name: "Dr. Basel Abozor",
-      title: "Lead Dentist / Endodontist",
+      title: "General Dentist",
       experience:
         "Specializes in endodontics with 15+ years of patient-focused care.",
       image: baselImg,

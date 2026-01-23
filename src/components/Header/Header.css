@@ -241,6 +241,10 @@
   .header {
     height: 240px;
   }
+  .header__logo {
+    padding-left: 10px;
+    padding-top: 5px;
+  }
 
   .header__title {
     font-size: 16px;
