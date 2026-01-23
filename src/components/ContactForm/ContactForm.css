@@ -34,7 +34,10 @@
   color: #4b5563;
   text-align: center;
 }
-
+.modal__label-checkbox {
+  align-self: start;
+  margin-bottom: 10px;
+}
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .contact__form-container {

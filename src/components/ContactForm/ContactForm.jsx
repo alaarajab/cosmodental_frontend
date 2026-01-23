@@ -94,6 +94,7 @@ function ContactForm() {
 
         <label className="modal__label">
           <input
+            className="modal__label-checkbox"
             type="checkbox"
             name="bookAppointment"
             checked={values.bookAppointment}
