@@ -1,46 +1,55 @@
 import "./Footer.css";
-import logo from "../../assets/header-logo-cosmo-logo.png";
-import { NavLink } from "react-router-dom";
 import SocialContactIcons from "../SocialContactIcons/SocialContactIcons";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react";
 
 function Footer() {
+  const [showAddress, setShowAddress] = useState(false);
+
   return (
-    <footer className="footer">
-      <div className="footer__content">
-        <div className="footer__logo">
-          <img src={logo} alt="Cosmo Dental Clinic logo" />
-          <p>
-            Cosmo Dental Clinic provides high-quality dental care with a
-            patient-first approach.
-          </p>
+    <>
+      {/* Main Footer with Google Map Background */}
+      <footer className="footer">
+        {/* Clinic Address Button */}
+        <div className="footer__address">
+          <button
+            className="footer__address-btn"
+            onClick={() => setShowAddress(!showAddress)}
+          >
+            Clinic Address
+          </button>
+
+          {/* Location Icon */}
+          <FaMapMarkerAlt
+            className="footer__address-icon"
+            onClick={() => setShowAddress(!showAddress)}
+          />
+
+          {showAddress && (
+            <a
+              href="https://www.google.com/maps/place/NORTHLAKE+DENTAL+CLINIC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__address-popup"
+            >
+              159 E North Ave
+              <br />
+              Northlake, IL 60164
+            </a>
+          )}
         </div>
+      </footer>
 
-        <nav className="footer__links">
-          <h3>Quick Links</h3>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/staff">Our Staff</NavLink>
-          <NavLink to="/services">Services</NavLink>
-
-          <NavLink to="/contact">Contact</NavLink>
-        </nav>
-
-        <div className="footer__contact">
-          <h3>Contact Us</h3>
-          <SocialContactIcons type="contact" />
-        </div>
-
-        <div className="footer__social">
-          <h3>Follow Us</h3>
-          <SocialContactIcons type="social" />
-        </div>
-      </div>
-
+      {/* Footer Bottom with gray background */}
       <div className="footer__bottom">
         <p>
           © {new Date().getFullYear()} Cosmo Dental Clinic. All rights reserved.
         </p>
+        <div className="footer__bottom-social">
+          <SocialContactIcons type="social" />
+        </div>
       </div>
-    </footer>
+    </>
   );
 }
 

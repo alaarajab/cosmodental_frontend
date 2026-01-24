@@ -92,14 +92,20 @@ function ContactForm() {
       <Toaster
         position="top-right"
         reverseOrder={false}
+        gutter={12} // space between multiple toasts
+        containerStyle={{
+          top: window.innerWidth <= 480 ? "100px" : "80px", // lower on mobile
+          right: window.innerWidth <= 480 ? "20px" : "40px", // closer to edge on mobile
+        }}
         toastOptions={{
-          duration: 4000,
+          duration: 6000,
           style: {
             borderRadius: "12px",
             padding: "16px 24px",
             color: "#fff",
             maxWidth: "90vw",
             wordWrap: "break-word",
+            boxSizing: "border-box",
           },
           success: { style: { background: "#4BB543" } },
           error: { style: { background: "#FF4D4F" } },
