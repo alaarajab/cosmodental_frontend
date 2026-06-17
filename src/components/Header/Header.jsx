@@ -1,7 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/header-logo-cosmo-logo.png";
 import menuIcon from "../../assets/menuIcon_mobile.svg";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa"; // phone icon
 
@@ -63,11 +63,13 @@ function Header() {
   return (
     <header className={`header ${isProfilePage ? "header--profile" : ""}`}>
       <div className="header__spacer">
-        <img
-          className="header__logo"
-          src={logo}
-          alt="Cosmo Dental Clinic logo"
-        />
+        <Link to="/">
+          <img
+            className="header__logo"
+            src={logo}
+            alt="Cosmo Dental Clinic logo"
+          />
+        </Link>
 
         <nav className="header__menu" ref={menuRef}>
           {/* Desktop Menu */}

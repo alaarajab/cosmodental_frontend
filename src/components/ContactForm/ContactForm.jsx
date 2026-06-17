@@ -125,7 +125,8 @@ function ContactForm() {
             className="contact__input"
             value={values.fullName}
             onChange={handleChange}
-            placeholder="Full Name"
+            placeholder="Enter your full name"
+            aria-required="true"
           />
           {errors.fullName && (
             <span className="contact__error">{errors.fullName}</span>
@@ -142,6 +143,7 @@ function ContactForm() {
             value={values.email}
             onChange={handleChange}
             placeholder="you@example.com"
+            aria-required="true"
           />
           {errors.email && (
             <span className="contact__error">{errors.email}</span>
@@ -157,7 +159,8 @@ function ContactForm() {
             className="contact__input"
             value={values.phone}
             onChange={handleChange}
-            placeholder="Phone Number"
+            placeholder="Enter your phone number"
+            aria-required="true"
           />
           {errors.phone && (
             <span className="contact__error">{errors.phone}</span>
@@ -187,6 +190,7 @@ function ContactForm() {
                 className="contact__input"
                 value={values.preferredDate}
                 onChange={handleChange}
+                aria-required="true"
               />
               {errors.preferredDate && (
                 <span className="contact__error">{errors.preferredDate}</span>
@@ -200,6 +204,7 @@ function ContactForm() {
                 className="contact__input"
                 value={values.preferredTime}
                 onChange={handleChange}
+                aria-required="true"
               >
                 <option value="">Select Time</option>
                 {timeSlots.map((slot) => (
@@ -220,6 +225,7 @@ function ContactForm() {
           type="submit"
           className="contact__submit"
           disabled={!isValid || isSending}
+          aria-required="true"
         >
           {isSending ? "Sending..." : values.bookAppointment ? "Book" : "Send"}
         </button>

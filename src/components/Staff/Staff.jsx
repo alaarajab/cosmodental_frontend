@@ -3,6 +3,7 @@ import staffImg from "../../assets/character.jpg";
 import baselImg from "../../assets/basel-abozor.png";
 import hussainImg from "../../assets/hussain-akam.png";
 import haqiImg from "../../assets/mohammed-haqi.png";
+import asimImg from "../../assets/asimImg.png";
 
 function Staff() {
   const staffMembers = [
@@ -21,17 +22,18 @@ function Staff() {
       image: hussainImg,
     },
     {
-      name: "Dr. Mohammed Haqi",
+      name: "Dr. Mohammed Abdul Haq",
       title: "General Dentist",
       experience:
         "Provides routine check-ups, preventive care, and cosmetic treatments.",
       image: haqiImg,
     },
     {
-      name: "Ms. Hana",
-      title: "Office Manager",
-      experience: "Keeps the clinic organized and supports patients and staff.",
-      // no image → will use default
+      name: "Dr. Asim Abdul Quader",
+      title: "General Dentist",
+      experience:
+        "Provides routine check-ups, preventive care, and cosmetic treatments.",
+      image: asimImg,
     },
     {
       name: "Mr. Tom",
@@ -47,7 +49,7 @@ function Staff() {
   ];
   return (
     <section className="staff">
-      <h1 className="staff__title">Meet Our Team</h1>
+      <h2 className="staff__title">Meet Our Team</h2>
 
       <div className="staff__grid">
         {staffMembers.map((member, index) => (
@@ -59,8 +61,8 @@ function Staff() {
             />
 
             <div className="staff__grid-info">
-              <h2 className="staff__grid-info-name">{member.name}</h2>
-              <h3 className="staff__grid-info-title">{member.title}</h3>
+              <h3 className="staff__grid-info-name">{member.name}</h3>
+              <h4 className="staff__grid-info-title">{member.title}</h4>
               <p className="staff__grid-info-experience">{member.experience}</p>
             </div>
           </div>
