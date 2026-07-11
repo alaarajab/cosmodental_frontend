@@ -27,7 +27,7 @@ function Footer() {
 
           {showAddress && (
             <a
-              href="https://www.google.com/maps/place/NORTHLAKE+DENTAL+CLINIC"
+              href="https://www.google.com/maps/dir/42.0191328,-88.12734/COSMO+DENTAL,+159+E+North+Ave,+Northlake,+IL+60164/@41.9627145,-88.0940353,12z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x880fb50027954c83:0xf7aecbc5ef93eb86!2m2!1d-87.8963596!2d41.9068265!3e0?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__address-popup"
