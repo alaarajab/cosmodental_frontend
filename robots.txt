@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alaarajab.github.io/cosmodental_frontend/sitemap.xml
