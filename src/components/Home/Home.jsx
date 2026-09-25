@@ -119,7 +119,7 @@ function Home() {
           <li>
             <a href="#team">
               <FaUserMd aria-hidden="true" />
-              <span>{DENTISTS.length} experienced dentists</span>
+              <span> experienced dentists</span>
             </a>
           </li>
 
@@ -133,7 +133,7 @@ function Home() {
           <li>
             <a href="#insurance">
               <FaCreditCard aria-hidden="true" />
-              <span>Insurance &amp; easy payment</span>
+              <span>Insurance &amp; Financial Plans</span>
             </a>
           </li>
 

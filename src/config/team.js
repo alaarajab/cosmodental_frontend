@@ -13,25 +13,28 @@ export const DENTISTS = [
   {
     name: "Dr. Asim Abdul Quader",
     title: "General Dentist",
-    bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
+    bio: "Focuses on cosmetic dentistry, providing routine check-ups and preventive care.",
     image: asimImg,
   },
+
   {
     name: "Dr. Basel Abozor",
     title: "General Dentist",
     bio: "Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.",
     image: baselImg,
   },
+
   {
     name: "Dr. Hussain Akam",
     title: "General Dentist",
-    bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
+    bio: "Focuses on dental surgery and implant care, along with routine check-ups.",
     image: hussainImg,
   },
+
   {
     name: "Dr. Mohammed Abdul Haq",
     title: "General Dentist",
-    bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
+    bio: "Focuses on dental surgery and implant care, along with preventive care",
     image: haqiImg,
   },
 ];

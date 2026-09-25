@@ -42,10 +42,10 @@ export const CLINIC = {
   // Leave empty to show "Call us for current hours".
   // `schema` entries use schema.org format for Google.
   hours: [
-    { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" },
+    { days: "Monday – Friday", time: "10:00 AM – 6:00 PM" },
     { days: "Saturday", time: "9:00 AM – 2:00 PM" },
   ],
-  hoursSchema: ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
+  hoursSchema: ["Mo-Fr 10:00-18:00", "Sa 09:00-14:00"], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
 
   // Only add accounts that really exist.
   social: [

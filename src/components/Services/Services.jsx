@@ -43,7 +43,7 @@ const services = [
   },
   {
     id: "root-canal-treatment",
-    title: "Root Canal Treatment (Endodontics)",
+    title: "Endodontics (Root Canal Treatment)",
     image: endoImg,
     description:
       "Root canal treatment to relieve tooth pain, treat infection and save your natural tooth.",
