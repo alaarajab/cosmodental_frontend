@@ -1,1 +1,148 @@
 @import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
+
+/* ---------- Design tokens ---------- */
+:root {
+  --color-primary: #1a5fd0; /* 5.9:1 with white text (WCAG AA) */
+  --color-primary-dark: #144aa3;
+  --color-text: #1f2937;
+  --color-text-muted: #4b5563; /* 7.5:1 on white */
+  --color-bg: #f5f6f7;
+  --color-surface: #ffffff;
+  --color-border: #d1d5db;
+  --color-error: #b91c1c; /* 6.5:1 on white */
+  --color-success: #15803d;
+  --color-focus: #f59e0b;
+  --radius: 12px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --font-body: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-heading: "Roboto Slab", Georgia, serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* fixes footer overflowing the screen */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+}
+
+/* ---------- Accessibility helpers ---------- */
+
+/* Visible keyboard focus everywhere (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Text for screen readers only */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* "Skip to main content" link (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 2000;
+  padding: 12px 20px;
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Shared button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px; /* comfortable touch target */
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+}
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+}
+.btn--outline:hover {
+  background-color: #e8f0fd;
+}
+.btn--light {
+  background-color: #fff;
+  color: var(--color-primary-dark);
+}
+.btn--light:hover {
+  background-color: #e8f0fd;
+}
+
+/* Respect "reduce motion" system setting (WCAG 2.3.3 best practice) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

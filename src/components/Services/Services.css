@@ -1,111 +1,97 @@
 .services {
-  padding: 40px 20px;
+  padding: 48px 24px 56px;
+  font-family: var(--font-body);
+  font-size: 17px;
 }
 
 .services__title {
+  font-size: clamp(28px, 4vw, 38px);
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 40px;
+  margin: 0 0 12px;
 }
 
-/* Each service container stacks vertically */
-.service {
+.services__intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+}
+
+.services__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  width: 100%;
+  gap: 32px;
 }
 
-.service img {
-  width: 300px;
-  border-radius: 12px;
+.service {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.service__image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
 }
 
 .service__content h2 {
-  font-size: 24px;
-  margin-bottom: 12px;
+  font-size: 26px;
+  margin: 0 0 12px;
+}
+
+.service__content p {
+  margin: 0 0 12px;
+}
+
+.service__subheading {
+  font-size: 17px;
+  font-family: var(--font-body);
+  margin: 16px 0 8px;
 }
 
 .service__content ul {
-  margin-top: 12px;
-  padding-left: 18px;
+  margin: 0;
+  padding-left: 22px;
 }
 
 .service__content li {
   margin-bottom: 6px;
 }
-.service__video iframe {
-  width: 360px;
-  height: 270px;
-  border-radius: 12px;
-  border: none;
+
+.services__cta {
+  text-align: center;
+  margin-top: 48px;
 }
 
-.service__divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: #ddd;
-  margin: 40px 0;
-  flex-shrink: 0;
+.services__cta h2 {
+  font-size: 26px;
+  margin: 0 0 8px;
 }
 
-@media (max-width: 1024px) {
-  .services__title {
-    font-size: 28px;
-  }
-
-  .service__content-wrapper {
-    gap: 30px;
-  }
-
-  .service img {
-    width: 250px;
-  }
-
-  .service__content {
-    max-width: 250px;
-  }
-
-  .service__video iframe {
-    width: 300px;
-    height: 225px;
-  }
-
-  .service__divider {
-    margin: 30px 0;
-  }
+.services__cta p {
+  margin: 0 0 20px;
 }
 
 @media (max-width: 768px) {
-  .services__title {
-    font-size: 24px;
-    margin-bottom: 24px;
+  .services {
+    padding: 36px 16px 48px;
   }
 
-  .service__content-wrapper {
-    flex-direction: column;
-    align-items: center;
+  .service {
+    grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .service img {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .service__content {
-    max-width: 100%;
-  }
-
-  .service__video iframe {
-    width: 100%;
-    max-width: 480px;
-    height: 270px;
-  }
-
-  .service__divider {
-    margin: 20px 0;
+    padding: 16px;
   }
 }

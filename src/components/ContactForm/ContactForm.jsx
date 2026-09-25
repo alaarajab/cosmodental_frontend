@@ -1,63 +1,117 @@
-import React, { useState } from "react";
-import { useForm } from "../../hooks/useForm";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from "react-hot-toast";
-
-// Reuse modal layout/styles
-import "../ModalWithForm/ModalWithForm.css";
-
-// Contact-form-specific styles
 import "./ContactForm.css";
 
+const TIME_SLOTS = ["Morning (9 AM – 12 PM)", "Afternoon (12 PM – 3 PM)", "Late afternoon (3 PM – 6 PM)"];
+
+const INITIAL = {
+  fullName: "",
+  email: "",
+  phone: "",
+  reason: "",
+  bookAppointment: true,
+  preferredDate: "",
+  preferredTime: "",
+  consent: false,
+};
+
+// Non-medical reasons only — we never ask for health details online.
+const REASONS = [
+  "New patient appointment",
+  "Existing patient appointment",
+  "Cleaning / check-up",
+  "Cosmetic consultation",
+  "Implant consultation",
+  "General question",
+];
+
+function validate(values) {
+  const errors = {};
+  if (!values.fullName.trim()) errors.fullName = "Please enter your full name.";
+  if (!/^\S+@\S+\.\S+$/.test(values.email.trim()))
+    errors.email = "Please enter a valid email address, for example name@example.com.";
+  const digits = values.phone.replace(/\D/g, "");
+  if (digits.length < 10 || digits.length > 15)
+    errors.phone = "Please enter a valid phone number, for example (708) 555-1234.";
+  if (!values.reason) errors.reason = "Please choose a reason for your request.";
+  if (values.bookAppointment && !values.preferredDate)
+    errors.preferredDate = "Please choose a preferred date.";
+  if (values.bookAppointment && !values.preferredTime)
+    errors.preferredTime = "Please choose a preferred time.";
+  if (!values.consent) errors.consent = "Please confirm you agree to be contacted.";
+  return errors;
+}
+
+const FIELD_ORDER = [
+  "fullName",
+  "email",
+  "phone",
+  "reason",
+  "preferredDate",
+  "preferredTime",
+  "consent",
+];
+
+function todayISO() {
+  const d = new Date();
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0, 10);
+}
+
 function ContactForm() {
-  const [submittedType, setSubmittedType] = useState(""); // "book" or "send"
+  const [values, setValues] = useState(INITIAL);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const [status, setStatus] = useState({ type: "", message: "" });
   const [isSending, setIsSending] = useState(false);
+  const formRef = useRef(null);
+  // Set in the browser (not at build time) so the date limit is always today
+  const [minDate, setMinDate] = useState(undefined);
+  useEffect(() => setMinDate(todayISO()), []);
 
-  const timeSlots = [
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-  ];
+  const showError = (name) => touched[name] && errors[name];
 
-  const { values, errors, handleChange, resetForm, isValid } = useForm(
-    {
-      fullName: "",
-      email: "",
-      phone: "",
-      bookAppointment: false,
-      preferredDate: "",
-      preferredTime: "",
-    },
-    {
-      fullName: (v) => (!v.trim() ? "Full Name is required" : ""),
-      email: (v) => (!/^\S+@\S+\.\S+$/.test(v) ? "Invalid email address" : ""),
-      phone: (v) => (!/^\+?\d{7,15}$/.test(v) ? "Invalid phone number" : ""),
-      preferredDate: (v, all) =>
-        all.bookAppointment && !v ? "Select a date" : "",
-      preferredTime: (v, all) =>
-        all.bookAppointment && !v ? "Select a time" : "",
-    },
-  );
+  function handleChange(e) {
+    const { name, type, value, checked } = e.target;
+    const next = { ...values, [name]: type === "checkbox" ? checked : value };
+    setValues(next);
+    if (touched[name]) setErrors(validate(next));
+  }
 
-  const handleSubmit = async (e) => {
+  function handleBlur(e) {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors(validate(values));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!isValid) return;
+    const found = validate(values);
+    setErrors(found);
+    setTouched(Object.fromEntries(FIELD_ORDER.map((f) => [f, true])));
+
+    const firstInvalid = FIELD_ORDER.find((f) => found[f]);
+    if (firstInvalid) {
+      setStatus({
+        type: "error",
+        message: `Please fix ${Object.keys(found).length} field${
+          Object.keys(found).length > 1 ? "s" : ""
+        } highlighted below.`,
+      });
+      formRef.current?.querySelector(`[name="${firstInvalid}"]`)?.focus();
+      return;
+    }
 
     setIsSending(true);
+    setStatus({ type: "", message: "" });
 
     const templateParams = {
-      fullName: values.fullName,
-      email: values.email,
-      phone: values.phone,
-      requestType: values.bookAppointment
-        ? "Appointment Request"
-        : "Contact Message",
+      fullName: values.fullName.trim(),
+      email: values.email.trim(),
+      phone: values.phone.trim(),
+      reason: values.reason,
+      requestType: values.bookAppointment ? "Appointment Request" : "Contact Message",
       preferredDate: values.bookAppointment ? values.preferredDate : "N/A",
       preferredTime: values.bookAppointment ? values.preferredTime : "N/A",
     };
@@ -69,165 +123,250 @@ function ContactForm() {
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
-
-      setSubmittedType(values.bookAppointment ? "book" : "send");
-      toast.success(
-        values.bookAppointment
-          ? "Appointment request sent! We will contact you to confirm."
-          : "Message sent! We will contact you soon.",
-      );
-
-      resetForm();
+      setStatus({
+        type: "success",
+        message: values.bookAppointment
+          ? "Thank you! Your appointment request was sent. We will contact you to confirm a time."
+          : "Thank you! Your message was sent. We will contact you soon.",
+      });
+      setValues(INITIAL);
+      setTouched({});
+      setErrors({});
     } catch (error) {
       console.error("EmailJS error:", error);
-      toast.error("Failed to send message. Please try again later.");
+      setStatus({
+        type: "error",
+        message:
+          "Sorry, your request could not be sent. Please try again or call our office.",
+      });
     } finally {
       setIsSending(false);
     }
-  };
+  }
+
+  const describedBy = (name, hint) =>
+    [hint, showError(name) ? `${name}-error` : null].filter(Boolean).join(" ") || undefined;
 
   return (
-    <div className="contact__form-container modal-container">
-      {/* Toast notifications */}
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        gutter={12} // space between multiple toasts
-        containerStyle={{
-          top: window.innerWidth <= 480 ? "100px" : "80px", // lower on mobile
-          right: window.innerWidth <= 480 ? "20px" : "40px", // closer to edge on mobile
-        }}
-        toastOptions={{
-          duration: 6000,
-          style: {
-            borderRadius: "12px",
-            padding: "16px 24px",
-            color: "#fff",
-            maxWidth: "90vw",
-            wordWrap: "break-word",
-            boxSizing: "border-box",
-          },
-          success: { style: { background: "#4BB543" } },
-          error: { style: { background: "#FF4D4F" } },
-        }}
-      />
+    <div className="contact-form">
+      <h2 className="contact-form__title">Request an Appointment</h2>
 
-      {/* Modal Title */}
-      <h2 className="modal-title">Contact Us</h2>
+      <p className="contact-form__privacy" id="privacy-note">
+        <strong>Please do not include medical, dental or insurance details.</strong>{" "}
+        This form is only for scheduling and general questions. We will discuss
+        your health privately by phone or in the office.
+      </p>
 
-      <form className="contact__form" onSubmit={handleSubmit} noValidate>
-        {/* Full Name */}
-        <label className="contact__label">
-          Full Name
+      {/* Announced to screen readers when it changes */}
+      <div
+        role={status.type === "error" ? "alert" : "status"}
+        aria-live="polite"
+        className={`contact-form__status ${
+          status.type ? `contact-form__status--${status.type}` : ""
+        }`}
+      >
+        {status.message}
+      </div>
+
+      <form ref={formRef} className="contact-form__form" onSubmit={handleSubmit} noValidate>
+        <p className="contact-form__required-note">
+          Fields marked with <span aria-hidden="true">*</span>
+          <span className="visually-hidden">an asterisk</span> are required.
+        </p>
+
+        <div className="contact-form__field">
+          <label htmlFor="fullName">
+            Full name <span aria-hidden="true">*</span>
+          </label>
           <input
-            type="text"
+            id="fullName"
             name="fullName"
-            className="contact__input"
+            type="text"
+            autoComplete="name"
+            required
             value={values.fullName}
             onChange={handleChange}
-            placeholder="Enter your full name"
-            aria-required="true"
+            onBlur={handleBlur}
+            aria-invalid={Boolean(showError("fullName"))}
+            aria-describedby={describedBy("fullName")}
           />
-          {errors.fullName && (
-            <span className="contact__error">{errors.fullName}</span>
+          {showError("fullName") && (
+            <p id="fullName-error" className="contact-form__error">
+              {errors.fullName}
+            </p>
           )}
-        </label>
+        </div>
 
-        {/* Email */}
-        <label className="contact__label">
-          Email
+        <div className="contact-form__field">
+          <label htmlFor="email">
+            Email <span aria-hidden="true">*</span>
+          </label>
           <input
-            type="email"
+            id="email"
             name="email"
-            className="contact__input"
+            type="email"
+            autoComplete="email"
+            required
             value={values.email}
             onChange={handleChange}
-            placeholder="you@example.com"
-            aria-required="true"
+            onBlur={handleBlur}
+            aria-invalid={Boolean(showError("email"))}
+            aria-describedby={describedBy("email")}
           />
-          {errors.email && (
-            <span className="contact__error">{errors.email}</span>
+          {showError("email") && (
+            <p id="email-error" className="contact-form__error">
+              {errors.email}
+            </p>
           )}
-        </label>
+        </div>
 
-        {/* Phone */}
-        <label className="contact__label">
-          Phone
+        <div className="contact-form__field">
+          <label htmlFor="phone">
+            Phone <span aria-hidden="true">*</span>
+          </label>
           <input
-            type="tel"
+            id="phone"
             name="phone"
-            className="contact__input"
+            type="tel"
+            autoComplete="tel"
+            inputMode="tel"
+            required
             value={values.phone}
             onChange={handleChange}
-            placeholder="Enter your phone number"
-            aria-required="true"
+            onBlur={handleBlur}
+            aria-invalid={Boolean(showError("phone"))}
+            aria-describedby={describedBy("phone")}
           />
-          {errors.phone && (
-            <span className="contact__error">{errors.phone}</span>
+          {showError("phone") && (
+            <p id="phone-error" className="contact-form__error">
+              {errors.phone}
+            </p>
           )}
-        </label>
+        </div>
 
-        {/* Book Appointment Checkbox */}
-        <label className="contact__label">
+        <div className="contact-form__field">
+          <label htmlFor="reason">
+            Reason for your request <span aria-hidden="true">*</span>
+          </label>
+          <select
+            id="reason"
+            name="reason"
+            required
+            value={values.reason}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            aria-invalid={Boolean(showError("reason"))}
+            aria-describedby={describedBy("reason")}
+          >
+            <option value="">Choose one</option>
+            {REASONS.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+          {showError("reason") && (
+            <p id="reason-error" className="contact-form__error">
+              {errors.reason}
+            </p>
+          )}
+        </div>
+
+        <div className="contact-form__checkbox">
           <input
-            type="checkbox"
+            id="bookAppointment"
             name="bookAppointment"
-            className="contact__checkbox"
+            type="checkbox"
             checked={values.bookAppointment}
             onChange={handleChange}
-          />{" "}
-          Book Appointment
-        </label>
+          />
+          <label htmlFor="bookAppointment">I would like to book an appointment</label>
+        </div>
 
-        {/* Appointment Details */}
         {values.bookAppointment && (
-          <div className="contact__details">
-            <label className="contact__label">
-              Preferred Date
+          <fieldset className="contact-form__fieldset">
+            <legend>Preferred appointment time</legend>
+
+            <div className="contact-form__field">
+              <label htmlFor="preferredDate">
+                Preferred date <span aria-hidden="true">*</span>
+              </label>
               <input
-                type="date"
+                id="preferredDate"
                 name="preferredDate"
-                className="contact__input"
+                type="date"
+                min={minDate}
+                required
                 value={values.preferredDate}
                 onChange={handleChange}
-                aria-required="true"
+                onBlur={handleBlur}
+                aria-invalid={Boolean(showError("preferredDate"))}
+                aria-describedby={describedBy("preferredDate")}
               />
-              {errors.preferredDate && (
-                <span className="contact__error">{errors.preferredDate}</span>
+              {showError("preferredDate") && (
+                <p id="preferredDate-error" className="contact-form__error">
+                  {errors.preferredDate}
+                </p>
               )}
-            </label>
+            </div>
 
-            <label className="contact__label">
-              Preferred Time
+            <div className="contact-form__field">
+              <label htmlFor="preferredTime">
+                Preferred time <span aria-hidden="true">*</span>
+              </label>
               <select
+                id="preferredTime"
                 name="preferredTime"
-                className="contact__input"
+                required
                 value={values.preferredTime}
                 onChange={handleChange}
-                aria-required="true"
+                onBlur={handleBlur}
+                aria-invalid={Boolean(showError("preferredTime"))}
+                aria-describedby={describedBy("preferredTime")}
               >
-                <option value="">Select Time</option>
-                {timeSlots.map((slot) => (
+                <option value="">Choose a time</option>
+                {TIME_SLOTS.map((slot) => (
                   <option key={slot} value={slot}>
                     {slot}
                   </option>
                 ))}
               </select>
-              {errors.preferredTime && (
-                <span className="contact__error">{errors.preferredTime}</span>
+              {showError("preferredTime") && (
+                <p id="preferredTime-error" className="contact-form__error">
+                  {errors.preferredTime}
+                </p>
               )}
-            </label>
-          </div>
+            </div>
+          </fieldset>
         )}
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="contact__submit"
-          disabled={!isValid || isSending}
-          aria-required="true"
-        >
-          {isSending ? "Sending..." : values.bookAppointment ? "Book" : "Send"}
+        <div className="contact-form__checkbox">
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            required
+            checked={values.consent}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            aria-invalid={Boolean(showError("consent"))}
+            aria-describedby={describedBy("consent", "privacy-note")}
+          />
+          <label htmlFor="consent">
+            I agree to be contacted by phone or email about this request, and I
+            have read the{" "}
+            <Link to="/privacy-policy">Website Privacy Policy</Link>.{" "}
+            <span aria-hidden="true">*</span>
+          </label>
+        </div>
+        {showError("consent") && (
+          <p id="consent-error" className="contact-form__error">
+            {errors.consent}
+          </p>
+        )}
+
+        <button type="submit" className="btn btn--primary contact-form__submit" disabled={isSending}>
+          {isSending ? "Sending…" : values.bookAppointment ? "Send Appointment Request" : "Send Message"}
         </button>
       </form>
     </div>

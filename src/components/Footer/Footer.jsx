@@ -1,55 +1,113 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa";
 import SocialContactIcons from "../SocialContactIcons/SocialContactIcons";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { useState } from "react";
+import { CLINIC, fullAddress } from "../../config/clinic";
+import mapImage from "../../assets/medium-screen.webp";
 
 function Footer() {
-  const [showAddress, setShowAddress] = useState(false);
+  const year = new Date().getFullYear();
 
   return (
-    <>
-      {/* Main Footer with Google Map Background */}
-      <footer className="footer">
-        {/* Clinic Address Button */}
-        <div className="footer__address">
-          <button
-            className="footer__address-btn"
-            onClick={() => setShowAddress(!showAddress)}
-          >
-            Clinic Address
-          </button>
+    <footer className="footer">
+      <div className="footer__grid">
+        {/* Contact */}
+        <section className="footer__col" aria-labelledby="footer-contact">
+          <h2 id="footer-contact" className="footer__heading">
+            Contact Us
+          </h2>
+          <ul className="footer__list">
+            <li>
+              <FaMapMarkerAlt aria-hidden="true" />
+              <a href={CLINIC.mapsUrl} target="_blank" rel="noopener noreferrer">
+                {CLINIC.address.street}
+                <br />
+                {CLINIC.address.city}, {CLINIC.address.state} {CLINIC.address.zip}
+                <span className="visually-hidden"> (opens Google Maps in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <FaPhoneAlt aria-hidden="true" />
+              <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+            </li>
+            {CLINIC.email && (
+              <li>
+                <FaEnvelope aria-hidden="true" />
+                <a href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a>
+              </li>
+            )}
+          </ul>
+        </section>
 
-          {/* Location Icon */}
-          <FaMapMarkerAlt
-            className="footer__address-icon"
-            onClick={() => setShowAddress(!showAddress)}
-          />
-
-          {showAddress && (
-            <a
-              href="https://www.google.com/maps/dir/42.0191328,-88.12734/COSMO+DENTAL,+159+E+North+Ave,+Northlake,+IL+60164/@41.9627145,-88.0940353,12z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x880fb50027954c83:0xf7aecbc5ef93eb86!2m2!1d-87.8963596!2d41.9068265!3e0?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__address-popup"
-            >
-              159 E North Ave
-              <br />
-              Northlake, IL 60164
-            </a>
+        {/* Hours */}
+        <section className="footer__col" aria-labelledby="footer-hours">
+          <h2 id="footer-hours" className="footer__heading">
+            Office Hours
+          </h2>
+          {CLINIC.hours.length ? (
+            <dl className="footer__hours">
+              {CLINIC.hours.map((h) => (
+                <div key={h.days}>
+                  <dt>{h.days}</dt>
+                  <dd>{h.time}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <p className="footer__text">
+              <FaClock aria-hidden="true" /> Please call{" "}
+              <a href={CLINIC.phoneHref}>{CLINIC.phone}</a> for our current hours.
+            </p>
           )}
-        </div>
-      </footer>
+        </section>
 
-      {/* Footer Bottom with gray background */}
-      <div className="footer__bottom">
-        <p>
-          © {new Date().getFullYear()} Cosmo Dental Clinic. All rights reserved.
-        </p>
-        <div className="footer__bottom-social">
-          <SocialContactIcons type="social" />
+        {/* Links */}
+        <nav className="footer__col" aria-labelledby="footer-links">
+          <h2 id="footer-links" className="footer__heading">
+            Quick Links
+          </h2>
+          <ul className="footer__list footer__list--plain">
+            <li><Link to="/services">Our Services</Link></li>
+            <li><Link to="/staff">Our Team</Link></li>
+            <li><Link to="/contact">Book an Appointment</Link></li>
+            <li><Link to="/notice-of-privacy-practices">Notice of Privacy Practices</Link></li>
+            <li><Link to="/privacy-policy">Website Privacy Policy</Link></li>
+            <li><Link to="/accessibility">Accessibility</Link></li>
+          </ul>
+        </nav>
+
+        {/* Map */}
+        <div className="footer__col">
+          <a
+            className="footer__map"
+            href={CLINIC.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={mapImage}
+              alt={`Map showing ${CLINIC.name} at ${fullAddress}. Opens Google Maps in a new tab.`}
+              loading="lazy"
+            />
+          </a>
         </div>
       </div>
-    </>
+
+      <div className="footer__bottom">
+        <p className="footer__disclaimer">
+          The information on this website is for general educational purposes only
+          and is not medical or dental advice. Please consult a dentist about your
+          individual needs. For a dental emergency, call our office; for a medical
+          emergency, call 911.
+        </p>
+        <div className="footer__bottom-row">
+          <p>
+            © {year} {CLINIC.name}. All rights reserved.
+          </p>
+          <SocialContactIcons />
+        </div>
+      </div>
+    </footer>
   );
 }
 

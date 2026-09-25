@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - stage-1 # 👈 because you said your PR is from stage-1
+      - main
 
 permissions:
   contents: write
@@ -27,6 +27,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          BASE_PATH: /cosmodental_frontend/
+          SITE_URL: https://alaarajab.github.io/cosmodental_frontend
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
           VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}

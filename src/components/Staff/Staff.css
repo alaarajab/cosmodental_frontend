@@ -1,141 +1,81 @@
 .staff {
-  padding: 40px 20px;
-  font-family: Roboto, sans-serif;
+  padding: 48px 24px 56px;
+  font-family: var(--font-body);
 }
 
-.staff__heading {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 40px;
-}
 .staff__title {
-  font-size: 24px;
-  margin-bottom: 16px;
+  font-size: clamp(28px, 4vw, 38px);
   text-align: center;
+  margin: 0 0 12px;
+}
+
+.staff__intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  font-size: 18px;
+}
+
+.staff__subtitle {
+  font-size: 26px;
+  text-align: center;
+  margin: 40px 0 24px;
 }
 
 .staff__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.staff__grid-card {
-  width: 300px;
-  height: 500px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.staff__card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: var(--color-surface);
 }
 
-.staff__grid-image {
+.staff__image {
   width: 100%;
   height: 272px;
   object-fit: cover;
+  display: block;
 }
 
-.staff__grid-info {
-  padding: 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.staff__info {
+  padding: 20px;
+  text-align: center;
 }
 
-.staff__grid-info-name {
+.staff__name {
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 4px;
+  margin: 0 0 4px;
 }
 
-.staff__grid-info-title {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: #555;
-  text-align: center;
+.staff__role {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 0 0 8px;
 }
 
-.staff__grid-info-experience {
-  font-size: 14px;
-  color: #333;
-  line-height: 1.4;
-  text-align: center;
+.staff__bio {
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
-@media (max-width: 1024px) {
+.staff__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
   .staff {
-    padding: 32px 16px;
-  }
-  .staff__title {
-    font-size: 22px;
-    margin-bottom: 14px;
-  }
-  .staff__heading {
-    font-size: 26px;
-    margin-bottom: 32px;
-  }
-
-  .staff__grid {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-  }
-
-  .staff__name {
-    font-size: 18px;
-  }
-
-  .staff__role {
-    font-size: 15px;
-  }
-
-  .staff__experience {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 768px) {
-  .staff {
-    padding: 24px 12px;
-  }
-
-  .staff__heading {
-    font-size: 22px;
-    margin-bottom: 24px;
-  }
-  .staff__title {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .staff__grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .staff__card {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-  }
-
-  .staff__image {
-    height: 240px;
-  }
-
-  .staff__name {
-    font-size: 16px;
-  }
-
-  .staff__role {
-    font-size: 14px;
-  }
-
-  .staff__experience {
-    font-size: 12px;
+    padding: 36px 16px 48px;
   }
 }

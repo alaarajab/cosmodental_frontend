@@ -1,26 +1,31 @@
 import "./Header.css";
-import logo from "../../assets/header-logo-cosmo-logo.png";
-import menuIcon from "../../assets/menuIcon_mobile.svg";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import logo from "../../assets/cosmo_dental_logo_220x80.png";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { FaPhoneAlt } from "react-icons/fa"; // phone icon
+import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
+import { CLINIC } from "../../config/clinic";
+
+const menuLinks = [
+  { path: "/", label: "Home" },
+  { path: "/services", label: "Services" },
+  { path: "/staff", label: "Our Team" },
+  { path: "/contact", label: "Contact" },
+];
 
 function Header() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
   const menuRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   const [navigatorStyle, setNavigatorStyle] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isProfilePage = location.pathname === "/profile";
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-
-  // Navigate to Book Appointment
-  const onBookAppointmentClick = () => navigate("/contact");
+  const closeMobileMenu = (returnFocus = false) => {
+    setIsMobileMenuOpen(false);
+    if (returnFocus) menuButtonRef.current?.focus();
+  };
 
   // Desktop menu underline animation
   useEffect(() => {
@@ -33,45 +38,60 @@ function Header() {
         width: `${offsetWidth}px`,
         transform: `translateX(${offsetLeft}px)`,
       });
+    } else {
+      setNavigatorStyle({ width: 0 });
     }
   }, [location.pathname]);
 
-  // Close mobile menu when clicking outside
+  // Close the menu on page change
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        isMobileMenuOpen &&
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        !event.target.closest(".header__menu-mobile-btn")
-      ) {
-        setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Mobile menu: focus first link, close with Escape, keep Tab inside
+  useEffect(() => {
+    if (!isMobileMenuOpen) return undefined;
+    const menu = mobileMenuRef.current;
+    const focusables = menu?.querySelectorAll("a, button");
+    focusables?.[0]?.focus();
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeMobileMenu(true);
+      } else if (e.key === "Tab" && focusables?.length) {
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [isMobileMenuOpen]);
 
-  // Menu links array
-  const menuLinks = [
-    { path: "/", label: "Home" },
-    { path: "/staff", label: "Our Staff" },
-    { path: "/services", label: "Services" },
-    { path: "/contact", label: "Contact" },
-  ];
-
   return (
-    <header className={`header ${isProfilePage ? "header--profile" : ""}`}>
+    <header className={`header ${isHome ? "header--home" : "header--page"}`}>
       <div className="header__spacer">
-        <Link to="/">
+        <Link
+          to="/"
+          className="header__logo-link"
+          aria-label={`${CLINIC.name} – Home`}
+        >
           <img
             className="header__logo"
             src={logo}
-            alt="Cosmo Dental Clinic logo"
+            alt=""
+            width="220"
+            height="60"
           />
         </Link>
 
-        <nav className="header__menu" ref={menuRef}>
+        <nav className="header__menu" ref={menuRef} aria-label="Main">
           {/* Desktop Menu */}
           <div className="header__menu-desktop">
             {menuLinks.map(({ path, label }) => (
@@ -87,65 +107,103 @@ function Header() {
               </NavLink>
             ))}
 
-            {/* Call Us Button Desktop */}
-            <a href="tel:+17083456313" className="header__call-us">
-              <FaPhoneAlt className="header__call-icon" />
-              Call Us
+            <a
+              href={CLINIC.phoneHref}
+              className="btn btn--primary header__call-us"
+            >
+              <FaPhoneAlt aria-hidden="true" />
+              <span>
+                <span className="visually-hidden">Call us at </span>
+                {CLINIC.phone}
+              </span>
             </a>
 
-            <span className="header__navigator" style={navigatorStyle} />
+            <span
+              className="header__navigator"
+              style={navigatorStyle}
+              aria-hidden="true"
+            />
           </div>
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
+            type="button"
             className="header__menu-mobile-btn"
-            onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           >
-            <img src={menuIcon} alt="Menu" />
+            <FaBars aria-hidden="true" />
           </button>
         </nav>
       </div>
 
-      {/* MOBILE MENU & OVERLAY */}
+      {/* Mobile menu & overlay */}
       {isMobileMenuOpen && (
         <>
           <div
             className="header__mobile-overlay"
-            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+            onClick={() => closeMobileMenu(true)}
           />
-          <div className="header__mobile-menu" ref={mobileMenuRef}>
+          <nav
+            id="mobile-menu"
+            className="header__mobile-menu"
+            ref={mobileMenuRef}
+            aria-label="Mobile"
+          >
+            <button
+              type="button"
+              className="header__mobile-close"
+              aria-label="Close menu"
+              onClick={() => closeMobileMenu(true)}
+            >
+              <FaTimes aria-hidden="true" />
+            </button>
             {menuLinks.map(({ path, label }) => (
-              <NavLink key={path} to={path} onClick={toggleMobileMenu}>
+              <NavLink key={path} to={path} end={path === "/"}>
                 {label}
               </NavLink>
             ))}
-
-            {/* Call Us Button Mobile */}
             <a
-              href="tel:+17083456313"
-              className="header__call-us header__call-us--mobile"
-              onClick={() => setIsMobileMenuOpen(false)}
+              href={CLINIC.phoneHref}
+              className="btn btn--primary header__call-us--mobile"
             >
-              <FaPhoneAlt className="header__call-icon" />
-              Call Us
+              <FaPhoneAlt aria-hidden="true" />
+              Call {CLINIC.phone}
             </a>
-          </div>
+          </nav>
         </>
       )}
 
-      {!isProfilePage && (
-        <>
-          <div className="header__divider" />
-          <div className="header__title">
-            <h1 className="header__clinic-name">Cosmo Dental Clinic</h1>
-            <button
-              className="header__book-app"
-              onClick={onBookAppointmentClick}
-            >
+      {isHome ? (
+        <div className="header__hero">
+          <h1 className="header__headline">
+            Gentle, Modern Dental Care in Northlake, IL
+          </h1>
+          <p className="header__subtitle">
+            Family, cosmetic and implant dentistry for Northlake and the greater
+            Chicago area. New patients are always welcome.
+          </p>
+          <div className="header__actions">
+            <Link to="/contact" className="btn btn--primary">
               Book Appointment
-            </button>
+            </Link>
+            <a href={CLINIC.phoneHref} className="btn btn--light">
+              <FaPhoneAlt aria-hidden="true" />
+              Call {CLINIC.phone}
+            </a>
           </div>
-        </>
+        </div>
+      ) : (
+        <div className="header__hero header__hero--compact">
+          <p className="header__tagline">{CLINIC.name}</p>
+          <Link to="/contact" className="btn btn--primary">
+            Book Appointment
+          </Link>
+        </div>
       )}
     </header>
   );
