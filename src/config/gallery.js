@@ -3,6 +3,7 @@
 // Just drop photos into src/assets/gallery/ and rebuild.
 // The file name becomes the image description for screen readers,
 // so name files clearly, e.g. "reception-area.jpg",
+// Start a name with a number to set the order: "1-reception-desk.jpg".
 // "treatment-room.jpg", "dr-abozor-with-patient.jpg".
 // The section stays hidden until at least one photo is added.
 //
@@ -16,7 +17,8 @@ const files = import.meta.glob("../assets/gallery/*.{jpg,jpeg,png,webp,avif}", {
 });
 
 function toAlt(path) {
-  const name = path.split("/").pop().replace(/\.[^.]+$/, "");
+  // Leading numbers (e.g. "1-reception-desk") only set the order
+  const name = path.split("/").pop().replace(/\.[^.]+$/, "").replace(/^\d+[-_ ]*/, "");
   const words = name.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
   return words.charAt(0).toUpperCase() + words.slice(1);
 }

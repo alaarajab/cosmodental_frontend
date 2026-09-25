@@ -104,6 +104,12 @@ const faqs = [
   },
 ];
 
+// "English, Spanish and Arabic"
+const languageList = (langs) =>
+  langs.length > 1
+    ? `${langs.slice(0, -1).join(", ")} and ${langs[langs.length - 1]}`
+    : langs[0];
+
 function Home() {
   return (
     <div className="home">
@@ -155,6 +161,15 @@ function Home() {
           dentistry, combining modern technology with a patient-centered
           approach to keep your smile healthy and confident.
         </p>
+        {CLINIC.languages.length > 0 && (
+          <p className="home__languages">
+            <FaLanguage aria-hidden="true" />
+            <span>
+              <strong>We speak your language:</strong>{" "}
+              {languageList(CLINIC.languages)}
+            </span>
+          </p>
+        )}
       </section>
 
       {/* 3 — Services */}
@@ -222,7 +237,6 @@ function Home() {
                 loading="lazy"
               />
               <h3>{d.name}</h3>
-              <p>{d.title}</p>
             </li>
           ))}
         </ul>
@@ -400,6 +414,12 @@ function Home() {
             <p>
               <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
             </p>
+            {CLINIC.languages.length > 0 && (
+              <>
+                <h3>Languages spoken</h3>
+                <p>{languageList(CLINIC.languages)}</p>
+              </>
+            )}
             <h3>Hours</h3>
             {CLINIC.hours.length ? (
               <dl className="home__hours">

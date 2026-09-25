@@ -41,17 +41,6 @@ function Staff() {
         ))}
       </ul>
 
-      {SUPPORT_STAFF.length > 0 && (
-        <>
-          <h2 className="staff__subtitle">Our Dental Assistants</h2>
-          <ul className="staff__grid">
-            {SUPPORT_STAFF.map((member) => (
-              <MemberCard key={member.name} member={member} />
-            ))}
-          </ul>
-        </>
-      )}
-
       <div className="staff__cta">
         <Link to="/contact" className="btn btn--primary">
           Book an Appointment

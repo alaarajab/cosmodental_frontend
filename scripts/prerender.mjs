@@ -59,6 +59,7 @@ const dentistSchema = {
     "Root Canal Treatment",
   ].map((name) => ({ "@type": "MedicalProcedure", name })),
   ...(CLINIC.hoursSchema.length ? { openingHours: CLINIC.hoursSchema } : {}),
+  ...(CLINIC.languages.length ? { knowsLanguage: CLINIC.languages } : {}),
   ...(CLINIC.social.length ? { sameAs: CLINIC.social.map((s) => s.url) } : {}),
 };
 

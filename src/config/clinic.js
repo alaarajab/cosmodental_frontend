@@ -41,8 +41,11 @@ export const CLINIC = {
   // { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" }.
   // Leave empty to show "Call us for current hours".
   // `schema` entries use schema.org format for Google.
-  hours: [],
-  hoursSchema: [], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
+  hours: [
+    { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" },
+    { days: "Saturday", time: "9:00 AM – 2:00 PM" },
+  ],
+  hoursSchema: ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
 
   // Only add accounts that really exist.
   social: [
@@ -50,11 +53,12 @@ export const CLINIC = {
     // { label: "Facebook", url: "https://www.facebook.com/..." },
   ],
 
-  // Languages spoken by the team (shown in "Why choose us" if set).
-  languages: [], // e.g. ["English", "Arabic", "Spanish"]
+  // Languages spoken by the team (shown on the home page intro,
+  // "Visit Our Office", and to Google).
+  languages: ["English", "Spanish", "Arabic", "Urdu", "Hindi"], // e.g. ["English", "Arabic", "Spanish"]
 
   // Insurance plans the clinic is in-network with (real list only).
-  insurance: [], // e.g. ["Delta Dental", "Cigna", "MetLife"]
+  insurance: ["Delta Dental", "Cigna", "MetLife"], // e.g. ["Delta Dental", "Cigna", "MetLife"]
 };
 
 export const fullAddress = `${CLINIC.address.street}, ${CLINIC.address.city}, ${CLINIC.address.state} ${CLINIC.address.zip}`;
