@@ -58,7 +58,7 @@ export const CLINIC = {
   languages: ["English", "Spanish", "Arabic", "Urdu", "Hindi"], // e.g. ["English", "Arabic", "Spanish"]
 
   // Insurance plans the clinic is in-network with (real list only).
-  insurance: ["Delta Dental", "Cigna", "MetLife"], // e.g. ["Delta Dental", "Cigna", "MetLife"]
+  insurance: [], // e.g. ["Delta Dental", "Cigna", "MetLife"]
 };
 
 export const fullAddress = `${CLINIC.address.street}, ${CLINIC.address.city}, ${CLINIC.address.state} ${CLINIC.address.zip}`;
