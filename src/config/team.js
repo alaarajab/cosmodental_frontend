@@ -11,6 +11,12 @@ import asimImg from "../assets/asimImg.webp";
 
 export const DENTISTS = [
   {
+    name: "Dr. Asim Abdul Quader",
+    title: "General Dentist",
+    bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
+    image: asimImg,
+  },
+  {
     name: "Dr. Basel Abozor",
     title: "General Dentist",
     bio: "Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.",
@@ -27,12 +33,6 @@ export const DENTISTS = [
     title: "General Dentist",
     bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
     image: haqiImg,
-  },
-  {
-    name: "Dr. Asim Abdul Quader",
-    title: "General Dentist",
-    bio: "Provides routine check-ups, preventive care and cosmetic treatments.",
-    image: asimImg,
   },
 ];
 
