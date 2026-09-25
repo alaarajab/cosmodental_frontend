@@ -18,6 +18,7 @@ import generalImg from "../../assets/general.webp";
 import cosmeticImg from "../../assets/cosmetic.webp";
 import implantImg from "../../assets/implant.webp";
 import endoImg from "../../assets/endodontics.webp";
+import pediatricImg from "../../assets/pediatric.webp";
 import mapImage from "../../assets/large-screen.webp";
 import { CLINIC, fullAddress, reviewsUrl } from "../../config/clinic";
 import { DENTISTS } from "../../config/team";
@@ -43,6 +44,11 @@ const services = [
     title: "Root Canal Treatment",
     image: endoImg,
     text: "Endodontic care to relieve tooth pain and save your natural tooth.",
+  },
+  {
+    title: "Pediatric Dentistry",
+    image: pediatricImg,
+    text: "Gentle, friendly dental care designed to help children feel comfortable and keep their smiles healthy.",
   },
 ];
 

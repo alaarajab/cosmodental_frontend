@@ -104,8 +104,15 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* all 5 services in one row */
+  gap: 20px;
+}
+
+/* Laptops: 3 per row */
+@media (max-width: 1280px) {
+  .home__cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .home__card {
@@ -184,6 +191,7 @@
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center top; /* keep the head in the circle */
   margin-bottom: 16px;
 }
 

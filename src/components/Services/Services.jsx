@@ -5,6 +5,7 @@ import generalImg from "../../assets/general.webp";
 import cosmeticImg from "../../assets/cosmetic.webp";
 import implantImg from "../../assets/implant.webp";
 import endoImg from "../../assets/endodontics.webp";
+import pediatricImg from "../../assets/pediatric.webp";
 import { CLINIC } from "../../config/clinic";
 
 const services = [
@@ -51,6 +52,19 @@ const services = [
       "Root canal therapy",
       "Root canal retreatment",
       "Urgent tooth pain relief",
+    ],
+  },
+  {
+    id: "pediatric-dentistry",
+    title: "Pediatric Dentistry",
+    image: pediatricImg,
+    description:
+      "Gentle, friendly dental care designed to help children feel comfortable and keep their smiles healthy.",
+    cases: [
+      "Kid-friendly check-ups and cleanings",
+      "Fluoride treatments and dental sealants",
+      "Tooth-colored fillings for baby and adult teeth",
+      "Tips for brushing, flossing and healthy snacks",
     ],
   },
 ];

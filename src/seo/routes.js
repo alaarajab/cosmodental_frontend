@@ -5,14 +5,14 @@ export const ROUTES = [
     path: "/",
     title: "Cosmo Dental Clinic | Dentist in Northlake, IL",
     description:
-      "Family, cosmetic and implant dentistry in Northlake, IL, serving the Chicago area. Gentle care from an experienced team. Call (708) 345-6313 to book.",
+      "Family, children's, cosmetic and implant dentistry in Northlake, IL, serving the Chicago area. Call (708) 345-6313 to book.",
     priority: "1.0",
   },
   {
     path: "/services",
     title: "Dental Services | Cosmo Dental Clinic, Northlake IL",
     description:
-      "General dentistry, cosmetic dentistry, dental implants and root canal treatment at Cosmo Dental Clinic in Northlake, IL.",
+      "General, cosmetic and pediatric dentistry, dental implants and root canal treatment at Cosmo Dental Clinic in Northlake, IL.",
     priority: "0.9",
   },
   {
