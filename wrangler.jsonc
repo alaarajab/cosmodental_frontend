@@ -1,0 +1,11 @@
+// Cloudflare settings for hosting this website (static files only).
+// `npm run build` creates the site in ./dist; Cloudflare serves it from there.
+{
+  "name": "cosmodental",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown addresses show our custom 404 page
+    "not_found_handling": "404-page"
+  }
+}
