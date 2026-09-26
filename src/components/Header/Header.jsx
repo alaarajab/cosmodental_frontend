@@ -180,7 +180,12 @@ function Header() {
 
       {isHome ? (
         <div className="header__hero">
-          <h1 className="header__headline">Cosmo Dental Clinic</h1>
+          <h1 className="header__headline">
+            Cosmo Dental Clinic
+            <span className="header__headline-sub">
+              <span className="visually-hidden">, </span>Dentist in Northlake, IL
+            </span>
+          </h1>
           <p className="header__subtitle">
             Family, cosmetic and implant dentistry for Northlake and the greater
             Chicago area. New patients are always welcome.

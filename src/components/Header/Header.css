@@ -231,3 +231,12 @@
     width: 100%;
   }
 }
+
+/* Second line of the home page heading: "Dentist in Northlake, IL" */
+.header__headline-sub {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: #e5e7eb;
+}
