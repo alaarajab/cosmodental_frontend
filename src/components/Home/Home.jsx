@@ -412,9 +412,20 @@ function Home() {
           <div className="home__visit-info">
             <h3>Address</h3>
             <p>
-              {CLINIC.address.street}
-              <br />
-              {CLINIC.address.city}, {CLINIC.address.state} {CLINIC.address.zip}
+              <a
+                href={CLINIC.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {CLINIC.address.street}
+                <br />
+                {CLINIC.address.city}, {CLINIC.address.state}{" "}
+                {CLINIC.address.zip}
+                <span className="visually-hidden">
+                  {" "}
+                  (opens Google Maps in a new tab)
+                </span>
+              </a>
             </p>
             <h3>Phone</h3>
             <p>
