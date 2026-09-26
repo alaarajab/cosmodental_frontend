@@ -25,7 +25,10 @@ const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const pageUrl = (p) => (p === "/" ? `${siteUrl}/` : `${siteUrl}${p}/`);
 
 const esc = (s) =>
-  String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;");
 
 // Google "Dentist" structured data (local business info in search results)
 const dentistSchema = {
@@ -50,13 +53,18 @@ const dentistSchema = {
     longitude: CLINIC.geo.lng,
   },
   hasMap: CLINIC.mapsUrl,
-  areaServed: ["Northlake, IL", "Chicago, IL", "Melrose Park, IL", "Elmhurst, IL"],
+  areaServed: [
+    "Northlake, IL",
+    "Chicago, IL",
+    "Melrose Park, IL",
+    "Elmhurst, IL",
+  ],
   medicalSpecialty: "Dentistry",
   availableService: [
     "General Dentistry",
     "Cosmetic Dentistry",
     "Dental Implants",
-    "Root Canal Treatment",
+    "Endodontics (Root Canal Treatment)",
     "Pediatric Dentistry",
   ].map((name) => ({ "@type": "MedicalProcedure", name })),
   ...(CLINIC.hoursSchema.length ? { openingHours: CLINIC.hoursSchema } : {}),
@@ -72,7 +80,10 @@ function pageHtml(route, appHtml, extraHead = "") {
       /<meta\s+name="description"[\s\S]*?\/>/,
       `<meta name="description" content="${esc(route.description)}" />`,
     )
-    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${url}" />`)
+    .replace(
+      /<link rel="canonical"[^>]*>/,
+      `<link rel="canonical" href="${url}" />`,
+    )
     .replace(
       /<meta property="og:title"[^>]*>/,
       `<meta property="og:title" content="${esc(route.title)}" />`,
@@ -81,7 +92,10 @@ function pageHtml(route, appHtml, extraHead = "") {
       /<meta\s+property="og:description"[\s\S]*?\/>/,
       `<meta property="og:description" content="${esc(route.description)}" />`,
     )
-    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${url}" />`)
+    .replace(
+      /<meta property="og:url"[^>]*>/,
+      `<meta property="og:url" content="${url}" />`,
+    )
     .replace(
       /<meta property="og:image"[^>]*>/,
       `<meta property="og:image" content="${siteUrl}/og-image.png" />`,
@@ -100,13 +114,19 @@ for (const route of ROUTES) {
       ? path.join(dist, "index.html")
       : path.join(dist, route.path.slice(1), "index.html");
   fs.mkdirSync(path.dirname(out), { recursive: true });
-  fs.writeFileSync(out, pageHtml(route, appHtml, route.path === "/" ? schemaTag : ""));
+  fs.writeFileSync(
+    out,
+    pageHtml(route, appHtml, route.path === "/" ? schemaTag : ""),
+  );
   console.log("prerendered", route.path);
 }
 
 // 404 page (served automatically by Cloudflare Pages, Netlify, GitHub Pages;
 // Apache/Namecheap uses the .htaccess ErrorDocument rule).
-const notFoundHtml = render(`${basePath}/this-page-does-not-exist`, basePath || "/");
+const notFoundHtml = render(
+  `${basePath}/this-page-does-not-exist`,
+  basePath || "/",
+);
 fs.writeFileSync(
   path.join(dist, "404.html"),
   pageHtml(NOT_FOUND, notFoundHtml, '<meta name="robots" content="noindex" />'),

@@ -41,7 +41,7 @@ const services = [
     text: "Long-lasting replacement for missing teeth that looks, feels and works like your own.",
   },
   {
-    title: "Root Canal Treatment",
+    title: "Endodontics (Root Canal Treatment)",
     image: endoImg,
     text: "Endodontic care to relieve tooth pain and save your natural tooth.",
   },
