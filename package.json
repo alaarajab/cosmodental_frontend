@@ -9,7 +9,10 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "loadtest": "npx artillery@latest run -e realistic loadtest/artillery.yml",
+    "loadtest:smoke": "npx artillery@latest run -e smoke loadtest/artillery.yml",
+    "loadtest:report": "npx artillery@latest run -e realistic loadtest/artillery.yml --output loadtest/results.json"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

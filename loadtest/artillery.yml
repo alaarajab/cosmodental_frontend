@@ -1,0 +1,131 @@
+# ─────────────────────────────────────────────────────────────
+# Load test for the Cosmo Dental website (Artillery)
+#
+# Simulates real visitors: open the home page (plus its CSS/JS and
+# images, like a browser would), read for a few seconds, then visit
+# Services, Our Team or Contact.
+#
+# Run from the project folder:
+#   npm run loadtest            → realistic test against the live site
+#   npm run loadtest:smoke      → quick 1-minute check
+#
+# Target another address (e.g. the workers.dev preview or a new domain):
+#   npx artillery@latest run -e realistic loadtest/artillery.yml --target https://cosmodental.alaayes.workers.dev
+#
+# ⚠ This test never submits the contact form. That form sends real
+#   emails through EmailJS (limited to ~200/month) to the clinic inbox.
+# ─────────────────────────────────────────────────────────────
+config:
+  target: "https://www.cosmodentalmail.com"
+  http:
+    timeout: 10 # seconds before a request counts as failed
+  plugins:
+    ensure: {}
+    expect:
+      outputFormat: prettyError # only print failed checks
+    metrics-by-endpoint:
+      useOnlyRequestNames: true
+  # Pass/fail rules checked at the end of the run
+  ensure:
+    thresholds:
+      - http.response_time.p95: 800 # 95% of requests faster than 0.8 s
+      - http.response_time.p99: 1500 # 99% faster than 1.5 s
+    conditions:
+      - expression: "vusers.failed / vusers.created < 0.01" # < 1% failed visits
+        strict: true
+  # Load levels — always run with -e (the npm scripts do this for you)
+  environments:
+    # npm run loadtest  → ~6.5 min, ramps up to 25 new visitors/second
+    realistic:
+      phases:
+        - name: "Warm up"
+          duration: 60
+          arrivalRate: 5
+        - name: "Ramp up to peak"
+          duration: 120
+          arrivalRate: 5
+          rampTo: 25
+        - name: "Sustained peak"
+          duration: 180
+          arrivalRate: 25
+        - name: "Cool down"
+          duration: 30
+          arrivalRate: 5
+    # npm run loadtest:smoke  → 1 min, 5 new visitors/second
+    smoke:
+      phases:
+        - name: "Smoke"
+          duration: 60
+          arrivalRate: 5
+  defaults:
+    headers:
+      User-Agent: "CosmoDental-LoadTest/1.0 (Artillery)"
+
+scenarios:
+  # 60% of visitors: home page, then Services
+  - name: "Home → Services"
+    weight: 6
+    flow:
+      - get:
+          url: "/"
+          name: "Home page"
+          expect:
+            - statusCode: 200
+            - contentType: text/html
+          capture:
+            - regexp: 'src="(/assets/index-[^"]+\.js)"'
+              group: 1
+              as: jsFile
+            - regexp: 'href="(/assets/index-[^"]+\.css)"'
+              group: 1
+              as: cssFile
+            - regexp: 'src="(/assets/[^"]+\.webp)"'
+              group: 1
+              as: firstImage
+      - get:
+          url: "{{ cssFile }}"
+          name: "CSS"
+      - get:
+          url: "{{ jsFile }}"
+          name: "JavaScript"
+      - get:
+          url: "{{ firstImage }}"
+          name: "Image"
+      - think: 5
+      - get:
+          url: "/services/"
+          name: "Services page"
+          expect:
+            - statusCode: 200
+
+  # 25% of visitors: home page, then Our Team
+  - name: "Home → Our Team"
+    weight: 3
+    flow:
+      - get:
+          url: "/"
+          name: "Home page"
+          expect:
+            - statusCode: 200
+      - think: 4
+      - get:
+          url: "/staff/"
+          name: "Team page"
+          expect:
+            - statusCode: 200
+
+  # 15% of visitors: go straight to the Contact page (form is NOT submitted)
+  - name: "Contact page"
+    weight: 2
+    flow:
+      - get:
+          url: "/contact/"
+          name: "Contact page"
+          expect:
+            - statusCode: 200
+      - think: 3
+      - get:
+          url: "/notice-of-privacy-practices/"
+          name: "Privacy notice page"
+          expect:
+            - statusCode: 200
