@@ -20,7 +20,7 @@
 }
 
 .footer__heading {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #fff;
   margin: 0 0 16px;
 }
@@ -44,6 +44,15 @@
   flex-shrink: 0;
   margin-top: 4px;
   color: #93c5fd;
+}
+
+/* Long email addresses wrap instead of pushing the page sideways */
+.footer__list li > * {
+  min-width: 0;
+}
+
+.footer a {
+  overflow-wrap: anywhere;
 }
 
 .footer__list--plain li {
@@ -95,7 +104,7 @@
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding: 20px 24px 28px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .footer__disclaimer {

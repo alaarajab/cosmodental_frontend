@@ -22,6 +22,14 @@ function Accessibility() {
         <li>Form fields have labels, and errors are explained in text.</li>
         <li>The layout adapts to phones, tablets and zoom up to 400%.</li>
         <li>Animations are reduced when your device’s “reduce motion” setting is on.</li>
+        <li>
+          A <strong>Text size</strong> option (A, A+, A++) and a{" "}
+          <strong>High contrast</strong> option are at the top of every page.
+          Your choice is remembered on this device.
+        </li>
+        <li>Text grows with your browser’s font-size setting, not just with zoom.</li>
+        <li>The site works with Windows High Contrast (Contrast themes).</li>
+        <li>Messages and errors use words and icons, never color alone.</li>
       </ul>
 
       <h2>Need help or found a problem?</h2>

@@ -22,6 +22,15 @@
     <meta property="og:image" content="https://cosmodentalusa.com/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <!--seo-extra-->
+    <script>
+      // Apply the visitor's saved text size / high contrast before the page paints
+      try {
+        var d = JSON.parse(localStorage.getItem("cd-display")) || {};
+        var s = { large: "125%", xlarge: "150%" }[d.size];
+        if (s) document.documentElement.style.fontSize = s;
+        if (d.contrast) document.documentElement.classList.add("high-contrast");
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"><!--app-html--></div>

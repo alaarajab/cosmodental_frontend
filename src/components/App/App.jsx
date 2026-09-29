@@ -9,6 +9,7 @@ import Home from "../Home/Home";
 import Services from "../Services/Services";
 import Staff from "../Staff/Staff";
 import Seo from "../Seo/Seo";
+import DisplayOptions from "../DisplayOptions/DisplayOptions";
 import PrivacyPolicy from "../Legal/PrivacyPolicy";
 import NoticeOfPrivacyPractices from "../Legal/NoticeOfPrivacyPractices";
 import Accessibility from "../Legal/Accessibility";
@@ -37,6 +38,7 @@ function App() {
       </a>
       <Seo />
       <div className="page__content">
+        <DisplayOptions />
         <Header />
 
         <main id="main" ref={mainRef} tabIndex={-1}>

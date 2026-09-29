@@ -125,7 +125,7 @@ function Home() {
           <li>
             <a href="#team">
               <FaUserMd aria-hidden="true" />
-              <span> experienced dentists</span>
+              <span>Experienced dentists</span>
             </a>
           </li>
 

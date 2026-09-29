@@ -3,12 +3,12 @@
   margin: 0 auto;
   padding: 48px 24px 64px;
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.65;
 }
 
 .legal h1 {
-  font-size: clamp(28px, 4vw, 38px);
+  font-size: clamp(1.75rem, 4vw, 2.375rem);
   margin: 0 0 8px;
 }
 
@@ -18,12 +18,12 @@
 }
 
 .legal h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin: 36px 0 12px;
 }
 
 .legal h3 {
-  font-size: 19px;
+  font-size: 1.1875rem;
   margin: 24px 0 8px;
   font-family: var(--font-body);
 }

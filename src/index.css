@@ -106,7 +106,7 @@ main:focus {
   border-radius: 999px;
   border: 2px solid transparent;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -154,4 +154,165 @@ main:focus {
   font-size: 0.9em;
   line-height: 1.4;
   color: inherit;
+}
+
+/* =========================================================
+   HIGH CONTRAST (the site's own "High contrast" button)
+   Black on white, black sections with white/yellow text,
+   underlined links and solid borders instead of shadows.
+   ========================================================= */
+html.high-contrast {
+  --color-primary: #000;
+  --color-primary-dark: #000;
+  --color-text: #000;
+  --color-text-muted: #000;
+  --color-bg: #fff;
+  --color-surface: #fff;
+  --color-border: #000;
+  --color-error: #9b0000;
+  --color-focus: #c2410c;
+  --shadow: none;
+}
+
+.high-contrast a:not(.btn) {
+  text-decoration: underline !important;
+}
+
+.high-contrast .btn {
+  border-color: #000;
+}
+.high-contrast .btn--primary {
+  background-color: #000;
+  color: #fff;
+}
+.high-contrast .btn--outline,
+.high-contrast .btn--light {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Cards and boxes get a solid outline instead of a soft shadow */
+.high-contrast .home__card,
+.high-contrast .home__team-card,
+.high-contrast .home__reason,
+.high-contrast .home__steps li,
+.high-contrast .home__faq-item,
+.high-contrast .contact-form,
+.high-contrast .contact__info,
+.high-contrast .service,
+.high-contrast .staff__card,
+.high-contrast .home__languages,
+.high-contrast .legal__callout,
+.high-contrast .contact-form__privacy,
+.high-contrast .contact__emergency,
+.high-contrast .contact-form__status {
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 2px solid #000;
+}
+
+/* Dark areas: pure black, no photo behind the text */
+.high-contrast .header,
+.high-contrast .header__mobile-menu,
+.high-contrast .home__trust,
+.high-contrast .home__cta,
+.high-contrast .footer,
+.high-contrast .display-options {
+  background: #000 !important;
+  color: #fff;
+}
+.high-contrast .header *:not(.btn):not(.btn *),
+.high-contrast .home__trust *,
+.high-contrast .home__cta *:not(.btn):not(.btn *),
+.high-contrast .footer * {
+  color: #fff !important;
+}
+.high-contrast .header a:not(.btn),
+.high-contrast .home__cta a:not(.btn),
+.high-contrast .footer a {
+  color: #ffeb3b !important; /* yellow on black, 17:1 */
+}
+.high-contrast .header .btn,
+.high-contrast .home__cta .btn,
+.high-contrast .header__mobile-menu .btn {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+.high-contrast .header__navigator {
+  background-color: #ffeb3b;
+}
+.high-contrast .header__menu-item {
+  text-decoration: none !important;
+}
+.high-contrast .header__menu-item.active {
+  text-decoration: underline !important;
+  text-underline-offset: 6px;
+}
+.high-contrast .header :focus-visible,
+.high-contrast .home__trust :focus-visible,
+.high-contrast .home__cta :focus-visible,
+.high-contrast .footer :focus-visible,
+.high-contrast .display-options :focus-visible {
+  outline-color: #ffeb3b;
+}
+
+/* =========================================================
+   WINDOWS HIGH CONTRAST / FORCED COLORS
+   Windows replaces the site's colors with the user's theme.
+   These rules put back borders and indicators that were
+   drawn with shadows or background colors.
+   ========================================================= */
+@media (forced-colors: active) {
+  .header,
+  .home__trust,
+  .home__cta {
+    background-image: none;
+  }
+
+  .btn,
+  .home__card,
+  .home__team-card,
+  .home__reason,
+  .home__steps li,
+  .home__steps li::before,
+  .home__faq-item,
+  .contact-form,
+  .contact__info,
+  .service,
+  .staff__card,
+  .home__languages,
+  .legal__callout,
+  .contact-form__privacy,
+  .contact__emergency,
+  .contact-form__status {
+    border: 1px solid CanvasText;
+  }
+
+  .btn {
+    border-color: ButtonText;
+  }
+
+  /* Active page indicator in the menu */
+  .header__navigator {
+    forced-color-adjust: none;
+    background-color: Highlight;
+  }
+  .header__menu-item.active,
+  .header__mobile-menu a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  /* Selected text-size / contrast buttons */
+  .display-options__btn[aria-pressed="true"] {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight;
+  }
 }

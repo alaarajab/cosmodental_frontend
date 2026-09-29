@@ -1,11 +1,11 @@
 .services {
   padding: 48px 24px 56px;
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1.0625rem;
 }
 
 .services__title {
-  font-size: clamp(28px, 4vw, 38px);
+  font-size: clamp(1.75rem, 4vw, 2.375rem);
   text-align: center;
   margin: 0 0 12px;
 }
@@ -14,7 +14,7 @@
   text-align: center;
   max-width: 720px;
   margin: 0 auto 40px;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .services__list {
@@ -47,7 +47,7 @@
 }
 
 .service__content h2 {
-  font-size: 26px;
+  font-size: 1.625rem;
   margin: 0 0 12px;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .service__subheading {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-family: var(--font-body);
   margin: 16px 0 8px;
 }
@@ -76,7 +76,7 @@
 }
 
 .services__cta h2 {
-  font-size: 26px;
+  font-size: 1.625rem;
   margin: 0 0 8px;
 }
 
