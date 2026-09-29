@@ -28,7 +28,11 @@ function Contact() {
             </li>
             <li>
               <FaPhoneAlt aria-hidden="true" />
-              <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+              <span>
+                <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+                <br />
+                <small className="relay-note">Deaf or hard of hearing? Call us using 711 Relay.</small>
+              </span>
             </li>
             {CLINIC.email && (
               <li>

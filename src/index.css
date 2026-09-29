@@ -146,3 +146,12 @@ main:focus {
     scroll-behavior: auto !important;
   }
 }
+
+/* 711 Relay note under phone numbers (keeps the parent's color for contrast) */
+.relay-note {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: inherit;
+}

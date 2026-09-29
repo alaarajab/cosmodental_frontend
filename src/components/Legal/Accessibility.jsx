@@ -36,6 +36,12 @@ function Accessibility() {
         )}
         . We aim to respond within two business days.
       </p>
+      <p>
+        <strong>Deaf or hard of hearing?</strong> You can call us free of charge
+        through the <strong>711 Relay</strong> service from any phone, text
+        telephone (TTY) or computer. Just dial 711 and give the operator our
+        number, {CLINIC.phone}.
+      </p>
     </article>
   );
 }

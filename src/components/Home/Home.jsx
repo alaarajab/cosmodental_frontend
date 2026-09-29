@@ -430,6 +430,8 @@ function Home() {
             <h3>Phone</h3>
             <p>
               <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+              <br />
+              <small className="relay-note">Deaf or hard of hearing? Call us using 711 Relay.</small>
             </p>
             {CLINIC.languages.length > 0 && (
               <>
