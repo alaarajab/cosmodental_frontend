@@ -55,4 +55,4 @@ Load-test visits will inflate the visitor numbers for that day.
   slow, run the smoke test first to compare.
 - Don't push much beyond this level from one computer; Cloudflare may treat it as an attack and
   challenge or block your IP. For a heavier stress test, first allow your IP in Cloudflare
-  (cosmodentalmail.com → Security → WAF → Tools → IP Access Rules → Allow).
+  (cosmodentalusa.com → Security → WAF → Tools → IP Access Rules → Allow).

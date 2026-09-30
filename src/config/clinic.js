@@ -10,7 +10,7 @@ export const CLINIC = {
   shortName: "Cosmo Dental",
 
   // Final website address (no trailing slash). Used for SEO + sitemap.
-  siteUrl: "https://www.cosmodentalmail.com",
+  siteUrl: "https://www.cosmodentalusa.com",
 
   phone: "(708) 345-6313",
   phoneHref: "tel:+17083456313",

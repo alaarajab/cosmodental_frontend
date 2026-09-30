@@ -16,7 +16,7 @@
 #   emails through EmailJS (limited to ~200/month) to the clinic inbox.
 # ─────────────────────────────────────────────────────────────
 config:
-  target: "https://www.cosmodentalmail.com"
+  target: "https://www.cosmodentalusa.com"
   http:
     timeout: 10 # seconds before a request counts as failed
   plugins:
