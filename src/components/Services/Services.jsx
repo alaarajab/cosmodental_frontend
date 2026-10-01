@@ -6,6 +6,7 @@ import cosmeticImg from "../../assets/cosmetic.webp";
 import implantImg from "../../assets/implant.webp";
 import endoImg from "../../assets/endodontics.webp";
 import pediatricImg from "../../assets/pediatric.webp";
+import surgeryImg from "../../assets/oral-surgery.webp";
 import { CLINIC } from "../../config/clinic";
 
 const services = [
@@ -23,14 +24,6 @@ const services = [
     ],
   },
   {
-    id: "cosmetic-dentistry",
-    title: "Cosmetic Dentistry",
-    image: cosmeticImg,
-    description:
-      "Modern cosmetic treatments tailored to each patient to brighten, reshape and refresh your smile.",
-    cases: ["Teeth whitening", "Porcelain veneers", "Smile makeover planning"],
-  },
-  {
     id: "dental-implants",
     title: "Dental Implants",
     image: implantImg,
@@ -43,6 +36,14 @@ const services = [
     ],
   },
   {
+    id: "cosmetic-dentistry",
+    title: "Cosmetic Dentistry",
+    image: cosmeticImg,
+    description:
+      "Modern cosmetic treatments tailored to each patient to brighten, reshape and refresh your smile.",
+    cases: ["Teeth whitening", "Porcelain veneers", "Smile makeover planning"],
+  },
+  {
     id: "root-canal-treatment",
     title: "Endodontics (Root Canal Treatment)",
     image: endoImg,
@@ -52,6 +53,19 @@ const services = [
       "Root canal therapy",
       "Root canal retreatment",
       "Urgent tooth pain relief",
+    ],
+  },
+  {
+    id: "oral-surgery",
+    title: "Oral Surgery",
+    image: surgeryImg,
+    description:
+      "Gentle, carefully planned surgical care in our office, with clear explanations before and after every procedure.",
+    cases: [
+      "Simple and surgical tooth extractions",
+      "Wisdom teeth removal",
+      "Bone grafting to prepare for implants",
+      "Dental implant placement surgery",
     ],
   },
   {

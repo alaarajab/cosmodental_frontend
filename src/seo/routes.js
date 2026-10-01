@@ -12,7 +12,7 @@ export const ROUTES = [
     path: "/services",
     title: "Dental Services | Cosmo Dental Clinic, Northlake IL",
     description:
-      "General, cosmetic and pediatric dentistry, dental implants and root canal treatment at Cosmo Dental Clinic in Northlake, IL.",
+      "General, cosmetic and pediatric dentistry, dental implants, oral surgery and root canal treatment at Cosmo Dental Clinic in Northlake, IL.",
     priority: "0.9",
   },
   {

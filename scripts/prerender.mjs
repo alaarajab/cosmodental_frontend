@@ -62,9 +62,10 @@ const dentistSchema = {
   medicalSpecialty: "Dentistry",
   availableService: [
     "General Dentistry",
-    "Cosmetic Dentistry",
     "Dental Implants",
+    "Cosmetic Dentistry",
     "Endodontics (Root Canal Treatment)",
+    "Oral Surgery",
     "Pediatric Dentistry",
   ].map((name) => ({ "@type": "MedicalProcedure", name })),
   ...(CLINIC.hoursSchema.length ? { openingHours: CLINIC.hoursSchema } : {}),

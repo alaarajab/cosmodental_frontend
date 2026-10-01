@@ -19,6 +19,7 @@ import cosmeticImg from "../../assets/cosmetic.webp";
 import implantImg from "../../assets/implant.webp";
 import endoImg from "../../assets/endodontics.webp";
 import pediatricImg from "../../assets/pediatric.webp";
+import surgeryImg from "../../assets/oral-surgery.webp";
 import mapImage from "../../assets/large-screen.webp";
 import { CLINIC, fullAddress, reviewsUrl } from "../../config/clinic";
 import { DENTISTS } from "../../config/team";
@@ -31,19 +32,24 @@ const services = [
     text: "Check-ups, cleanings, fillings and gum care to keep your whole family's smiles healthy.",
   },
   {
-    title: "Cosmetic Dentistry",
-    image: cosmeticImg,
-    text: "Teeth whitening, veneers and smile makeovers planned around your goals.",
-  },
-  {
     title: "Dental Implants",
     image: implantImg,
     text: "Long-lasting replacement for missing teeth that looks, feels and works like your own.",
   },
   {
+    title: "Cosmetic Dentistry",
+    image: cosmeticImg,
+    text: "Teeth whitening, veneers and smile makeovers planned around your goals.",
+  },
+  {
     title: "Endodontics (Root Canal Treatment)",
     image: endoImg,
     text: "Endodontic care to relieve tooth pain and save your natural tooth.",
+  },
+  {
+    title: "Oral Surgery",
+    image: surgeryImg,
+    text: "Tooth extractions, wisdom teeth removal, bone grafting and implant surgery, done gently in our office.",
   },
   {
     title: "Pediatric Dentistry",

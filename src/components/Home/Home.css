@@ -104,7 +104,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr)); /* all 5 services in one row */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 6 services: 2 rows of 3 */
   gap: 20px;
 }
 
