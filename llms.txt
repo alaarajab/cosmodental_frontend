@@ -1,0 +1,63 @@
+# Cosmo Dental Clinic
+
+> Cosmo Dental Clinic is a family dental clinic at 159 E North Ave, Northlake, IL 60164 (USA), serving Northlake, Melrose Park, Stone Park, Franklin Park, Elmhurst, Bellwood, Berkeley, Hillside, River Grove, Chicago and nearby communities. The team speaks English, Spanish, Arabic, Urdu, Hindi. New patients are welcome.
+
+## Contact
+- Phone: (708) 345-6313
+- Email: b.abozor@cosmodentalmail.com
+- Address: 159 E North Ave, Northlake, IL 60164
+- Book an appointment: https://alaarajab.github.io/cosmodental_frontend/contact/
+- Directions: https://www.google.com/maps/search/?api=1&query=Cosmo+Dental+159+E+North+Ave+Northlake+IL+60164
+
+## Hours
+- Monday – Friday: 10:00 AM – 6:00 PM
+- Saturday: 9:00 AM – 2:00 PM
+
+## Dentists
+- Dr. Asim Abdul Quader: Focuses on cosmetic dentistry, providing routine check-ups and preventive care.
+- Dr. Basel Abozor: Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.
+- Dr. Hussain Akam: Focuses on dental surgery and implant care, along with routine check-ups.
+- Dr. Mohammed Abdul Haq: Focuses on dental surgery and implant care, along with preventive care.
+
+## Services
+- [General Dentistry](https://alaarajab.github.io/cosmodental_frontend/services/general-dentistry/): Check-ups, cleanings, fillings and gum care to keep your whole family's smiles healthy.
+- [Dental Implants](https://alaarajab.github.io/cosmodental_frontend/services/dental-implants/): Long-lasting replacement for missing teeth that looks, feels and works like your own.
+- [Cosmetic Dentistry](https://alaarajab.github.io/cosmodental_frontend/services/cosmetic-dentistry/): Teeth whitening, veneers and smile makeovers planned around your goals.
+- [Endodontics (Root Canal Treatment)](https://alaarajab.github.io/cosmodental_frontend/services/root-canal-treatment/): Endodontic care to relieve tooth pain and save your natural tooth.
+- [Oral Surgery](https://alaarajab.github.io/cosmodental_frontend/services/oral-surgery/): Tooth extractions, wisdom teeth removal, bone grafting and implant surgery, done gently in our office.
+- [Pediatric Dentistry](https://alaarajab.github.io/cosmodental_frontend/services/pediatric-dentistry/): Gentle, friendly dental care designed to help children feel comfortable and keep their smiles healthy.
+
+## Frequently asked questions
+- Are you accepting new patients? Yes. Request an appointment online or call us and we'll find a time that works for you.
+- Do you speak Spanish? Yes. Our team speaks English, Spanish, Arabic, Urdu and Hindi, and our website is also available in Spanish.
+- Do you accept my dental insurance? We work with many dental insurance plans. Call us with your plan details before your visit and our team will help you check your coverage.
+- What should I bring to my first visit? Please bring a photo ID, your dental insurance card (if you have one), a list of any medications you take, and recent dental X-rays if you have them.
+- What should I do in a dental emergency? Call our office at (708) 345-6313 as soon as possible and we'll do our best to see you quickly. For serious injuries, heavy bleeding or swelling that affects breathing, call 911 or go to the nearest emergency room.
+- Where are you located? We are at 159 E North Ave in Northlake, IL, on North Avenue — a short drive from Melrose Park, Stone Park, Franklin Park, Elmhurst and Chicago.
+- How often should I have a check-up and cleaning? Many people benefit from a check-up and cleaning about every six months. Your dentist will recommend the schedule that is right for you.
+- Can a missing tooth be replaced? Often, yes. Options include dental implants, bridges and dentures. At a consultation, your dentist will check your oral health and explain which option suits you best.
+- Is a root canal painful? Root canal treatment is done with local anesthesia, so most patients feel pressure rather than pain during the procedure. It is usually done to relieve the pain caused by an infected tooth.
+- Can I send my medical information through the website? Please don't. To protect your privacy, share health or insurance details with us by phone or in person — not through the contact form or email.
+
+## Pages
+- [Home](https://alaarajab.github.io/cosmodental_frontend/)
+- [All services](https://alaarajab.github.io/cosmodental_frontend/services/)
+- [Our dentists](https://alaarajab.github.io/cosmodental_frontend/staff/)
+- [Contact and appointments](https://alaarajab.github.io/cosmodental_frontend/contact/)
+- [Accessibility](https://alaarajab.github.io/cosmodental_frontend/accessibility/)
+
+## En español
+- [Inicio](https://alaarajab.github.io/cosmodental_frontend/es/)
+- [Servicios](https://alaarajab.github.io/cosmodental_frontend/es/servicios/)
+- [Odontología general](https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-general/)
+- [Implantes dentales](https://alaarajab.github.io/cosmodental_frontend/es/servicios/implantes-dentales/)
+- [Odontología estética](https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-estetica/)
+- [Endodoncia (tratamiento de conducto)](https://alaarajab.github.io/cosmodental_frontend/es/servicios/endodoncia/)
+- [Cirugía oral](https://alaarajab.github.io/cosmodental_frontend/es/servicios/cirugia-oral/)
+- [Odontopediatría](https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontopediatria/)
+- [Nuestro equipo](https://alaarajab.github.io/cosmodental_frontend/es/equipo/)
+- [Contacto y citas](https://alaarajab.github.io/cosmodental_frontend/es/contacto/)
+
+## Notes
+- Information on this website is general and not medical advice.
+- Please do not send medical or insurance information through the website; call the office instead.
