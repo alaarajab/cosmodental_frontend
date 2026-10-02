@@ -4,9 +4,12 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 import SocialContactIcons from "../SocialContactIcons/SocialContactIcons";
 import { CLINIC, fullAddress } from "../../config/clinic";
 import mapImage from "../../assets/medium-screen.webp";
+import { useLang } from "../../i18n";
 
 function Footer() {
   const year = new Date().getFullYear();
+  const { lang, t, to } = useLang();
+  const f = t.footer;
 
   return (
     <footer className="footer">
@@ -14,7 +17,7 @@ function Footer() {
         {/* Contact */}
         <section className="footer__col" aria-labelledby="footer-contact">
           <h2 id="footer-contact" className="footer__heading">
-            Contact Us
+            {f.contact}
           </h2>
           <ul className="footer__list">
             <li>
@@ -23,7 +26,7 @@ function Footer() {
                 {CLINIC.address.street}
                 <br />
                 {CLINIC.address.city}, {CLINIC.address.state} {CLINIC.address.zip}
-                <span className="visually-hidden"> (opens Google Maps in a new tab)</span>
+                <span className="visually-hidden">{t.ui.mapsNewTab}</span>
               </a>
             </li>
             <li>
@@ -31,7 +34,7 @@ function Footer() {
               <span>
                 <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
                 <br />
-                <small className="relay-note">Deaf or hard of hearing? Call us using 711 Relay.</small>
+                <small className="relay-note">{t.ui.relay}</small>
               </span>
             </li>
             {CLINIC.email && (
@@ -46,21 +49,22 @@ function Footer() {
         {/* Hours */}
         <section className="footer__col" aria-labelledby="footer-hours">
           <h2 id="footer-hours" className="footer__heading">
-            Office Hours
+            {f.hours}
           </h2>
           {CLINIC.hours.length ? (
             <dl className="footer__hours">
               {CLINIC.hours.map((h) => (
                 <div key={h.days}>
-                  <dt>{h.days}</dt>
-                  <dd>{h.time}</dd>
+                  <dt>{lang === "es" ? h.daysEs || h.days : h.days}</dt>
+                  <dd>{lang === "es" ? h.timeEs || h.time : h.time}</dd>
                 </div>
               ))}
             </dl>
           ) : (
             <p className="footer__text">
-              <FaClock aria-hidden="true" /> Please call{" "}
-              <a href={CLINIC.phoneHref}>{CLINIC.phone}</a> for our current hours.
+              <FaClock aria-hidden="true" /> {f.callForHours[0]}
+              <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
+              {f.callForHours[1]}
             </p>
           )}
         </section>
@@ -68,15 +72,23 @@ function Footer() {
         {/* Links */}
         <nav className="footer__col" aria-labelledby="footer-links">
           <h2 id="footer-links" className="footer__heading">
-            Quick Links
+            {f.links}
           </h2>
           <ul className="footer__list footer__list--plain">
-            <li><Link to="/services">Our Services</Link></li>
-            <li><Link to="/staff">Our Team</Link></li>
-            <li><Link to="/contact">Book an Appointment</Link></li>
-            <li><Link to="/notice-of-privacy-practices">Notice of Privacy Practices</Link></li>
-            <li><Link to="/privacy-policy">Website Privacy Policy</Link></li>
-            <li><Link to="/accessibility">Accessibility</Link></li>
+            <li><Link to={to("services")}>{t.ui.nav.services}</Link></li>
+            <li><Link to={to("staff")}>{t.ui.nav.staff}</Link></li>
+            <li><Link to={to("contact")}>{t.ui.bookAn}</Link></li>
+            <li>
+              <Link to={to("npp")} hrefLang={lang === "es" ? "en" : undefined}>
+                {f.npp}
+              </Link>
+            </li>
+            <li>
+              <Link to={to("privacy")} hrefLang={lang === "es" ? "en" : undefined}>
+                {f.privacy}
+              </Link>
+            </li>
+            <li><Link to={to("accessibility")}>{f.accessibility}</Link></li>
           </ul>
         </nav>
 
@@ -90,7 +102,7 @@ function Footer() {
           >
             <img
               src={mapImage}
-              alt={`Map showing ${CLINIC.name} at ${fullAddress}. Opens Google Maps in a new tab.`}
+              alt={f.mapAlt(fullAddress)}
               loading="lazy"
             />
           </a>
@@ -98,15 +110,10 @@ function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p className="footer__disclaimer">
-          The information on this website is for general educational purposes only
-          and is not medical or dental advice. Please consult a dentist about your
-          individual needs. For a dental emergency, call our office; for a medical
-          emergency, call 911.
-        </p>
+        <p className="footer__disclaimer">{f.disclaimer}</p>
         <div className="footer__bottom-row">
           <p>
-            © {year} {CLINIC.name}. All rights reserved.
+            © {year} {CLINIC.name}. {f.rights}
           </p>
           <SocialContactIcons />
         </div>

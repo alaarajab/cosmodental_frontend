@@ -14,9 +14,36 @@ import PrivacyPolicy from "../Legal/PrivacyPolicy";
 import NoticeOfPrivacyPractices from "../Legal/NoticeOfPrivacyPractices";
 import Accessibility from "../Legal/Accessibility";
 import NotFound from "../NotFound/NotFound";
+import ServiceDetail from "../ServiceDetail/ServiceDetail";
+import { ROUTES } from "../../seo/routes";
+import { useLang } from "../../i18n";
+
+// Which component shows each page (same component for both languages)
+function pageElement(key) {
+  if (key.startsWith("service:")) return <ServiceDetail id={key.slice(8)} />;
+  switch (key) {
+    case "home":
+      return <Home />;
+    case "services":
+      return <Services />;
+    case "staff":
+      return <Staff />;
+    case "contact":
+      return <Contact />;
+    case "privacy":
+      return <PrivacyPolicy />;
+    case "npp":
+      return <NoticeOfPrivacyPractices />;
+    case "accessibility":
+      return <Accessibility />;
+    default:
+      return <NotFound />;
+  }
+}
 
 function App() {
   const { pathname } = useLocation();
+  const { t } = useLang();
   const mainRef = useRef(null);
   const isFirstRender = useRef(true);
 
@@ -34,7 +61,7 @@ function App() {
   return (
     <div className="page">
       <a className="skip-link" href="#main">
-        Skip to main content
+        {t.ui.skip}
       </a>
       <Seo />
       <div className="page__content">
@@ -43,16 +70,9 @@ function App() {
 
         <main id="main" ref={mainRef} tabIndex={-1}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/staff" element={<Staff />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route
-              path="/notice-of-privacy-practices"
-              element={<NoticeOfPrivacyPractices />}
-            />
-            <Route path="/accessibility" element={<Accessibility />} />
+            {ROUTES.map((r) => (
+              <Route key={r.path} path={r.path} element={pageElement(r.key)} />
+            ))}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

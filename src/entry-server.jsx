@@ -3,7 +3,8 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "./components/App/App.jsx";
 
-// Used only at build time to prerender each page to static HTML.
+// Used only at build time (scripts/prerender.mjs) to turn each page into
+// static HTML and to build the SEO files.
 export function render(url, basename) {
   return renderToString(
     <React.StrictMode>
@@ -13,3 +14,8 @@ export function render(url, basename) {
     </React.StrictMode>,
   );
 }
+
+export { ROUTES, notFoundRoute } from "./seo/routes.js";
+export { schemasFor, buildLlmsTxt } from "./seo/schema.js";
+export { CLINIC, fullAddress } from "./config/clinic.js";
+export { CONTENT } from "./i18n/content.js";

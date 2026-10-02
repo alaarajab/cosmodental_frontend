@@ -55,6 +55,30 @@ so to patients. EmailJS does not sign a HIPAA Business Associate Agreement,
 so if the clinic wants online intake/medical forms, use a HIPAA-compliant
 form or booking service that signs a BAA.
 
+## English and Spanish
+
+The site has a full Spanish version under `/es/` (e.g. `/es/servicios/`).
+
+| What | File |
+|---|---|
+| All English text | `src/i18n/en.js` |
+| All Spanish text | `src/i18n/es.js` (same structure — change both) |
+| Page addresses in both languages | `src/i18n/pages.js` |
+| Service photos | `src/config/serviceImages.js` |
+| Spanish hours, bios, photo descriptions | `daysEs`/`timeEs` in `clinic.js`, `bioEs` in `team.js`, `DESCRIPTIONS_ES` in `gallery.js` |
+
+Each service has its own page (`/services/dental-implants/`, `/es/servicios/implantes-dentales/`).
+The legal pages (privacy policy, NPP) are English only, with a Spanish note offering help by phone.
+Have a fluent Spanish speaker review `es.js` before big changes go live.
+
+## SEO and AI search
+
+`npm run build` writes, for every page in both languages: title, description,
+canonical, `hreflang` language links and structured data (Dentist, Service,
+FAQ, Breadcrumbs, dentists). It also writes `sitemap.xml` (with language links),
+`robots.txt` (open to search engines and AI assistants) and `llms.txt`
+(a plain-text summary for ChatGPT, Claude, Perplexity and others).
+
 ## Deploying
 
 ### Cloudflare Workers (live site)

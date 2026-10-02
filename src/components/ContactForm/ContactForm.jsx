@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import "./ContactForm.css";
-
-const TIME_SLOTS = ["Morning (9 AM – 12 PM)", "Afternoon (12 PM – 3 PM)", "Late afternoon (3 PM – 6 PM)"];
+import { useLang } from "../../i18n";
 
 const INITIAL = {
   fullName: "",
@@ -16,30 +15,20 @@ const INITIAL = {
   consent: false,
 };
 
+// Reasons and time slots: the value sent to the clinic is always English
+// (so every staff member can read it); the label shown is translated.
 // Non-medical reasons only — we never ask for health details online.
-const REASONS = [
-  "New patient appointment",
-  "Existing patient appointment",
-  "Cleaning / check-up",
-  "Cosmetic consultation",
-  "Implant consultation",
-  "General question",
-];
 
-function validate(values) {
+function validate(values, msg) {
   const errors = {};
-  if (!values.fullName.trim()) errors.fullName = "Please enter your full name.";
-  if (!/^\S+@\S+\.\S+$/.test(values.email.trim()))
-    errors.email = "Please enter a valid email address, for example name@example.com.";
+  if (!values.fullName.trim()) errors.fullName = msg.fullName;
+  if (!/^\S+@\S+\.\S+$/.test(values.email.trim())) errors.email = msg.email;
   const digits = values.phone.replace(/\D/g, "");
-  if (digits.length < 10 || digits.length > 15)
-    errors.phone = "Please enter a valid phone number, for example (708) 555-1234.";
-  if (!values.reason) errors.reason = "Please choose a reason for your request.";
-  if (values.bookAppointment && !values.preferredDate)
-    errors.preferredDate = "Please choose a preferred date.";
-  if (values.bookAppointment && !values.preferredTime)
-    errors.preferredTime = "Please choose a preferred time.";
-  if (!values.consent) errors.consent = "Please confirm you agree to be contacted.";
+  if (digits.length < 10 || digits.length > 15) errors.phone = msg.phone;
+  if (!values.reason) errors.reason = msg.reason;
+  if (values.bookAppointment && !values.preferredDate) errors.preferredDate = msg.preferredDate;
+  if (values.bookAppointment && !values.preferredTime) errors.preferredTime = msg.preferredTime;
+  if (!values.consent) errors.consent = msg.consent;
   return errors;
 }
 
@@ -60,6 +49,8 @@ function todayISO() {
 }
 
 function ContactForm() {
+  const { lang, t, to } = useLang();
+  const f = t.form;
   const [values, setValues] = useState(INITIAL);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -76,18 +67,18 @@ function ContactForm() {
     const { name, type, value, checked } = e.target;
     const next = { ...values, [name]: type === "checkbox" ? checked : value };
     setValues(next);
-    if (touched[name]) setErrors(validate(next));
+    if (touched[name]) setErrors(validate(next, f.errors));
   }
 
   function handleBlur(e) {
     const { name } = e.target;
     setTouched((prev) => ({ ...prev, [name]: true }));
-    setErrors(validate(values));
+    setErrors(validate(values, f.errors));
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const found = validate(values);
+    const found = validate(values, f.errors);
     setErrors(found);
     setTouched(Object.fromEntries(FIELD_ORDER.map((f) => [f, true])));
 
@@ -95,9 +86,7 @@ function ContactForm() {
     if (firstInvalid) {
       setStatus({
         type: "error",
-        message: `Please fix ${Object.keys(found).length} field${
-          Object.keys(found).length > 1 ? "s" : ""
-        } highlighted below.`,
+        message: f.fix(Object.keys(found).length),
       });
       formRef.current?.querySelector(`[name="${firstInvalid}"]`)?.focus();
       return;
@@ -114,6 +103,8 @@ function ContactForm() {
       requestType: values.bookAppointment ? "Appointment Request" : "Contact Message",
       preferredDate: values.bookAppointment ? values.preferredDate : "N/A",
       preferredTime: values.bookAppointment ? values.preferredTime : "N/A",
+      // Tells the team which language to reply in (add {{language}} to the EmailJS template to see it)
+      language: lang === "es" ? "Spanish (sent from the Spanish website)" : "English",
     };
 
     try {
@@ -125,9 +116,7 @@ function ContactForm() {
       );
       setStatus({
         type: "success",
-        message: values.bookAppointment
-          ? "Thank you! Your appointment request was sent. We will contact you to confirm a time."
-          : "Thank you! Your message was sent. We will contact you soon.",
+        message: values.bookAppointment ? f.successAppt : f.successMsg,
       });
       setValues(INITIAL);
       setTouched({});
@@ -136,8 +125,7 @@ function ContactForm() {
       console.error("EmailJS error:", error);
       setStatus({
         type: "error",
-        message:
-          "Sorry, your request could not be sent. Please try again or call our office.",
+        message: f.failed,
       });
     } finally {
       setIsSending(false);
@@ -149,12 +137,10 @@ function ContactForm() {
 
   return (
     <div className="contact-form">
-      <h2 className="contact-form__title">Request an Appointment</h2>
+      <h2 className="contact-form__title">{f.title}</h2>
 
       <p className="contact-form__privacy" id="privacy-note">
-        <strong>Please do not include medical, dental or insurance details.</strong>{" "}
-        This form is only for scheduling and general questions. We will discuss
-        your health privately by phone or in the office.
+        <strong>{f.privacyStrong}</strong> {f.privacy}
       </p>
 
       {/* Announced to screen readers when it changes */}
@@ -170,13 +156,13 @@ function ContactForm() {
 
       <form ref={formRef} className="contact-form__form" onSubmit={handleSubmit} noValidate>
         <p className="contact-form__required-note">
-          Fields marked with <span aria-hidden="true">*</span>
-          <span className="visually-hidden">an asterisk</span> are required.
+          {f.required} <span aria-hidden="true">*</span>
+          <span className="visually-hidden">{f.requiredSr}</span> {f.requiredEnd}
         </p>
 
         <div className="contact-form__field">
           <label htmlFor="fullName">
-            Full name <span aria-hidden="true">*</span>
+            {f.fullName} <span aria-hidden="true">*</span>
           </label>
           <input
             id="fullName"
@@ -199,7 +185,7 @@ function ContactForm() {
 
         <div className="contact-form__field">
           <label htmlFor="email">
-            Email <span aria-hidden="true">*</span>
+            {f.email} <span aria-hidden="true">*</span>
           </label>
           <input
             id="email"
@@ -222,7 +208,7 @@ function ContactForm() {
 
         <div className="contact-form__field">
           <label htmlFor="phone">
-            Phone <span aria-hidden="true">*</span>
+            {f.phone} <span aria-hidden="true">*</span>
           </label>
           <input
             id="phone"
@@ -246,7 +232,7 @@ function ContactForm() {
 
         <div className="contact-form__field">
           <label htmlFor="reason">
-            Reason for your request <span aria-hidden="true">*</span>
+            {f.reason} <span aria-hidden="true">*</span>
           </label>
           <select
             id="reason"
@@ -258,10 +244,10 @@ function ContactForm() {
             aria-invalid={Boolean(showError("reason"))}
             aria-describedby={describedBy("reason")}
           >
-            <option value="">Choose one</option>
-            {REASONS.map((r) => (
-              <option key={r} value={r}>
-                {r}
+            <option value="">{f.choose}</option>
+            {Object.entries(f.reasons).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
               </option>
             ))}
           </select>
@@ -280,16 +266,16 @@ function ContactForm() {
             checked={values.bookAppointment}
             onChange={handleChange}
           />
-          <label htmlFor="bookAppointment">I would like to book an appointment</label>
+          <label htmlFor="bookAppointment">{f.book}</label>
         </div>
 
         {values.bookAppointment && (
           <fieldset className="contact-form__fieldset">
-            <legend>Preferred appointment time</legend>
+            <legend>{f.preferred}</legend>
 
             <div className="contact-form__field">
               <label htmlFor="preferredDate">
-                Preferred date <span aria-hidden="true">*</span>
+                {f.date} <span aria-hidden="true">*</span>
               </label>
               <input
                 id="preferredDate"
@@ -312,7 +298,7 @@ function ContactForm() {
 
             <div className="contact-form__field">
               <label htmlFor="preferredTime">
-                Preferred time <span aria-hidden="true">*</span>
+                {f.time} <span aria-hidden="true">*</span>
               </label>
               <select
                 id="preferredTime"
@@ -324,10 +310,10 @@ function ContactForm() {
                 aria-invalid={Boolean(showError("preferredTime"))}
                 aria-describedby={describedBy("preferredTime")}
               >
-                <option value="">Choose a time</option>
-                {TIME_SLOTS.map((slot) => (
-                  <option key={slot} value={slot}>
-                    {slot}
+                <option value="">{f.chooseTime}</option>
+                {Object.entries(f.times).map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
                   </option>
                 ))}
               </select>
@@ -353,9 +339,11 @@ function ContactForm() {
             aria-describedby={describedBy("consent", "privacy-note")}
           />
           <label htmlFor="consent">
-            I agree to be contacted by phone or email about this request, and I
-            have read the{" "}
-            <Link to="/privacy-policy">Website Privacy Policy</Link>.{" "}
+            {f.consentA}{" "}
+            <Link to={to("privacy")} hrefLang={lang === "es" ? "en" : undefined}>
+              {f.consentLink}
+            </Link>
+            .{" "}
             <span aria-hidden="true">*</span>
           </label>
         </div>
@@ -366,7 +354,7 @@ function ContactForm() {
         )}
 
         <button type="submit" className="btn btn--primary contact-form__submit" disabled={isSending}>
-          {isSending ? "Sending…" : values.bookAppointment ? "Send Appointment Request" : "Send Message"}
+          {isSending ? f.sending : values.bookAppointment ? f.sendAppt : f.sendMsg}
         </button>
       </form>
     </div>

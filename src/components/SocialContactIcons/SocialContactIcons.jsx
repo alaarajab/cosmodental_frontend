@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube, FaLink } from "react-icons/fa";
 import { CLINIC } from "../../config/clinic";
 import "./SocialContactIcons.css";
+import { useLang } from "../../i18n";
 
 const ICONS = {
   Facebook: FaFacebookF,
@@ -11,10 +12,11 @@ const ICONS = {
 
 // Shows only the social accounts listed in src/config/clinic.js
 function SocialContactIcons() {
+  const { t } = useLang();
   if (!CLINIC.social.length) return null;
 
   return (
-    <ul className="social-icons" aria-label="Social media">
+    <ul className="social-icons" aria-label={t.footer.social}>
       {CLINIC.social.map(({ label, url }) => {
         const Icon = ICONS[label] || FaLink;
         return (
@@ -27,7 +29,7 @@ function SocialContactIcons() {
             >
               <Icon aria-hidden="true" />
               <span className="visually-hidden">
-                {CLINIC.shortName} on {label} (opens in a new tab)
+                {t.footer.onSocial(label)}
               </span>
             </a>
           </li>

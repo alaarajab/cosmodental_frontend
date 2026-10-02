@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import "./DisplayOptions.css";
+import { useLang } from "../../i18n";
 
 // Text size and high-contrast options built into the site (no plugin).
 // The saved choice is applied before the page paints by a small script
 // in index.html, so the page does not "jump" on load.
 const STORAGE_KEY = "cd-display";
 const SIZES = [
-  { id: "default", label: "A", name: "Default text size", scale: "100%" },
-  { id: "large", label: "A+", name: "Larger text", scale: "125%" },
-  { id: "xlarge", label: "A++", name: "Largest text", scale: "150%" },
+  { id: "default", label: "A", scale: "100%" },
+  { id: "large", label: "A+", scale: "125%" },
+  { id: "xlarge", label: "A++", scale: "150%" },
 ];
 
 function readSaved() {
@@ -27,6 +28,8 @@ function apply({ size, contrast }) {
 }
 
 function DisplayOptions() {
+  const { t } = useLang();
+  const d = t.display;
   // Start with defaults so the prerendered HTML matches; then load the saved choice.
   const [prefs, setPrefs] = useState({ size: "default", contrast: false });
 
@@ -47,11 +50,11 @@ function DisplayOptions() {
   };
 
   return (
-    <div className="display-options" role="region" aria-label="Display options">
+    <div className="display-options" role="region" aria-label={d.region}>
       <div className="display-options__inner">
         <div className="display-options__group" role="group" aria-labelledby="text-size-label">
           <span id="text-size-label" className="display-options__label">
-            Text size
+            {d.textSize}
           </span>
           {SIZES.map((s) => (
             <button
@@ -59,7 +62,7 @@ function DisplayOptions() {
               type="button"
               className={`display-options__btn display-options__btn--${s.id}`}
               aria-pressed={prefs.size === s.id}
-              aria-label={s.name}
+              aria-label={d.sizes[s.id]}
               onClick={() => update({ size: s.id })}
             >
               {s.label}
@@ -73,7 +76,7 @@ function DisplayOptions() {
           onClick={() => update({ contrast: !prefs.contrast })}
         >
           <span aria-hidden="true" className="display-options__contrast-icon">◐</span>
-          High contrast
+          {d.contrast}
         </button>
       </div>
     </div>

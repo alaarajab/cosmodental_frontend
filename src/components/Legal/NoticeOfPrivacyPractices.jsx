@@ -1,5 +1,6 @@
 import "./Legal.css";
 import ContactBlock from "./ContactBlock";
+import SpanishNote from "./SpanishNote";
 import { CLINIC } from "../../config/clinic";
 import { LEGAL } from "../../config/legal";
 
@@ -11,6 +12,7 @@ function NoticeOfPrivacyPractices() {
   return (
     <article className="legal">
       <h1>Notice of Privacy Practices</h1>
+      <SpanishNote />
       {LEGAL.nppEffectiveDate && (
         <p className="legal__meta">Effective date: {LEGAL.nppEffectiveDate}</p>
       )}

@@ -37,20 +37,22 @@ export const CLINIC = {
   // While null, the site links to the Google Maps listing instead.
   googleReviewsUrl: null,
 
-  // Opening hours. Fill in the real hours, e.g.
-  // { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" }.
+  // Opening hours, in English and Spanish, e.g.
+  // { days: "Monday – Friday", time: "9:00 AM – 6:00 PM",
+  //   daysEs: "Lunes a viernes", timeEs: "9:00 a. m. – 6:00 p. m." }.
   // Leave empty to show "Call us for current hours".
   // `schema` entries use schema.org format for Google.
   hours: [
-    { days: "Monday – Friday", time: "10:00 AM – 6:00 PM" },
-    { days: "Saturday", time: "9:00 AM – 2:00 PM" },
+    { days: "Monday – Friday", time: "10:00 AM – 6:00 PM", daysEs: "Lunes a viernes", timeEs: "10:00 a. m. – 6:00 p. m." },
+    { days: "Saturday", time: "9:00 AM – 2:00 PM", daysEs: "Sábado", timeEs: "9:00 a. m. – 2:00 p. m." },
   ],
   hoursSchema: ["Mo-Fr 10:00-18:00", "Sa 09:00-14:00"], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
 
   // Only add accounts that really exist.
   social: [
     { label: "Instagram", url: "https://www.instagram.com/dr_basel_abozor/" },
-    // { label: "Facebook", url: "https://www.facebook.com/..." },
+    // Dr. Abozor's personal page for now — replace with the clinic's own page when it exists
+    { label: "Facebook", url: "https://www.facebook.com/basel.abozor/" },
   ],
 
   // Languages spoken by the team (shown on the home page intro,

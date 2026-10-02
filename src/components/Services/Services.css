@@ -95,3 +95,16 @@
     padding: 16px;
   }
 }
+
+.service__title-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.service__title-link:hover {
+  text-decoration: underline;
+}
+
+.service__more {
+  margin-top: 16px;
+}

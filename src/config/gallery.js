@@ -31,6 +31,23 @@ const DESCRIPTIONS = {
     "Waiting room with cushioned chairs and large windows letting in daylight",
 };
 
+// Spanish descriptions (Spanish website). Same keys as above.
+const DESCRIPTIONS_ES = {
+  "reception-desk":
+    "Recepción con mostrador de mármol negro y orquídeas blancas",
+  "modern-treatment-room":
+    "Sala de tratamiento luminosa con un sillón dental moderno y gabinetes blancos",
+  "treatment-room-with-garden-view":
+    "Sala de tratamiento con sillón dental junto a un gran ventanal con vista a los árboles",
+  "digital-x-ray-room": "Sala con un equipo de radiografía dental panorámica digital",
+  "clinic-hallway": "Pasillo que lleva a las salas de tratamiento",
+  "waiting-room":
+    "Sala de espera con sillas acolchadas y grandes ventanas que dejan entrar la luz natural",
+};
+
+const baseName = (path) =>
+  path.split("/").pop().replace(/\.[^.]+$/, "").replace(/^\d+[-_ ]*/, "");
+
 function toAlt(path) {
   // Leading numbers (e.g. "1-reception-desk") only set the order
   const name = path.split("/").pop().replace(/\.[^.]+$/, "").replace(/^\d+[-_ ]*/, "");
@@ -41,4 +58,8 @@ function toAlt(path) {
 
 export const GALLERY = Object.entries(files)
   .sort(([a], [b]) => a.localeCompare(b))
-  .map(([path, src]) => ({ src, alt: toAlt(path) }));
+  .map(([path, src]) => ({
+    src,
+    alt: toAlt(path),
+    altEs: DESCRIPTIONS_ES[baseName(path)] || toAlt(path),
+  }));

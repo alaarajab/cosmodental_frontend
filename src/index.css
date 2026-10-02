@@ -147,6 +147,11 @@ main:focus {
   }
 }
 
+/* Keep phone numbers on one line */
+.nowrap {
+  white-space: nowrap;
+}
+
 /* 711 Relay note under phone numbers (keeps the parent's color for contrast) */
 .relay-note {
   display: inline-block;

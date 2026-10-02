@@ -565,3 +565,33 @@ html {
   font-size: 1.5rem;
   flex-shrink: 0;
 }
+
+/* ---------- Service card links (whole card is clickable) ---------- */
+.home__card {
+  position: relative;
+}
+
+.home .home__card-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.home__card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.home .home__card-link:hover {
+  text-decoration: underline;
+}
+
+.home__card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.home__card-link:focus-visible {
+  outline: none;
+}

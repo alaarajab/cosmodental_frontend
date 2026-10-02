@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Legal.css";
 import ContactBlock from "./ContactBlock";
+import SpanishNote from "./SpanishNote";
 import { CLINIC } from "../../config/clinic";
 import { LEGAL } from "../../config/legal";
 
@@ -10,6 +11,7 @@ function PrivacyPolicy() {
   return (
     <article className="legal">
       <h1>Website Privacy Policy</h1>
+      <SpanishNote />
       {LEGAL.privacyPolicyUpdated && (
         <p className="legal__meta">Last updated: {LEGAL.privacyPolicyUpdated}</p>
       )}
