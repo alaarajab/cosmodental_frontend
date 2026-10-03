@@ -81,29 +81,6 @@
 }
 
 /* Language switch (English / Español) */
-.header__lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 8px 12px;
-  margin-left: 4px;
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 999px;
-  font-weight: 500;
-}
-
-.header__lang:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-.header__mobile-menu .header__lang--mobile {
-  margin: 8px 0 0;
-  justify-content: center;
-}
-
 .header__call-us {
   white-space: nowrap;
   margin-left: 12px;

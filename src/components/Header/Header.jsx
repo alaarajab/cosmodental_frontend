@@ -2,10 +2,10 @@ import "./Header.css";
 import logo from "../../assets/cosmo_dental_logo_220x80.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { FaPhoneAlt, FaBars, FaTimes, FaGlobeAmericas, FaChevronDown } from "react-icons/fa";
+import { FaPhoneAlt, FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { CLINIC } from "../../config/clinic";
 import { useLang } from "../../i18n";
-import { pageFromPath, switchLanguagePath, SERVICE_IDS } from "../../i18n/pages";
+import { pageFromPath, SERVICE_IDS } from "../../i18n/pages";
 
 const MENU_KEYS = ["home", "services", "staff", "contact"];
 
@@ -20,7 +20,6 @@ function Header() {
     label: t.services[id].name,
     current: currentKey === `service:${id}`,
   }));
-  const otherLangPath = switchLanguagePath(location.pathname);
   const menuLinks = MENU_KEYS.map((key) => ({
     key,
     path: to(key),
@@ -29,18 +28,6 @@ function Header() {
     end: key === "home",
   }));
 
-  const langSwitch = (extraClass = "") => (
-    <Link
-      to={otherLangPath}
-      className={`header__lang ${extraClass}`}
-      lang={t.ui.switchLangCode}
-      hrefLang={t.ui.switchLangCode}
-      aria-label={t.ui.switchLangAria}
-    >
-      <FaGlobeAmericas aria-hidden="true" />
-      <span>{t.ui.switchLang}</span>
-    </Link>
-  );
   const menuRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const menuButtonRef = useRef(null);
@@ -218,7 +205,6 @@ function Header() {
               </span>
             </a>
 
-            {langSwitch()}
 
             <span
               className="header__navigator"
@@ -297,7 +283,6 @@ function Header() {
                 </NavLink>
               ),
             )}
-            {langSwitch("header__lang--mobile")}
             <a
               href={CLINIC.phoneHref}
               className="btn btn--primary header__call-us--mobile"

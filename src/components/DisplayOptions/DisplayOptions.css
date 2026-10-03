@@ -68,6 +68,11 @@
   line-height: 1;
 }
 
+.display-options__lang {
+  text-decoration: none;
+  font-weight: 600;
+}
+
 @media (max-width: 480px) {
   .display-options__inner {
     justify-content: center;

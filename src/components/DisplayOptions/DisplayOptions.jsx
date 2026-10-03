@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaGlobeAmericas } from "react-icons/fa";
 import "./DisplayOptions.css";
+import { switchLanguagePath } from "../../i18n/pages";
 import { useLang } from "../../i18n";
 
 // Text size and high-contrast options built into the site (no plugin).
@@ -29,6 +32,7 @@ function apply({ size, contrast }) {
 
 function DisplayOptions() {
   const { t } = useLang();
+  const { pathname } = useLocation();
   const d = t.display;
   // Start with defaults so the prerendered HTML matches; then load the saved choice.
   const [prefs, setPrefs] = useState({ size: "default", contrast: false });
@@ -78,6 +82,16 @@ function DisplayOptions() {
           <span aria-hidden="true" className="display-options__contrast-icon">◐</span>
           {d.contrast}
         </button>
+        <Link
+          to={switchLanguagePath(pathname)}
+          className="display-options__btn display-options__lang"
+          lang={t.ui.switchLangCode}
+          hrefLang={t.ui.switchLangCode}
+          aria-label={t.ui.switchLangAria}
+        >
+          <FaGlobeAmericas aria-hidden="true" />
+          <span>{t.ui.switchLang}</span>
+        </Link>
       </div>
     </div>
   );
