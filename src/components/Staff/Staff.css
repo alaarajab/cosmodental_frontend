@@ -81,3 +81,32 @@
     padding: 36px 16px 48px;
   }
 }
+
+/* Whole card opens the dentist's own page */
+.staff__card {
+  position: relative;
+}
+
+.staff__name-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.staff__name-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.staff__name-link:hover {
+  text-decoration: underline;
+}
+
+.staff__card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.staff__name-link:focus-visible {
+  outline: none;
+}

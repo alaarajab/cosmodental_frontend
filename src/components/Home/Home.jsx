@@ -132,7 +132,11 @@ function Home() {
           {DENTISTS.map((d) => (
             <li className="home__team-card" key={d.name}>
               <img src={d.image} alt={h.portrait(d.name)} width="220" height="220" loading="lazy" />
-              <h3>{d.name}</h3>
+              <h3>
+                <Link to={to(`dentist:${d.slug}`)} className="home__team-link">
+                  {d.name}
+                </Link>
+              </h3>
             </li>
           ))}
         </ul>

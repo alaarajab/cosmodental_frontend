@@ -15,12 +15,14 @@ import NoticeOfPrivacyPractices from "../Legal/NoticeOfPrivacyPractices";
 import Accessibility from "../Legal/Accessibility";
 import NotFound from "../NotFound/NotFound";
 import ServiceDetail from "../ServiceDetail/ServiceDetail";
+import DentistDetail from "../DentistDetail/DentistDetail";
 import { ROUTES } from "../../seo/routes";
 import { useLang } from "../../i18n";
 
 // Which component shows each page (same component for both languages)
 function pageElement(key) {
   if (key.startsWith("service:")) return <ServiceDetail id={key.slice(8)} />;
+  if (key.startsWith("dentist:")) return <DentistDetail slug={key.slice(8)} />;
   switch (key) {
     case "home":
       return <Home />;

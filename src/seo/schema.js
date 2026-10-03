@@ -76,7 +76,12 @@ export function schemasFor(route, siteUrl) {
         name: t.services[id].name,
         url: url(pathFor(`service:${id}`, route.lang)),
       })),
-      employee: DENTISTS.map((d) => ({ "@type": "Person", name: d.name, jobTitle: "Dentist" })),
+      employee: DENTISTS.map((d) => ({
+        "@type": "Person",
+        name: d.name,
+        jobTitle: "Dentist",
+        url: url(pathFor(`dentist:${d.slug}`, route.lang)),
+      })),
       ...(CLINIC.hoursSchema.length ? { openingHours: CLINIC.hoursSchema } : {}),
       ...(CLINIC.languages.length ? { knowsLanguage: CLINIC.languages } : {}),
       ...(CLINIC.social.length ? { sameAs: CLINIC.social.map((s) => s.url) } : {}),
@@ -139,6 +144,46 @@ export function schemasFor(route, siteUrl) {
     return out;
   }
 
+  if (route.key.startsWith("dentist:")) {
+    const d = DENTISTS.find((x) => `dentist:${x.slug}` === route.key);
+    out.push({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${siteUrl}/staff/${d.slug}/#person`,
+      name: d.name,
+      alternateName: [d.name.replace(/^Dr\.?\s*/, ""), `Dr ${d.name.replace(/^Dr\.?\s*/, "")}`],
+      jobTitle: route.lang === "es" ? "Dentista" : "Dentist",
+      description: route.lang === "es" ? d.bioEs || d.bio : d.bio,
+      url: url(route.path),
+      ...(d.image ? { image: d.image.startsWith("http") ? d.image : `${siteUrl}${d.image}` } : {}),
+      knowsAbout: (d.focus || []).map((id) => t.services[id].name),
+      ...(CLINIC.languages.length ? { knowsLanguage: CLINIC.languages } : {}),
+      worksFor: {
+        "@type": "Dentist",
+        "@id": clinicId,
+        name: CLINIC.name,
+        url: url(pathFor("home", route.lang)),
+        telephone: CLINIC.phoneHref.replace("tel:", ""),
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: CLINIC.address.street,
+          addressLocality: CLINIC.address.city,
+          addressRegion: CLINIC.address.state,
+          postalCode: CLINIC.address.zip,
+          addressCountry: CLINIC.address.country,
+        },
+      },
+    });
+    out.push(
+      crumbs([
+        [homeName, homePath],
+        [t.ui.nav.staff, pathFor("staff", route.lang)],
+        [d.name, route.path],
+      ]),
+    );
+    return out;
+  }
+
   if (route.key === "staff") {
     out.push(
       ...DENTISTS.map((d) => ({
@@ -147,6 +192,7 @@ export function schemasFor(route, siteUrl) {
         name: d.name,
         jobTitle: route.lang === "es" ? "Dentista" : "Dentist",
         description: route.lang === "es" ? d.bioEs || d.bio : d.bio,
+        url: url(pathFor(`dentist:${d.slug}`, route.lang)),
         worksFor: { "@type": "Dentist", "@id": clinicId, name: CLINIC.name },
         ...(CLINIC.languages.length ? { knowsLanguage: CLINIC.languages } : {}),
       })),
@@ -205,7 +251,7 @@ export function buildLlmsTxt(siteUrl) {
     hours,
     "",
     "## Dentists",
-    ...DENTISTS.map((d) => `- ${d.name}: ${d.bio}`),
+    ...DENTISTS.map((d) => `- [${d.name}](${url(PAGES[`dentist:${d.slug}`].en)}): ${d.bio}`),
     "",
     "## Services",
     ...SERVICE_IDS.map(

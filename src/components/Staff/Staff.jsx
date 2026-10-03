@@ -5,7 +5,7 @@ import { DENTISTS } from "../../config/team";
 import { useLang } from "../../i18n";
 
 function MemberCard({ member }) {
-  const { lang, t } = useLang();
+  const { lang, t, to } = useLang();
   return (
     <li className="staff__card">
       <img
@@ -17,7 +17,11 @@ function MemberCard({ member }) {
         loading="lazy"
       />
       <div className="staff__info">
-        <h3 className="staff__name">{member.name}</h3>
+        <h3 className="staff__name">
+          <Link to={to(`dentist:${member.slug}`)} className="staff__name-link">
+            {member.name}
+          </Link>
+        </h3>
         <p className="staff__role">{member.title}</p>
         <p className="staff__bio">{lang === "es" ? member.bioEs || member.bio : member.bio}</p>
       </div>

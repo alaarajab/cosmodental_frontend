@@ -1,5 +1,7 @@
 // ─────────────────────────────────────────────────────────────
-// TEAM — used on the home page and the "Our Team" page.
+// TEAM — used on the home page, the "Our Team" page and each dentist's own page.
+// `slug` is the dentist's web address (/staff/<slug>/ and /es/equipo/<slug>/).
+// `focus` lists the services the dentist focuses on (ids from src/i18n/pages.js).
 // `bio` is shown on the English site, `bioEs` on the Spanish site.
 // To change a photo, replace the image file in src/assets/
 // (keep the same file name) or point `image` to a new file.
@@ -12,28 +14,36 @@ import asimImg from "../assets/asimImg.webp";
 
 export const DENTISTS = [
   {
+    slug: "dr-asim-abdul-quader",
     name: "Dr. Asim Abdul Quader",
+    focus: ["cosmetic-dentistry", "general-dentistry"],
     bio: "Focuses on cosmetic dentistry, providing routine check-ups and preventive care.",
     bioEs: "Se enfoca en la odontología estética y ofrece chequeos de rutina y atención preventiva.",
     image: asimImg,
   },
 
   {
+    slug: "dr-basel-abozor",
     name: "Dr. Basel Abozor",
+    focus: ["root-canal-treatment", "general-dentistry"],
     bio: "Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.",
     bioEs: "Se enfoca en la endodoncia (tratamiento de conducto), con 20 años de atención centrada en el paciente.",
     image: baselImg,
   },
 
   {
+    slug: "dr-hussain-akam",
     name: "Dr. Hussain Akam",
+    focus: ["oral-surgery", "dental-implants", "general-dentistry"],
     bio: "Focuses on dental surgery and implant care, along with routine check-ups.",
     bioEs: "Se enfoca en la cirugía dental y los implantes, además de chequeos de rutina.",
     image: hussainImg,
   },
 
   {
+    slug: "dr-mohammed-abdul-haq",
     name: "Dr. Mohammed Abdul Haq",
+    focus: ["oral-surgery", "dental-implants", "general-dentistry"],
     bio: "Focuses on dental surgery and implant care, along with preventive care.",
     bioEs: "Se enfoca en la cirugía dental y los implantes, además de la atención preventiva.",
     image: haqiImg,

@@ -595,3 +595,32 @@ html {
 .home__card-link:focus-visible {
   outline: none;
 }
+
+/* Dentist cards open the dentist's own page */
+.home__team-card {
+  position: relative;
+}
+
+.home .home__team-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.home__team-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.home .home__team-link:hover {
+  text-decoration: underline;
+}
+
+.home__team-card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.home__team-link:focus-visible {
+  outline: none;
+}

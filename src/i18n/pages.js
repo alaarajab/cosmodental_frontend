@@ -4,6 +4,8 @@
 // Pages without a Spanish address (legal pages) are English only.
 // ─────────────────────────────────────────────────────────────
 
+import { DENTISTS } from "../config/team.js";
+
 // Order = order shown on the site (most requested first)
 export const SERVICE_IDS = [
   "general-dentistry",
@@ -33,6 +35,9 @@ export const PAGES = {
   accessibility: { en: "/accessibility", es: "/es/accesibilidad" },
   privacy: { en: "/privacy-policy" },
   npp: { en: "/notice-of-privacy-practices" },
+  ...Object.fromEntries(
+    DENTISTS.map((d) => [`dentist:${d.slug}`, { en: `/staff/${d.slug}`, es: `/es/equipo/${d.slug}` }]),
+  ),
   ...Object.fromEntries(
     SERVICE_IDS.map((id) => [
       `service:${id}`,

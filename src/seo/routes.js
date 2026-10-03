@@ -2,12 +2,14 @@
 // (also used to build the sitemap). Texts live in src/i18n/en.js / es.js.
 import { PAGES, LANGS, SERVICE_IDS, langFromPath, pageFromPath } from "../i18n/pages.js";
 import { CONTENT } from "../i18n/content.js";
+import { DENTISTS } from "../config/team.js";
 
 const PRIORITY = {
   home: "1.0",
   services: "0.9",
   contact: "0.9",
   staff: "0.8",
+  // dentist pages use the default 0.8
   accessibility: "0.3",
   privacy: "0.3",
   npp: "0.3",
@@ -18,6 +20,11 @@ function metaFor(key, lang) {
   if (key.startsWith("service:")) {
     const s = t.services[key.slice(8)];
     return { title: s.metaTitle, description: s.metaDescription };
+  }
+  if (key.startsWith("dentist:")) {
+    const d = DENTISTS.find((x) => `dentist:${x.slug}` === key);
+    const bio = lang === "es" ? d.bioEs || d.bio : d.bio;
+    return { title: t.dentistPage.metaTitle(d.name), description: t.dentistPage.metaDescription(d.name, bio) };
   }
   return t.meta[key] || CONTENT.en.meta[key];
 }
