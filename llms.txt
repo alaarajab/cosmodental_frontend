@@ -14,10 +14,10 @@
 - Saturday: 9:00 AM – 2:00 PM
 
 ## Dentists
-- Dr. Asim Abdul Quader: Focuses on cosmetic dentistry, providing routine check-ups and preventive care.
-- Dr. Basel Abozor: Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.
-- Dr. Hussain Akam: Focuses on dental surgery and implant care, along with routine check-ups.
-- Dr. Mohammed Abdul Haq: Focuses on dental surgery and implant care, along with preventive care.
+- [Dr. Asim Abdul Quader](https://alaarajab.github.io/cosmodental_frontend/staff/dr-asim-abdul-quader/): Focuses on cosmetic dentistry, providing routine check-ups and preventive care.
+- [Dr. Basel Abozor](https://alaarajab.github.io/cosmodental_frontend/staff/dr-basel-abozor/): Focuses on endodontics (root canal treatment) with 20 years of patient-focused care.
+- [Dr. Hussain Akam](https://alaarajab.github.io/cosmodental_frontend/staff/dr-hussain-akam/): Focuses on dental surgery and implant care, along with routine check-ups.
+- [Dr. Mohammed Abdul Haq](https://alaarajab.github.io/cosmodental_frontend/staff/dr-mohammed-abdul-haq/): Focuses on dental surgery and implant care, along with preventive care.
 
 ## Services
 - [General Dentistry](https://alaarajab.github.io/cosmodental_frontend/services/general-dentistry/): Check-ups, cleanings, fillings and gum care to keep your whole family's smiles healthy.
