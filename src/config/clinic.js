@@ -17,7 +17,7 @@ export const CLINIC = {
 
   // Inbox that receives patient emails. Change once the admin
   // finishes the Google Workspace setup (e.g. info@cosmodentalusa.com).
-  email: "b.abozor@cosmodentalmail.com",
+  email: "info@cosmodentalmail.com",
 
   address: {
     street: "159 E North Ave",
@@ -43,8 +43,18 @@ export const CLINIC = {
   // Leave empty to show "Call us for current hours".
   // `schema` entries use schema.org format for Google.
   hours: [
-    { days: "Monday – Friday", time: "10:00 AM – 6:00 PM", daysEs: "Lunes a viernes", timeEs: "10:00 a. m. – 6:00 p. m." },
-    { days: "Saturday", time: "9:00 AM – 2:00 PM", daysEs: "Sábado", timeEs: "9:00 a. m. – 2:00 p. m." },
+    {
+      days: "Monday – Friday",
+      time: "10:00 AM – 6:00 PM",
+      daysEs: "Lunes a viernes",
+      timeEs: "10:00 a. m. – 6:00 p. m.",
+    },
+    {
+      days: "Saturday",
+      time: "9:00 AM – 2:00 PM",
+      daysEs: "Sábado",
+      timeEs: "9:00 a. m. – 2:00 p. m.",
+    },
   ],
   hoursSchema: ["Mo-Fr 10:00-18:00", "Sa 09:00-14:00"], // e.g. ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"]
 

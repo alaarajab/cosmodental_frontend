@@ -29,7 +29,7 @@ const en = {
     switchLangCode: "es",
     newTab: " (opens in a new tab)",
     mapsNewTab: " (opens Google Maps in a new tab)",
-    relay: "Deaf or hard of hearing? Call us using 711 Relay.",
+    relay: "Need help with phone calls? You can reach us through 711 Relay.",
     hoursCall: "Call us for current office hours.",
     breadcrumb: "Breadcrumb",
     learnMore: "Learn more",

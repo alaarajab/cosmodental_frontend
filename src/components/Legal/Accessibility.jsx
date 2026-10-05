@@ -51,7 +51,7 @@ function AccessibilityEs() {
         . Procuramos responder en un plazo de dos días hábiles.
       </p>
       <p>
-        <strong>¿Es sordo o tiene dificultad auditiva?</strong> Puede llamarnos sin
+        <strong>¿Necesita ayuda para llamar por teléfono?</strong> Puede llamarnos sin
         costo a través del <strong>servicio de retransmisión 711</strong> desde
         cualquier teléfono, teléfono de texto (TTY) o computadora. Solo marque 711 y
         dé al operador nuestro número, {CLINIC.phone}.
@@ -107,7 +107,7 @@ function Accessibility() {
         . We aim to respond within two business days.
       </p>
       <p>
-        <strong>Deaf or hard of hearing?</strong> You can call us free of charge
+        <strong>Need help with phone calls?</strong> You can call us free of charge
         through the <strong>711 Relay</strong> service from any phone, text
         telephone (TTY) or computer. Just dial 711 and give the operator our
         number, {CLINIC.phone}.

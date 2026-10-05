@@ -31,7 +31,7 @@ const es = {
     switchLangCode: "en",
     newTab: " (se abre en una pestaña nueva)",
     mapsNewTab: " (abre Google Maps en una pestaña nueva)",
-    relay: "¿Es sordo o tiene dificultad auditiva? Llámenos a través del servicio de retransmisión 711.",
+    relay: "¿Necesita ayuda para llamar por teléfono? Puede comunicarse con nosotros a través del servicio de retransmisión 711.",
     hoursCall: "Llámenos para conocer nuestro horario actual.",
     breadcrumb: "Ruta de navegación",
     learnMore: "Más información",
