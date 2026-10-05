@@ -110,6 +110,9 @@ function Footer() {
       </div>
 
       <div className="footer__bottom">
+        <div className="footer__social">
+          <SocialContactIcons />
+        </div>
         <p className="footer__disclaimer">{f.disclaimer}</p>
         <div className="footer__bottom-row">
           <div className="footer__legal">
@@ -124,7 +127,6 @@ function Footer() {
               </a>
             </p>
           </div>
-          <SocialContactIcons />
         </div>
       </div>
     </footer>

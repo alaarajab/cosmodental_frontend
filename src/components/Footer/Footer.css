@@ -107,6 +107,12 @@
   font-size: 0.875rem;
 }
 
+.footer__social {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
 .footer__disclaimer {
   margin: 0 auto 16px;
   color: #d1d5db;
