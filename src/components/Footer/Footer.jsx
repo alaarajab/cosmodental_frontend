@@ -112,9 +112,18 @@ function Footer() {
       <div className="footer__bottom">
         <p className="footer__disclaimer">{f.disclaimer}</p>
         <div className="footer__bottom-row">
-          <p>
-            © {year} {CLINIC.name}. {f.rights}
-          </p>
+          <div className="footer__legal">
+            <p>
+              © {year} {CLINIC.name}. {f.rights}
+            </p>
+            <p className="footer__credit">
+              {f.credit}{" "}
+              <a href="https://github.com/alaarajab" target="_blank" rel="noopener noreferrer">
+                Alaa Rajab
+                <span className="visually-hidden">{t.ui.newTab}</span>
+              </a>
+            </p>
+          </div>
           <SocialContactIcons />
         </div>
       </div>

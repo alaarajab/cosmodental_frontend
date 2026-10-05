@@ -60,6 +60,7 @@ const en = {
     disclaimer:
       "The information on this website is for general educational purposes only and is not medical or dental advice. Please consult a dentist about your individual needs. For a dental emergency, call our office; for a medical emergency, call 911.",
     rights: "All rights reserved.",
+    credit: "Website designed & developed by",
     social: "Social media",
     onSocial: (label) => `${CLINIC.shortName} on ${label} (opens in a new tab)`,
   },

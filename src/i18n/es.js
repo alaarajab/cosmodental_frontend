@@ -62,6 +62,7 @@ const es = {
     disclaimer:
       "La información de este sitio web es solo para fines educativos generales y no constituye asesoramiento médico ni dental. Consulte a un dentista sobre sus necesidades particulares. Para una urgencia dental, llame a nuestro consultorio; para una emergencia médica, llame al 911.",
     rights: "Todos los derechos reservados.",
+    credit: "Sitio web diseñado y desarrollado por",
     social: "Redes sociales",
     onSocial: (label) => `${CLINIC.shortName} en ${label} (se abre en una pestaña nueva)`,
   },
