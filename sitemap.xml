@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/" />
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/" />
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/" />
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/" />
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/staff/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/" />
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/equipo/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/" />
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/contact/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/contact/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/contacto/" />
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/contacto/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/contact/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/contacto/" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/accessibility/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/accessibility/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/accesibilidad/" />
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/accesibilidad/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/accessibility/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/accesibilidad/" />
@@ -82,17 +82,17 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/privacy-policy/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/notice-of-privacy-practices/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/staff/dr-asim-abdul-quader/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-asim-abdul-quader/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-asim-abdul-quader/" />
@@ -100,7 +100,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-asim-abdul-quader/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-asim-abdul-quader/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-asim-abdul-quader/" />
@@ -108,7 +108,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/staff/dr-basel-abozor/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-basel-abozor/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-basel-abozor/" />
@@ -116,7 +116,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-basel-abozor/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-basel-abozor/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-basel-abozor/" />
@@ -124,7 +124,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/staff/dr-hussain-akam/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-hussain-akam/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-hussain-akam/" />
@@ -132,7 +132,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-hussain-akam/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-hussain-akam/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-hussain-akam/" />
@@ -140,7 +140,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/staff/dr-mohammed-abdul-haq/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-mohammed-abdul-haq/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-mohammed-abdul-haq/" />
@@ -148,7 +148,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-mohammed-abdul-haq/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/staff/dr-mohammed-abdul-haq/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/equipo/dr-mohammed-abdul-haq/" />
@@ -156,7 +156,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/general-dentistry/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/general-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-general/" />
@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-general/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/general-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-general/" />
@@ -172,7 +172,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/dental-implants/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/dental-implants/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/implantes-dentales/" />
@@ -180,7 +180,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/implantes-dentales/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/dental-implants/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/implantes-dentales/" />
@@ -188,7 +188,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/cosmetic-dentistry/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/cosmetic-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-estetica/" />
@@ -196,7 +196,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-estetica/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/cosmetic-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontologia-estetica/" />
@@ -204,7 +204,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/root-canal-treatment/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/root-canal-treatment/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/endodoncia/" />
@@ -212,7 +212,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/endodoncia/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/root-canal-treatment/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/endodoncia/" />
@@ -220,7 +220,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/oral-surgery/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/oral-surgery/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/cirugia-oral/" />
@@ -228,7 +228,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/cirugia-oral/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/oral-surgery/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/cirugia-oral/" />
@@ -236,7 +236,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/services/pediatric-dentistry/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/pediatric-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontopediatria/" />
@@ -244,7 +244,7 @@
   </url>
   <url>
     <loc>https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontopediatria/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://alaarajab.github.io/cosmodental_frontend/services/pediatric-dentistry/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://alaarajab.github.io/cosmodental_frontend/es/servicios/odontopediatria/" />

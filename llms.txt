@@ -4,7 +4,7 @@
 
 ## Contact
 - Phone: (708) 345-6313
-- Email: b.abozor@cosmodentalmail.com
+- Email: info@cosmodentalmail.com
 - Address: 159 E North Ave, Northlake, IL 60164
 - Book an appointment: https://alaarajab.github.io/cosmodental_frontend/contact/
 - Directions: https://www.google.com/maps/search/?api=1&query=Cosmo+Dental+159+E+North+Ave+Northlake+IL+60164
