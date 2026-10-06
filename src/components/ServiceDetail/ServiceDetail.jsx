@@ -45,7 +45,7 @@ function ServiceDetail({ id }) {
         </div>
         <img
           src={SERVICE_IMAGES[id]}
-          alt=""
+          alt={t.services[id].imageAlt}
           className="service-page__image"
           width="560"
           height="360"

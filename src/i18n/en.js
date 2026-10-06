@@ -110,6 +110,7 @@ const en = {
   services: {
     "general-dentistry": {
       name: "General Dentistry",
+      imageAlt: "Smiling patient holding a model tooth",
       card: "Check-ups, cleanings, fillings and gum care to keep your whole family's smiles healthy.",
       metaTitle: "General Dentist in Northlake, IL | Cosmo Dental Clinic",
       metaDescription:
@@ -147,6 +148,7 @@ const en = {
     },
     "dental-implants": {
       name: "Dental Implants",
+      imageAlt: "Illustration of a dental implant with a crown placed between natural teeth",
       card: "Long-lasting replacement for missing teeth that looks, feels and works like your own.",
       metaTitle: "Dental Implants in Northlake, IL | Cosmo Dental Clinic",
       metaDescription:
@@ -182,6 +184,7 @@ const en = {
     },
     "cosmetic-dentistry": {
       name: "Cosmetic Dentistry",
+      imageAlt: "Patient admiring her smile in a mirror while the dentist holds a tooth shade guide",
       card: "Teeth whitening, veneers and smile makeovers planned around your goals.",
       metaTitle: "Cosmetic Dentist in Northlake, IL | Whitening & Veneers",
       metaDescription:
@@ -217,6 +220,7 @@ const en = {
     },
     "root-canal-treatment": {
       name: "Endodontics (Root Canal Treatment)",
+      imageAlt: "Close-up of root canal treatment on a molar using dental files",
       shortName: "Root Canal Treatment",
       card: "Endodontic care to relieve tooth pain and save your natural tooth.",
       metaTitle: "Root Canal Treatment in Northlake, IL | Cosmo Dental Clinic",
@@ -252,6 +256,7 @@ const en = {
     },
     "oral-surgery": {
       name: "Oral Surgery",
+      imageAlt: "Dentist performing an oral surgery procedure",
       card: "Tooth extractions, wisdom teeth removal, bone grafting and implant surgery, done gently in our office.",
       metaTitle: "Oral Surgery & Tooth Extractions in Northlake, IL",
       metaDescription:
@@ -286,6 +291,7 @@ const en = {
     },
     "pediatric-dentistry": {
       name: "Pediatric Dentistry",
+      imageAlt: "Child holding a smiling tooth plush toy during a dental checkup",
       card: "Gentle, friendly dental care designed to help children feel comfortable and keep their smiles healthy.",
       metaTitle: "Children's Dentist in Northlake, IL | Cosmo Dental Clinic",
       metaDescription:

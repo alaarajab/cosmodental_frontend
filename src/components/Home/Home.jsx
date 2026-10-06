@@ -80,7 +80,7 @@ function Home() {
                 <img
                   className="home__card-image"
                   src={SERVICE_IMAGES[id]}
-                  alt=""
+                  alt={t.services[id].imageAlt}
                   width="300"
                   height="220"
                   loading="lazy"

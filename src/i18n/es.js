@@ -102,6 +102,7 @@ const es = {
   services: {
     "general-dentistry": {
       name: "Odontología general",
+      imageAlt: "Paciente sonriente sosteniendo un modelo de diente",
       card: "Chequeos, limpiezas, empastes y cuidado de las encías para mantener sana la sonrisa de toda su familia.",
       metaTitle: "Dentista general en Northlake, IL | Cosmo Dental Clinic",
       metaDescription:
@@ -139,6 +140,7 @@ const es = {
     },
     "dental-implants": {
       name: "Implantes dentales",
+      imageAlt: "Ilustración de un implante dental con corona entre dientes naturales",
       card: "Reemplazo duradero de dientes perdidos que se ve, se siente y funciona como un diente natural.",
       metaTitle: "Implantes dentales en Northlake, IL | Cosmo Dental Clinic",
       metaDescription:
@@ -174,6 +176,7 @@ const es = {
     },
     "cosmetic-dentistry": {
       name: "Odontología estética",
+      imageAlt: "Paciente admirando su sonrisa en un espejo mientras el dentista sostiene una guía de colores dentales",
       card: "Blanqueamiento dental, carillas y diseño de sonrisa pensados según sus objetivos.",
       metaTitle: "Dentista estético en Northlake, IL | Blanqueamiento y carillas",
       metaDescription:
@@ -209,6 +212,7 @@ const es = {
     },
     "root-canal-treatment": {
       name: "Endodoncia (tratamiento de conducto)",
+      imageAlt: "Primer plano de un tratamiento de conducto en una muela con limas dentales",
       shortName: "Tratamiento de conducto",
       card: "Atención endodóntica para aliviar el dolor de muela y salvar su diente natural.",
       metaTitle: "Tratamiento de conducto en Northlake, IL | Cosmo Dental Clinic",
@@ -244,6 +248,7 @@ const es = {
     },
     "oral-surgery": {
       name: "Cirugía oral",
+      imageAlt: "Dentista realizando un procedimiento de cirugía oral",
       card: "Extracciones, muelas del juicio, injertos de hueso y cirugía de implantes, con cuidado y en nuestro consultorio.",
       metaTitle: "Cirugía oral y extracciones dentales en Northlake, IL",
       metaDescription:
@@ -278,6 +283,7 @@ const es = {
     },
     "pediatric-dentistry": {
       name: "Odontopediatría",
+      imageAlt: "Niño sosteniendo un peluche de diente sonriente durante una revisión dental",
       shortName: "Odontología infantil",
       card: "Atención dental amable y cariñosa para que los niños se sientan cómodos y mantengan su sonrisa sana.",
       metaTitle: "Dentista para niños en Northlake, IL | Cosmo Dental Clinic",

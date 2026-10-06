@@ -138,7 +138,7 @@ function Header() {
           <img
             className="header__logo"
             src={logo}
-            alt=""
+            alt={`${CLINIC.name} logo`}
             width="220"
             height="60"
           />

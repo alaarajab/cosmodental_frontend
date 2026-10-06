@@ -21,7 +21,7 @@ function Services() {
             <li className="service" key={id} id={id}>
               <img
                 src={SERVICE_IMAGES[id]}
-                alt=""
+                alt={t.services[id].imageAlt}
                 className="service__image"
                 width="320"
                 height="240"
