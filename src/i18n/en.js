@@ -88,7 +88,7 @@ const en = {
     },
     privacy: {
       title: "Website Privacy Policy | Cosmo Dental Clinic",
-      description: "How the Cosmo Dental Clinic website collects and uses information.",
+      description: "How the Cosmo Dental Clinic website in Northlake, IL collects, uses and protects the information you share with us.",
     },
     npp: {
       title: "Notice of Privacy Practices (HIPAA) | Cosmo Dental Clinic",
@@ -416,7 +416,7 @@ const en = {
     role: "Dentist at Cosmo Dental Clinic · Northlake, IL",
     metaTitle: (name) => `${name} – Dentist in Northlake, IL | Cosmo Dental Clinic`,
     metaDescription: (name, bio) =>
-      `${name}, dentist at Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. ${bio} Call (708) 345-6313 to book.`,
+      `${name} is a dentist at Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. Book a visit with ${name}: call (708) 345-6313.`,
     intro: (name) =>
       `${name} sees patients at Cosmo Dental Clinic in Northlake, IL, serving families from Melrose Park, Stone Park, Franklin Park, Elmhurst and Chicago. Our team speaks English, Spanish, Arabic, Urdu and Hindi.`,
     focusTitle: "Areas of focus",
