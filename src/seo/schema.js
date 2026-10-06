@@ -93,6 +93,14 @@ export function schemasFor(route, siteUrl) {
       url: url(homePath),
       inLanguage: route.lang,
       publisher: { "@id": clinicId },
+      // Website designer/developer (credit, also shown in the footer)
+      creator: {
+        "@type": "Person",
+        name: "Alaa Rajab",
+        jobTitle: "Software Engineer",
+        url: "https://github.com/alaarajab",
+        sameAs: ["https://github.com/alaarajab"],
+      },
     });
     out.push(faqPage(t.faqs));
     return out;
