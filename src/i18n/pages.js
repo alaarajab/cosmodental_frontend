@@ -71,11 +71,15 @@ export function pageFromPath(pathname) {
   return null;
 }
 
+// Links always end with "/" — the same address as the sitemap and canonical
+// tags, so Google doesn't see two versions of each page (/services and /services/).
+export const withSlash = (p) => (p.endsWith("/") ? p : `${p}/`);
+
 // Address of the same page in the other language (home page if it has none)
 export function switchLanguagePath(pathname) {
   const current = langFromPath(pathname);
   const target = current === "es" ? "en" : "es";
   const page = pageFromPath(pathname);
-  if (page && PAGES[page.key][target]) return PAGES[page.key][target];
-  return PAGES.home[target];
+  if (page && PAGES[page.key][target]) return withSlash(PAGES[page.key][target]);
+  return withSlash(PAGES.home[target]);
 }

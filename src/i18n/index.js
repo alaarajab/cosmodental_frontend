@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { CONTENT } from "./content.js";
-import { langFromPath, pathFor } from "./pages.js";
+import { langFromPath, pathFor, withSlash } from "./pages.js";
 
 export { CONTENT };
 
@@ -18,5 +18,5 @@ export function languagesText(langs, t) {
 export function useLang() {
   const { pathname } = useLocation();
   const lang = langFromPath(pathname);
-  return { lang, t: CONTENT[lang], to: (key) => pathFor(key, lang) };
+  return { lang, t: CONTENT[lang], to: (key) => withSlash(pathFor(key, lang)) };
 }

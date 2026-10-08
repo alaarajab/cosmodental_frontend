@@ -20,7 +20,7 @@ function PrivacyPolicy() {
         This policy explains how {CLINIC.name} (“we”, “us”) handles information
         collected through this website. How we protect your health information as a
         patient is described in our{" "}
-        <Link to="/notice-of-privacy-practices">Notice of Privacy Practices</Link>.
+        <Link to="/notice-of-privacy-practices/">Notice of Privacy Practices</Link>.
       </p>
 
       <h2>Information we collect</h2>
