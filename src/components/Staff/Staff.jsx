@@ -22,7 +22,11 @@ function MemberCard({ member }) {
             {member.name}
           </Link>
         </h3>
-        <p className="staff__role">{member.title}</p>
+        {member.title && (
+          <p className="staff__role">
+            {lang === "es" ? member.titleEs || member.title : member.title}
+          </p>
+        )}
         <p className="staff__bio">{lang === "es" ? member.bioEs || member.bio : member.bio}</p>
       </div>
     </li>

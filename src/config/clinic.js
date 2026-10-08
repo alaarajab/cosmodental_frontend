@@ -60,9 +60,8 @@ export const CLINIC = {
 
   // Only add accounts that really exist.
   social: [
-    { label: "Instagram", url: "https://www.instagram.com/dr_basel_abozor/" },
-    // Dr. Abozor's personal page for now — replace with the clinic's own page when it exists
-    { label: "Facebook", url: "https://www.facebook.com/basel.abozor/" },
+    { label: "Facebook", url: "https://www.facebook.com/profile.php?id=61595123435290" },
+    { label: "Instagram", url: "https://www.instagram.com/cosmodentalusa/" },
   ],
 
   // Languages spoken by the team (shown on the home page intro,

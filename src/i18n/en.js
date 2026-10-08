@@ -256,7 +256,7 @@ const en = {
     },
     "oral-surgery": {
       name: "Oral Surgery",
-      imageAlt: "Dentist performing an oral surgery procedure",
+      imageAlt: "Close-up of neatly stitched gum tissue after an oral surgery procedure",
       card: "Tooth extractions, wisdom teeth removal, bone grafting and implant surgery, done gently in our office.",
       metaTitle: "Oral Surgery & Tooth Extractions in Northlake, IL",
       metaDescription:
@@ -413,10 +413,10 @@ const en = {
   },
 
   dentistPage: {
-    role: "Dentist at Cosmo Dental Clinic · Northlake, IL",
-    metaTitle: (name) => `${name} – Dentist in Northlake, IL | Cosmo Dental Clinic`,
+    role: "General Dentist at Cosmo Dental Clinic · Northlake, IL",
+    metaTitle: (name) => `${name} – General Dentist in Northlake, IL | Cosmo Dental`,
     metaDescription: (name, bio) =>
-      `${name} is a dentist at Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. Book a visit with ${name}: call (708) 345-6313.`,
+      `${name} is a general dentist at Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. Book a visit: call (708) 345-6313.`,
     intro: (name) =>
       `${name} sees patients at Cosmo Dental Clinic in Northlake, IL, serving families from Melrose Park, Stone Park, Franklin Park, Elmhurst and Chicago. Our team speaks English, Spanish, Arabic, Urdu and Hindi.`,
     focusTitle: "Areas of focus",

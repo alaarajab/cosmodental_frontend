@@ -248,7 +248,7 @@ const es = {
     },
     "oral-surgery": {
       name: "Cirugía oral",
-      imageAlt: "Dentista realizando un procedimiento de cirugía oral",
+      imageAlt: "Primer plano de la encía con puntos de sutura después de una cirugía oral",
       card: "Extracciones, muelas del juicio, injertos de hueso y cirugía de implantes, con cuidado y en nuestro consultorio.",
       metaTitle: "Cirugía oral y extracciones dentales en Northlake, IL",
       metaDescription:
@@ -406,10 +406,10 @@ const es = {
   },
 
   dentistPage: {
-    role: "Dentista en Cosmo Dental Clinic · Northlake, IL",
-    metaTitle: (name) => `${name} – Dentista en Northlake, IL | Cosmo Dental Clinic`,
+    role: "Dentista general en Cosmo Dental Clinic · Northlake, IL",
+    metaTitle: (name) => `${name} – Dentista general en Northlake, IL | Cosmo Dental`,
     metaDescription: (name, bio) =>
-      `${name} es dentista en Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. Haga su cita con ${name}: llame al (708) 345-6313.`,
+      `${name} es dentista general en Cosmo Dental Clinic, 159 E North Ave, Northlake, IL. Haga su cita: llame al (708) 345-6313.`,
     intro: (name) =>
       `${name} atiende a pacientes en Cosmo Dental Clinic en Northlake, IL, y recibe a familias de Melrose Park, Stone Park, Franklin Park, Elmhurst y Chicago. Nuestro equipo habla español, inglés, árabe, urdu e hindi.`,
     focusTitle: "Áreas de enfoque",
