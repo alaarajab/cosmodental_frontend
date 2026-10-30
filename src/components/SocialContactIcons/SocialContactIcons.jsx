@@ -1,4 +1,4 @@
-import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube, FaLink } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube, FaYelp, FaLink } from "react-icons/fa";
 import { CLINIC } from "../../config/clinic";
 import "./SocialContactIcons.css";
 import { useLang } from "../../i18n";
@@ -8,6 +8,7 @@ const ICONS = {
   Instagram: FaInstagram,
   TikTok: FaTiktok,
   YouTube: FaYoutube,
+  Yelp: FaYelp,
 };
 
 // Shows only the social accounts listed in src/config/clinic.js

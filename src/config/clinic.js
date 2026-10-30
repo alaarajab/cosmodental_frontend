@@ -62,6 +62,7 @@ export const CLINIC = {
   social: [
     { label: "Facebook", url: "https://www.facebook.com/profile.php?id=61595123435290" },
     { label: "Instagram", url: "https://www.instagram.com/cosmodentalusa/" },
+    { label: "Yelp", url: "https://www.yelp.com/biz/cosmo-dental-northlake" },
   ],
 
   // Languages spoken by the team (shown on the home page intro,
