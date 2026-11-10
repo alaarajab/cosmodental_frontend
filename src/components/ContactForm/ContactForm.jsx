@@ -26,8 +26,10 @@ function validate(values, msg) {
   const digits = values.phone.replace(/\D/g, "");
   if (digits.length < 10 || digits.length > 15) errors.phone = msg.phone;
   if (!values.reason) errors.reason = msg.reason;
-  if (values.bookAppointment && !values.preferredDate) errors.preferredDate = msg.preferredDate;
-  if (values.bookAppointment && !values.preferredTime) errors.preferredTime = msg.preferredTime;
+  if (values.bookAppointment && !values.preferredDate)
+    errors.preferredDate = msg.preferredDate;
+  if (values.bookAppointment && !values.preferredTime)
+    errors.preferredTime = msg.preferredTime;
   if (!values.consent) errors.consent = msg.consent;
   return errors;
 }
@@ -100,11 +102,14 @@ function ContactForm() {
       email: values.email.trim(),
       phone: values.phone.trim(),
       reason: values.reason,
-      requestType: values.bookAppointment ? "Appointment Request" : "Contact Message",
+      requestType: values.bookAppointment
+        ? "Appointment Request"
+        : "Contact Message",
       preferredDate: values.bookAppointment ? values.preferredDate : "N/A",
       preferredTime: values.bookAppointment ? values.preferredTime : "N/A",
       // Tells the team which language to reply in (add {{language}} to the EmailJS template to see it)
-      language: lang === "es" ? "Spanish (sent from the Spanish website)" : "English",
+      language:
+        lang === "es" ? "Spanish (sent from the Spanish website)" : "English",
     };
 
     try {
@@ -114,6 +119,13 @@ function ContactForm() {
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
+      // Google Ads conversion: fires only after EmailJS confirms the message was sent.
+      // Sends no form data (no name, email, phone or reason).
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18558952893/Bc6lCOW_6LUdEL3LzJFF",
+        });
+      }
       setStatus({
         type: "success",
         message: values.bookAppointment ? f.successAppt : f.successMsg,
@@ -133,7 +145,9 @@ function ContactForm() {
   }
 
   const describedBy = (name, hint) =>
-    [hint, showError(name) ? `${name}-error` : null].filter(Boolean).join(" ") || undefined;
+    [hint, showError(name) ? `${name}-error` : null]
+      .filter(Boolean)
+      .join(" ") || undefined;
 
   return (
     <div className="contact-form">
@@ -154,10 +168,16 @@ function ContactForm() {
         {status.message}
       </div>
 
-      <form ref={formRef} className="contact-form__form" onSubmit={handleSubmit} noValidate>
+      <form
+        ref={formRef}
+        className="contact-form__form"
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <p className="contact-form__required-note">
           {f.required} <span aria-hidden="true">*</span>
-          <span className="visually-hidden">{f.requiredSr}</span> {f.requiredEnd}
+          <span className="visually-hidden">{f.requiredSr}</span>{" "}
+          {f.requiredEnd}
         </p>
 
         <div className="contact-form__field">
@@ -340,11 +360,13 @@ function ContactForm() {
           />
           <label htmlFor="consent">
             {f.consentA}{" "}
-            <Link to={to("privacy")} hrefLang={lang === "es" ? "en" : undefined}>
+            <Link
+              to={to("privacy")}
+              hrefLang={lang === "es" ? "en" : undefined}
+            >
               {f.consentLink}
             </Link>
-            .{" "}
-            <span aria-hidden="true">*</span>
+            . <span aria-hidden="true">*</span>
           </label>
         </div>
         {showError("consent") && (
@@ -353,8 +375,16 @@ function ContactForm() {
           </p>
         )}
 
-        <button type="submit" className="btn btn--primary contact-form__submit" disabled={isSending}>
-          {isSending ? f.sending : values.bookAppointment ? f.sendAppt : f.sendMsg}
+        <button
+          type="submit"
+          className="btn btn--primary contact-form__submit"
+          disabled={isSending}
+        >
+          {isSending
+            ? f.sending
+            : values.bookAppointment
+              ? f.sendAppt
+              : f.sendMsg}
         </button>
       </form>
     </div>

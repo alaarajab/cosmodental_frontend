@@ -3,6 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google tag (gtag.js) — Google Ads -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18558952893"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-18558952893");
+
+      // Google Ads conversion: any tap on a phone (tel:) link anywhere on the site,
+      // including the AI assistant's Call button. Sends no personal data.
+      document.addEventListener(
+        "click",
+        function (e) {
+          var path = e.composedPath ? e.composedPath() : [e.target];
+          for (var i = 0; i < path.length; i++) {
+            var el = path[i];
+            if (
+              el &&
+              el.tagName === "A" &&
+              /^tel:/i.test(el.getAttribute("href") || "")
+            ) {
+              gtag("event", "conversion", {
+                send_to: "AW-18558952893/-ApUCOi_6LUdEL3LzJFF",
+              });
+              break;
+            }
+          }
+        },
+        true,
+      );
+    </script>
     <link rel="icon" href="/src/assets/cosmo-icon.ico" />
     <meta name="theme-color" content="#1a5fd0" />
     <title>Cosmo Dental Clinic | Dentist in Northlake, IL</title>
