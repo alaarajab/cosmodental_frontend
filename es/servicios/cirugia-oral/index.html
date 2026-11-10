@@ -3,6 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google tag (gtag.js) — Google Ads -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18558952893"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-18558952893");
+
+      // Google Ads conversion: any tap on a phone (tel:) link anywhere on the site,
+      // including the AI assistant's Call button. Sends no personal data.
+      document.addEventListener(
+        "click",
+        function (e) {
+          var path = e.composedPath ? e.composedPath() : [e.target];
+          for (var i = 0; i < path.length; i++) {
+            var el = path[i];
+            if (
+              el &&
+              el.tagName === "A" &&
+              /^tel:/i.test(el.getAttribute("href") || "")
+            ) {
+              gtag("event", "conversion", {
+                send_to: "AW-18558952893/-ApUCOi_6LUdEL3LzJFF",
+              });
+              break;
+            }
+          }
+        },
+        true,
+      );
+    </script>
     <link rel="icon" href="/cosmodental_frontend/assets/cosmo-icon-CoBlbnKn.ico" />
     <meta name="theme-color" content="#1a5fd0" />
     <title>Cirugía oral y extracciones dentales en Northlake, IL</title>
@@ -38,7 +74,7 @@
         if (d.contrast) document.documentElement.classList.add("high-contrast");
       } catch (e) {}
     </script>
-    <script type="module" crossorigin src="/cosmodental_frontend/assets/index-BJ0axG0T.js"></script>
+    <script type="module" crossorigin src="/cosmodental_frontend/assets/index-Cvs2N9Qc.js"></script>
     <link rel="stylesheet" crossorigin href="/cosmodental_frontend/assets/index-BdxCO1tm.css">
   </head>
   <body>
