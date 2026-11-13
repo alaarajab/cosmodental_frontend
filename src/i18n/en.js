@@ -46,6 +46,16 @@ const en = {
     sub: "Dentist in Northlake, IL",
     subtitle:
       "Family, cosmetic, implant and emergency dental care for Northlake and the greater Chicago area. New patients are always welcome.",
+    offer: {
+      label: "Holiday offer",
+      badge: "Holiday Offer",
+      headline: "Celebrate the holidays with a healthy, happy smile at Cosmo Dental!",
+      amount: "15% OFF",
+      text: "your treatment for self-pay patients",
+      ends: "Offer ends January 15, 2027",
+      insurance: "We accept most Medicaid and PPO dental insurance plans.",
+      cta: "Claim Your 15% Off",
+    },
   },
 
   footer: {
@@ -371,7 +381,7 @@ const en = {
     insuranceTitle: "Insurance & Payment",
     insuranceH: "Dental insurance",
     inNetwork: "We are in-network with plans including:",
-    insuranceGeneric: "We work with many dental insurance plans. Call us with your plan details and we’ll help you check your coverage before your visit.",
+    insuranceGeneric: "We accept most Medicaid and PPO dental insurance plans. Call us with your plan details and we’ll help you check your coverage before your visit.",
     pricingH: "Clear pricing",
     pricing: "Before treatment begins, we’ll explain your options and the expected cost so you can decide with confidence. Ask our front desk about the payment options we offer.",
     newTitle: "New Patients: What to Expect",
@@ -396,7 +406,7 @@ const en = {
   faqs: [
     ["Are you accepting new patients?", "Yes. Request an appointment online or call us and we'll find a time that works for you."],
     ["Do you speak Spanish?", "Yes. Our team speaks English, Spanish, Arabic, Urdu and Hindi, and our website is also available in Spanish."],
-    ["Do you accept my dental insurance?", "We work with many dental insurance plans. Call us with your plan details before your visit and our team will help you check your coverage."],
+    ["Do you accept my dental insurance?", "We accept most Medicaid and PPO dental insurance plans. Call us with your plan details before your visit and our team will help you check your coverage."],
     ["What should I bring to my first visit?", "Please bring a photo ID, your dental insurance card (if you have one), a list of any medications you take, and recent dental X-rays if you have them."],
     ["What should I do in a dental emergency?", `Call our office at ${CLINIC.phone} as soon as possible and we'll do our best to see you quickly. For serious injuries, heavy bleeding or swelling that affects breathing, call 911 or go to the nearest emergency room.`],
     ["Where are you located?", `We are at ${CLINIC.address.street} in Northlake, IL, on North Avenue — a short drive from Melrose Park, Stone Park, Franklin Park, Elmhurst and Chicago.`],

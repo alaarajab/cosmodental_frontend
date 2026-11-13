@@ -2,8 +2,9 @@ import "./Header.css";
 import logo from "../../assets/cosmo_dental_logo_220x80.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { FaPhoneAlt, FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
+import { FaPhoneAlt, FaBars, FaTimes, FaChevronDown, FaShieldAlt } from "react-icons/fa";
 import { CLINIC } from "../../config/clinic";
+import { offerActive } from "../../config/offer";
 import { useLang } from "../../i18n";
 import { pageFromPath, SERVICE_IDS } from "../../i18n/pages";
 
@@ -35,6 +36,16 @@ function Header() {
   const [navigatorStyle, setNavigatorStyle] = useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  // Holiday offer: decided at build time, then re-checked in the browser
+  // so it disappears after the end date even before the next rebuild.
+  const [showOffer, setShowOffer] = useState(() =>
+    // In the browser, start with what the pre-rendered page shows (avoids a
+    // hydration mismatch); on the server, use the date at build time.
+    typeof document !== "undefined" ? Boolean(document.querySelector(".offer")) : offerActive(),
+  );
+  useEffect(() => {
+    if (!offerActive()) setShowOffer(false);
+  }, []);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesRef = useRef(null);
   const servicesButtonRef = useRef(null);
@@ -305,9 +316,31 @@ function Header() {
             </span>
           </h1>
           <p className="header__subtitle">{t.header.subtitle}</p>
+          {showOffer && (
+            <section className="offer" aria-label={t.header.offer.label}>
+              <span className="offer__snow" aria-hidden="true">
+                <span>❄</span>
+                <span>✦</span>
+                <span>❄</span>
+                <span>✦</span>
+                <span>❄</span>
+              </span>
+              <p className="offer__badge">{t.header.offer.badge}</p>
+              <p className="offer__headline">{t.header.offer.headline}</p>
+              <p className="offer__main">
+                <strong className="offer__amount">{t.header.offer.amount}</strong>
+                <span className="offer__text">{t.header.offer.text}</span>
+              </p>
+              <p className="offer__ends">{t.header.offer.ends}</p>
+              <p className="offer__insurance">
+                <FaShieldAlt aria-hidden="true" />
+                <span>{t.header.offer.insurance}</span>
+              </p>
+            </section>
+          )}
           <div className="header__actions">
-            <Link to={to("contact")} className="btn btn--primary">
-              {t.ui.book}
+            <Link to={to("contact")} className={`btn btn--primary${showOffer ? " offer__cta" : ""}`}>
+              {showOffer ? t.header.offer.cta : t.ui.book}
             </Link>
             <a href={CLINIC.phoneHref} className="btn btn--light">
               <FaPhoneAlt aria-hidden="true" />

@@ -122,6 +122,175 @@
   margin: 0;
 }
 
+/* ---------------- Holiday offer (home hero) ---------------- */
+.offer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 0 28px;
+  padding: 26px 24px 20px;
+  border: 2px solid #fbbf24;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(96, 165, 250, 0.35), transparent 60%),
+    linear-gradient(135deg, #0b2a6b 0%, #144aa3 55%, #0b2a6b 100%);
+  box-shadow:
+    0 0 0 4px rgba(251, 191, 36, 0.18),
+    0 18px 40px rgba(0, 0, 0, 0.35);
+  animation: offer-pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+
+/* light sweep across the card (2 times, then stops; all offer animations end within 5 s) */
+.offer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: offer-shine 2.2s ease-in-out 0.6s 2;
+  pointer-events: none;
+}
+
+.offer > p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.offer__badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fbbf24, #fde68a, #fbbf24);
+  color: #0b2a6b;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.offer__headline {
+  margin-top: 12px !important;
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2.8vw, 1.4375rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.offer__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px !important;
+}
+
+.offer__amount {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 9vw, 4.25rem);
+  line-height: 1;
+  font-weight: 900;
+  color: #fde68a;
+  text-shadow:
+    0 2px 0 #b45309,
+    0 0 24px rgba(251, 191, 36, 0.55);
+  animation: offer-glow 1.4s ease-in-out 0.8s 3;
+}
+
+.offer__text {
+  font-size: clamp(1.0625rem, 2.6vw, 1.375rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.offer__ends {
+  margin-top: 8px !important;
+  font-size: 0.9375rem;
+  color: #dbeafe;
+}
+
+.offer__insurance {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px !important;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.9375rem;
+  color: #fff;
+}
+
+.offer__insurance svg {
+  flex-shrink: 0;
+  color: #fbbf24;
+}
+
+/* decorative twinkles */
+.offer__snow span {
+  position: absolute;
+  z-index: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1.125rem;
+  animation: offer-twinkle 1.3s ease-in-out 3;
+}
+.offer__snow span:nth-child(1) { top: 12px; left: 18px; }
+.offer__snow span:nth-child(2) { top: 18px; right: 26px; color: #fde68a; animation-delay: 0.4s; }
+.offer__snow span:nth-child(3) { bottom: 18px; left: 34px; font-size: 0.875rem; animation-delay: 0.8s; }
+.offer__snow span:nth-child(4) { bottom: 26px; right: 20px; color: #fde68a; font-size: 0.875rem; animation-delay: 0.2s; }
+.offer__snow span:nth-child(5) { top: 46%; left: 8px; font-size: 0.75rem; animation-delay: 1s; }
+
+/* gold "Claim your 15% off" button while the offer runs */
+.btn.offer__cta {
+  background: linear-gradient(90deg, #fbbf24, #fde68a, #fbbf24);
+  color: #0b2a6b;
+  border-color: #fbbf24;
+  font-weight: 700;
+}
+
+.btn.offer__cta:hover,
+.btn.offer__cta:focus-visible {
+  background: #fde68a;
+  color: #0b2a6b;
+}
+
+@keyframes offer-pop {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes offer-shine {
+  to { transform: translateX(120%); }
+}
+
+@keyframes offer-glow {
+  50% { text-shadow: 0 2px 0 #b45309, 0 0 40px rgba(251, 191, 36, 0.95); }
+}
+
+@keyframes offer-twinkle {
+  50% { opacity: 0.2; transform: scale(0.7); }
+}
+
+.high-contrast .offer {
+  background: #000;
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.high-contrast .offer__amount {
+  color: #ff0;
+  text-shadow: none;
+}
+
+@media (max-width: 480px) {
+  .offer {
+    padding: 22px 16px 16px;
+    border-radius: 16px;
+  }
+}
+
 .header__actions {
   display: flex;
   flex-wrap: wrap;

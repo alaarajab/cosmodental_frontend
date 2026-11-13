@@ -48,6 +48,16 @@ const es = {
     sub: "Dentista en Northlake, IL",
     subtitle:
       "Odontología familiar, estética, implantes y atención de urgencias dentales para Northlake y el área de Chicago. Siempre aceptamos pacientes nuevos.",
+    offer: {
+      label: "Oferta de temporada",
+      badge: "Oferta de temporada",
+      headline: "¡Celebre las fiestas con una sonrisa sana y feliz en Cosmo Dental!",
+      amount: "15% DE DESCUENTO",
+      text: "en su tratamiento para pacientes que pagan por su cuenta",
+      ends: "Válido hasta el 15 de enero de 2027",
+      insurance: "Aceptamos la mayoría de los planes de Medicaid y seguros dentales PPO.",
+      cta: "Obtenga su 15% de descuento",
+    },
   },
 
   footer: {
@@ -364,7 +374,7 @@ const es = {
     insuranceTitle: "Seguros y pagos",
     insuranceH: "Seguro dental",
     inNetwork: "Estamos dentro de la red de planes como:",
-    insuranceGeneric: "Trabajamos con muchos planes de seguro dental. Llámenos con los datos de su plan y le ayudaremos a revisar su cobertura antes de su cita.",
+    insuranceGeneric: "Aceptamos la mayoría de los planes de Medicaid y seguros dentales PPO. Llámenos con los datos de su plan y le ayudaremos a revisar su cobertura antes de su cita.",
     pricingH: "Precios claros",
     pricing: "Antes de empezar un tratamiento, le explicaremos sus opciones y el costo estimado para que decida con confianza. Pregunte en recepción por las opciones de pago que ofrecemos.",
     newTitle: "Pacientes nuevos: qué esperar",
@@ -389,7 +399,7 @@ const es = {
   faqs: [
     ["¿Aceptan pacientes nuevos?", "Sí. Pida una cita en línea o llámenos y buscaremos un horario que le convenga."],
     ["¿Hablan español?", "Sí. Nuestro equipo habla español, inglés, árabe, urdu e hindi. Puede llamarnos o escribirnos en español."],
-    ["¿Aceptan mi seguro dental?", "Trabajamos con muchos planes de seguro dental. Llámenos con los datos de su plan antes de su cita y nuestro equipo le ayudará a revisar su cobertura."],
+    ["¿Aceptan mi seguro dental?", "Aceptamos la mayoría de los planes de Medicaid y seguros dentales PPO. Llámenos con los datos de su plan antes de su cita y nuestro equipo le ayudará a revisar su cobertura."],
     ["¿Qué debo traer a mi primera cita?", "Traiga una identificación con foto, su tarjeta de seguro dental (si tiene), una lista de los medicamentos que toma y radiografías dentales recientes si las tiene."],
     ["¿Qué hago en caso de una urgencia dental?", `Llame a nuestro consultorio al ${CLINIC.phone} lo antes posible y haremos todo lo posible por atenderle pronto. Si tiene una lesión grave, sangrado abundante o hinchazón que le dificulta respirar, llame al 911 o vaya a la sala de emergencias más cercana.`],
     ["¿Dónde están ubicados?", `Estamos en ${CLINIC.address.street}, en Northlake, IL, sobre North Avenue, a pocos minutos de Melrose Park, Stone Park, Franklin Park, Elmhurst y Chicago.`],
