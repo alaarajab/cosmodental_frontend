@@ -47,14 +47,18 @@ const en = {
     subtitle:
       "Family, cosmetic, implant and emergency dental care for Northlake and the greater Chicago area. New patients are always welcome.",
     offer: {
-      label: "Holiday offer",
-      badge: "Holiday Offer",
+      label: "Holiday offers",
+      badge: "Holiday Offers",
       headline: "Celebrate the holidays with a healthy, happy smile at Cosmo Dental!",
-      amount: "15% OFF",
-      text: "your treatment for self-pay patients",
-      ends: "Offer ends January 15, 2027",
+      // [big text, small text]
+      deals: [
+        ["FREE", "exam & X-rays for new patients"],
+        ["15% OFF", "your treatment for self-pay patients"],
+      ],
+      ends: "Offers end January 15, 2027",
+      fine: "Free exam & X-rays: new patients only. Nothing is billed to you or your insurance for this visit.",
       insurance: "We accept most Medicaid and PPO dental insurance plans.",
-      cta: "Claim Your 15% Off",
+      cta: "Book Your Free Exam",
     },
   },
 

@@ -49,14 +49,18 @@ const es = {
     subtitle:
       "Odontología familiar, estética, implantes y atención de urgencias dentales para Northlake y el área de Chicago. Siempre aceptamos pacientes nuevos.",
     offer: {
-      label: "Oferta de temporada",
-      badge: "Oferta de temporada",
+      label: "Ofertas de temporada",
+      badge: "Ofertas de temporada",
       headline: "¡Celebre las fiestas con una sonrisa sana y feliz en Cosmo Dental!",
-      amount: "15% DE DESCUENTO",
-      text: "en su tratamiento para pacientes que pagan por su cuenta",
-      ends: "Válido hasta el 15 de enero de 2027",
+      // [texto grande, texto pequeño]
+      deals: [
+        ["GRATIS", "examen y radiografías para pacientes nuevos"],
+        ["15%", "de descuento en su tratamiento para pacientes que pagan por su cuenta"],
+      ],
+      ends: "Válidas hasta el 15 de enero de 2027",
+      fine: "Examen y radiografías gratis: solo para pacientes nuevos. No se cobra nada a usted ni a su seguro por esta visita.",
       insurance: "Aceptamos la mayoría de los planes de Medicaid y seguros dentales PPO.",
-      cta: "Obtenga su 15% de descuento",
+      cta: "Reserve su examen gratis",
     },
   },
 

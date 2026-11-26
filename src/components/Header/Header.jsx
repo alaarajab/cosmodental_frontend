@@ -327,15 +327,20 @@ function Header() {
               </span>
               <p className="offer__badge">{t.header.offer.badge}</p>
               <p className="offer__headline">{t.header.offer.headline}</p>
-              <p className="offer__main">
-                <strong className="offer__amount">{t.header.offer.amount}</strong>
-                <span className="offer__text">{t.header.offer.text}</span>
-              </p>
+              <ul className="offer__deals">
+                {t.header.offer.deals.map(([big, small]) => (
+                  <li key={big} className="offer__deal">
+                    <strong className="offer__amount">{big}</strong>
+                    <span className="offer__text">{small}</span>
+                  </li>
+                ))}
+              </ul>
               <p className="offer__ends">{t.header.offer.ends}</p>
               <p className="offer__insurance">
                 <FaShieldAlt aria-hidden="true" />
                 <span>{t.header.offer.insurance}</span>
               </p>
+              <p className="offer__fine">{t.header.offer.fine}</p>
             </section>
           )}
           <div className="header__actions">
